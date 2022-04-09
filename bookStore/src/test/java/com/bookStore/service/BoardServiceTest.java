@@ -8,14 +8,19 @@ import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
 
 import com.bookStore.model.BoardVO;
 
+import lombok.extern.log4j.Log4j;
+
+
 @RunWith(SpringJUnit4ClassRunner.class)
 @ContextConfiguration("file:src/main/webapp/WEB-INF/spring/root-context.xml")
+@Log4j
 
 public class BoardServiceTest {
 	
 	@Autowired
 	private BoardService service;
 	
+	/*
 	@Test
 	public void testEnroll() {
 		BoardVO vo = new BoardVO();
@@ -25,5 +30,11 @@ public class BoardServiceTest {
 		vo.setWriter("service test");
 		
 		service.enroll(vo);
+	}
+	*/
+	
+	@Test
+	public void testGetList() {
+		service.getList().forEach(board -> log.info("" + board));
 	}
 }

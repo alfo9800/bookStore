@@ -10,4 +10,10 @@
 	insert into bookstore_board(title, content, writer) values (#{title}, #{content}, #{writer})
 </insert>
  
+<!-- 게시판 목록 -->
+<!-- select태그의 id속성 값은 '게시판 목록'메서드명과 동일해야 함 -->
+<select id="getList" resultType="com.bookStore.model.BoardVO">
+	select * from bookStore_board
+</select>
+
 </mapper>
