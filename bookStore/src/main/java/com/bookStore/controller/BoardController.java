@@ -2,6 +2,7 @@ package com.bookStore.controller;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
+import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -30,10 +31,12 @@ public class BoardController {
 	private BoardService bservice;
 	
 	
-	/* 게시판 목록 페이지 진입 */
+	/* 게시판 목록 페이지 진입 (view에 데이터 전송 위해 Model 파라미터 추가)*/
 	@GetMapping("/list")
-	public void boardListGET() {	
-		log.info("게시판 목록 페이지 진입");		
+	public void boardListGET(Model model) {	
+		log.info("게시판 목록 페이지 진입");	
+		
+		model.addAttribute("list", bservice.getList()); //"list"라는 속성명에 BoardService클래스의 getList메소드 반환값(=게시판 목록 데이터)을 속성값으로 저장
 	}
 	
 	/* 게시판 등록 페이지 진입 */
@@ -42,7 +45,7 @@ public class BoardController {
 		log.info("게시판 등록 페이지 진입");		
 	}
 	
-	/* 게시판 등록 POST (enroll.jsp 뷰에서 받은 값) */
+	/* 게시판 등록 POST (enroll.jsp view에서 받은 값) */
 	@PostMapping("/enroll")
 	public String boardEnrollPOST(BoardVO board, RedirectAttributes rttr) {
 		log.info("BoardVO : " + board);
