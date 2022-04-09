@@ -1,6 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=utf-8"
     pageEncoding="utf-8"%>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/fmt" prefix="fmt" %>
 <!DOCTYPE html>
 <html>
 <head>
@@ -46,7 +47,16 @@ thead {font-weight:700;}
 				<th class="updatedate_width">수정일</th>
 			</tr>
 		</thead>
-			<tr>
+			<c:forEach items="${list}" var="list">
+				<tr>
+					<td><c:out value="${list.bno}" /></td>
+					<td><c:out value="${list.title}" /></td>
+					<td><c:out value="${list.writer}" /></td>
+					<td><fmt:formatDate pattern="yyyy-MM-dd" value="${list.regdate}" /></td><%-- <td><c:out value="${list.regdate}" /></td> --%>
+					<td><fmt:formatDate pattern="yyyy-MM-dd" value="${list.updateDate}" /></td><%-- <td><c:out value="${list.updateDate}" /></td> --%>
+				</tr>
+			</c:forEach>
+			<!-- <tr>
 				<td>1</td>
 				<td>책1</td>
 				<td>책1에 대한 내용입니다</td>
@@ -59,7 +69,7 @@ thead {font-weight:700;}
 				<td>책2에 대한 내용입니다</td>
 				<td>2022-04-10</td>
 				<td>2022-04-10</td>
-			</tr>
+			</tr> -->
 	</table>
 </div>
 
