@@ -32,7 +32,7 @@ thead {font-weight:700;}
 <body>
 
 <h1>목록페이지 입니다.</h1>
-<a href="/board/enroll">게시판 등록</a>
+<!-- <a href="/board/enroll">게시판 등록</a> -->
 
 <div class="table_wrap">
 	<a href="/board/enroll" class="top_btn">게시판 등록</a>
@@ -47,18 +47,18 @@ thead {font-weight:700;}
 			</tr>
 		</thead>
 			<tr>
-				<td>번호 내용</td>
-				<td>제목 내용</td>
-				<td>작성자 내용</td>
-				<td>작성일 내용</td>
-				<td>수정일 내용</td>
+				<td>1</td>
+				<td>책1</td>
+				<td>책1에 대한 내용입니다</td>
+				<td>2022-04-10</td>
+				<td>2022-04-10</td>
 			</tr>
 			<tr>
-				<td>번호 내용</td>
-				<td>제목 내용</td>
-				<td>작성자 내용</td>
-				<td>작성일 내용</td>
-				<td>수정일 내용</td>
+				<td>2</td>
+				<td>책2</td>
+				<td>책2에 대한 내용입니다</td>
+				<td>2022-04-10</td>
+				<td>2022-04-10</td>
 			</tr>
 	</table>
 </div>
