@@ -57,7 +57,15 @@ public class BoardMapperTest {
 		}
 		*/
 		
-		//foreach문 & 람다식
+		//foreach문 & 람다식 (**참고** list배열에서 forEach함수를 사용하기 위해서는 Stream API를 이용!)
 		list.forEach(board -> log.info(board));
+	}
+	
+	@Test //게시판 상세조회
+	public void testGetPage() {
+		/* 실제 존재하는 페이지 */
+		int bno = 4;
+		
+		log.info("" + mapper.getPage(bno));
 	}
 }

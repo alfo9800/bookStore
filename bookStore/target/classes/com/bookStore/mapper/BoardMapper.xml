@@ -16,4 +16,11 @@
 	select * from bookStore_board
 </select>
 
+
+<!-- 게시판 상세조회 -->
+<!--  -->
+<select id="getPage" resultType="com.bookStore.model.BoardVO">
+	select * from bookStore_board where bno = #{bno}
+</select>
+
 </mapper>
