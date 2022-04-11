@@ -16,18 +16,18 @@
 </head>
 
 <style>
-a {text-decoration:none;}
-table {border-collapse:collapse; width:1000px; margin-top:20px; text-align:center;}
-td,th {border:1px solid black; height:50px;}
-th {font-size:17px;}
-thead {font-weight:700;}
-
-.table_wrap {margin:50px 0 0 50px;}
-.bno_width {width:12%;}
-.writer_width {width:20%;}
-.regdate_width {width:15%;}
-.updatedate_width {width:15%;}
-.top_btn {font-size:20px; padding:6px 12px; background-color:#fff; border:1px solid #ddd; font-weight:600;}
+	a {text-decoration:none;}
+	table {border-collapse:collapse; width:1000px; margin-top:20px; text-align:center;}
+	td,th {border:1px solid black; height:50px;}
+	th {font-size:17px;}
+	thead {font-weight:700;}
+	
+	.table_wrap {margin:50px 0 0 50px;}
+	.bno_width {width:12%;}
+	.writer_width {width:20%;}
+	.regdate_width {width:15%;}
+	.updatedate_width {width:15%;}
+	.top_btn {font-size:20px; padding:6px 12px; background-color:#fff; border:1px solid #ddd; font-weight:600;}
 </style>
 
 <body>
@@ -50,7 +50,18 @@ thead {font-weight:700;}
 			<c:forEach items="${list}" var="list">
 				<tr>
 					<td><c:out value="${list.bno}" /></td>
-					<td><c:out value="${list.title}" /></td>
+					<!-- 제목을 눌렀을 때, 해당 조회페이지로 이동할 수 있도록 함 -->
+					<td> 
+					<!-- 
+						<a class="move" href='/board/get?bno=<c:out value="${list.bno}" />'>
+							<c:out value="${list.title}" />
+						</a>
+					-->
+						<a class="move" href='<c:out value="${list.bno}" />'>
+							<c:out value="${list.title}"/>
+						</a>
+					</td>
+					
 					<td><c:out value="${list.writer}" /></td>
 					<td><fmt:formatDate pattern="yyyy-MM-dd" value="${list.regdate}" /></td><%-- <td><c:out value="${list.regdate}" /></td> --%>
 					<td><fmt:formatDate pattern="yyyy-MM-dd" value="${list.updateDate}" /></td><%-- <td><c:out value="${list.updateDate}" /></td> --%>
@@ -71,9 +82,14 @@ thead {font-weight:700;}
 				<td>2022-04-10</td>
 			</tr> -->
 	</table>
+	
+	<!-- 제목을 눌렀을 때, 해당 게시판 상세조회 -->
+	<form id="moveForm" method="get">
+	</form>
 </div>
 
 <script>
+<%-- 게시판 등록 완료 시 띄우는 '알림창' --%>
 	$(document).ready(function(){
 		let result = '<c:out value="${result}" />'; //서버로부터 전달 받은 값을 저장하기 위한 result변수를 선언한 뒤, 전달받은 값으로 초기화
 		
@@ -89,6 +105,17 @@ thead {font-weight:700;}
 			}
 		}
 	
+	});
+	
+<%-- 게시판 제목을 클릭 했을 때, 상세조회로 이동 --%>
+	let moveForm = $("#moveForm");
+	
+	$(".move").on("click", function(e){ 
+		e.preventDefault(); //클릭한 a태그 기능 정지 //이벤트 작동 X
+		
+		moveForm.append("<input type='hidden' name='bno' value=' "+$(this).attr("href")+" '>"); //form태그 내부 bno값을 저장하는 input태그 생성
+		moveForm.attr("action", "/board/get"); //form태그 action속성 추가
+		moveForm.submit(); //form태그 내부 데이터 서버 전송
 	});
 </script>
 
