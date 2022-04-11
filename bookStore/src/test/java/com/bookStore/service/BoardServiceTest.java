@@ -33,8 +33,17 @@ public class BoardServiceTest {
 	}
 	*/
 	
+	/*
 	@Test
 	public void testGetList() {
 		service.getList().forEach(board -> log.info("" + board));
+	}
+	*/
+	
+	@Test
+	public void testGetPage() {
+		int bno = 4;
+		
+		log.info("" + service.getPage(bno));
 	}
 }

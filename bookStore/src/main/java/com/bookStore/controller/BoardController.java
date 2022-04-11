@@ -56,4 +56,15 @@ public class BoardController {
 		
 		return "redirect:/board/list";//넘겨 주었기 때문에 더 이상 머물러 있을 필요 X -> list로 이동
 	}
+	
+	/* 게시판 상세조회 */
+	@GetMapping("/get")
+	public void boardGetPageGet(int bno, Model model) {
+		model.addAttribute("pageInfo", bservice.getPage(bno)); //"pageInfo"라는 속성명에 BoardService클래스의 getPage메소드 반환값(=게시판 상세 조회 데이터)을 속성값으로 저장
+	}
+	
+	
+	
+	
+	
 }
