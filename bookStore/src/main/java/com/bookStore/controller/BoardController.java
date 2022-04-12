@@ -69,7 +69,7 @@ public class BoardController {
 		model.addAttribute("pageInfo", bservice.getPage(bno));
 	}
 	
-	/* 게시판 수정 */
+	/* 게시판 수정 (@GetMapping 아니고, @PostMapping이다) */
 	@PostMapping("/modify")
 	public String boardModifyPOST(BoardVO board, RedirectAttributes rttr) { //수정될 내용의 데이터를 가져오기 위해 BoardVO 클래스를 파라미터로 부여, 수정기능 실행 후 리다이렉트 방식으로 리스트 페이지 이동 시 데이터를 같이 전송
 		bservice.modify(board);
