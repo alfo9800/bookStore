@@ -25,8 +25,8 @@ public class BoardMapperTest {
 	@Autowired
 	private BoardMapper mapper;
 	
-	/*
-	@Test //게시판 등록 테스트 : DB에 title, Content, Writer를 test로 넣어준다
+	//게시판 등록 테스트 : DB에 title, Content, Writer를 test로 넣어준다
+	@Test 
 	public void testEnroll() {
 		BoardVO vo = new BoardVO();
 		
@@ -36,9 +36,9 @@ public class BoardMapperTest {
 		
 		mapper.enroll(vo);
 	}
-	*/
 	
-	@Test //게시판 목록 테스트
+	//게시판 목록 테스트
+	@Test 
 	public void testGetList() {
 		//게시판 목록 메소드를 수행 후 반환 받은 list객체
 		List list = mapper.getList();
@@ -61,11 +61,24 @@ public class BoardMapperTest {
 		list.forEach(board -> log.info(board));
 	}
 	
-	@Test //게시판 상세조회
+	//게시판 상세조회
+	@Test 
 	public void testGetPage() {
 		/* 실제 존재하는 페이지 */
 		int bno = 4;
 		
 		log.info("" + mapper.getPage(bno));
+	}
+	
+	//게시판 수정
+	@Test
+	public void testModify() {
+		BoardVO board = new BoardVO();
+		board.setBno(8);
+		board.setTitle("수정 제목");
+		board.setContent("수정 내용");
+	
+		int result = mapper.modify(board); //게시판 번호(bno)가 존재하는 것 result = 1 / 존재하지 않는 것 result = 0
+		log.info("result : " + result);
 	}
 }
