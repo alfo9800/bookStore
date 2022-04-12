@@ -1,3 +1,18 @@
+
+수정하고 싶은 부분
+1. 조회페이지1 들어갔다가 '뒤로가기'를 눌렀다가 다시 조회페이지2에 들어갔을 때
+   : http://localhost:8080/board/get?bno=+2+&bno=+1+&bno=+6+
+   : 다음과 같이 계속 bno를 들고 다님
+ 2. 왜 bno=+1+이 나올까?
+   : 해결) list.jsp의 js에서 
+   		  moveForm.append("<input type='hidden' name='bno' value=' "+$(this).attr("href")+" '>");
+   		  -->
+   		  moveForm.append("<input type='hidden' name='bno' value=' "+$(this).attr("href")+" '>");
+
+
+
+
+
 ======= 게시판 수정(modify) 기능 구현 =======
 
 - 게시판 조회에서 '수정'버튼을 클릭했을 때, 수정페이지로 이동 되고, 내용을 변경 후 '수정완료'버튼을 눌렀을 때

@@ -117,7 +117,7 @@
 	$(".move").on("click", function(e){ 
 		e.preventDefault(); //클릭한 a태그 기능 정지 //이벤트 작동 X
 		
-		moveForm.append("<input type='hidden' name='bno' value=' "+$(this).attr("href")+" '>"); //form태그 내부 bno값을 저장하는 input태그 생성
+		moveForm.append("<input type='hidden' name='bno' value='"+ $(this).attr("href") +"'>"); //form태그 내부 bno값을 저장하는 input태그 생성
 		moveForm.attr("action", "/board/get"); //form태그 action속성 추가
 		moveForm.submit(); //form태그 내부 데이터 서버 전송
 	});
