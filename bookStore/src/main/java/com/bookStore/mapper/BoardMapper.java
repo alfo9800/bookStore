@@ -22,4 +22,7 @@ public interface BoardMapper {
 	//bno, title, content, writer에 대한 데이터가 필요 / 수정을 수행하는 메소드의 경우 반환 타입이 필요 없음 / int형으로 설정할 경우 수정 성공 시 1, 수정 실패 0 반환
 	/* 게시판 수정 */
 	public int modify(BoardVO board);
+	
+	//bno='게시판 번호' 지정을 통하여, 특정페이지만 삭제 되도록 함 / 반환 타입은 수정과 동일 하게 int형 / 수정 성공 시 1, 수정 실패 0 반환
+	public int delete(int bno);
 }

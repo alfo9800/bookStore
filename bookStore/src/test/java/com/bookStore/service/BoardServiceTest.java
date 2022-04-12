@@ -49,7 +49,7 @@ public class BoardServiceTest {
 	}
 	*/
 	
-	//게시판 수정
+	/* //게시판 수정
 	@Test
 	public void testModify() {
 		BoardVO board = new BoardVO();
@@ -59,6 +59,15 @@ public class BoardServiceTest {
 		board.setContent("내용입니다");
 		
 		int result = service.modify(board);
+		log.info("result : " + result);
+	}
+	*/
+	
+	//게시판 삭제
+	@Test
+	public void testDelete() {
+		int result = service.delete(7);
+		
 		log.info("result : " + result);
 	}
 }

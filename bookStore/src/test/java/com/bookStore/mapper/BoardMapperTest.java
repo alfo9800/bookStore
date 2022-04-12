@@ -81,4 +81,12 @@ public class BoardMapperTest {
 		int result = mapper.modify(board); //게시판 번호(bno)가 존재하는 것 result = 1 / 존재하지 않는 것 result = 0
 		log.info("result : " + result);
 	}
+	
+	//게시판 삭제
+	@Test
+	public void testDelete() {
+		int result = mapper.delete(8);
+		
+		log.info("result : " + result);
+	}
 }

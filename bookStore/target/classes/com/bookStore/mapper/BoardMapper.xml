@@ -27,4 +27,9 @@
 	update bookstore_board set title = #{title}, content = #{content}, updatedate = now() where bno = #{bno}
 </update>
 
+<!-- 게시판 삭제 -->
+<delete id="delete">
+	delete from bookstore_board where bno = #{bno};
+</delete>
+
 </mapper>

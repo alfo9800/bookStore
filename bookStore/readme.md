@@ -1,15 +1,29 @@
+======= 게시판 삭제 기능 구현 =======
 
-수정하고 싶은 부분
+- 게시판 수정페이지에서 '삭제'버튼 추가
+ 1) 
+
+- 삭제가 이루어지고, 목록페이지로 이동, 삭제완료 알림창 띄우기
+
+
+================================
+
+[???]
+
 1. 조회페이지1 들어갔다가 '뒤로가기'를 눌렀다가 다시 조회페이지2에 들어갔을 때
    : http://localhost:8080/board/get?bno=+2+&bno=+1+&bno=+6+
    : 다음과 같이 계속 bno를 들고 다님
- 2. 왜 bno=+1+이 나올까?
+   
+2. 왜 bno=+1+이 나올까?
    : 해결) list.jsp의 js에서 
    		  moveForm.append("<input type='hidden' name='bno' value=' "+$(this).attr("href")+" '>");
    		  -->
    		  moveForm.append("<input type='hidden' name='bno' value='"+ $(this).attr("href") +"'>");
 
-
+3. 수정을 했는데, regdate와 updateDate가 type이 안맞다고 나옴.
+   : 해결) https://www.egovframe.go.kr/home/qainfo/qainfoRead.do?menuNo=69&qaId=QA_00000000000011464
+   		  위 참조하여서 java.util.Date -> java.sql.Date로 바꿈
+   		  왜냐하면, DB에 수정이 되어서 들어가야하는데, 타입이 맞지 않으면 error가 남
 
 ======= 게시판 수정(modify) 기능 구현 =======
 

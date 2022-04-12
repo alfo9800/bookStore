@@ -38,5 +38,11 @@ public class BoardServiceImpl implements BoardService {
 	public int modify(BoardVO board) {
 		return mapper.modify(board);
 	}
+
+
+	@Override
+	public int delete(int bno) {
+		return mapper.delete(bno); //int를 반환해야기 때문에 return값에서 mapper메소드 호출
+	}
 	
 }
