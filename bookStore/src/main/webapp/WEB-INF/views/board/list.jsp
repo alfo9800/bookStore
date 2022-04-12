@@ -103,6 +103,10 @@
 			if(result === "enroll success"){
 				alert("등록이 완료되었습니다"); //result에 담긴 값이 있을 경우 어떠한 메시지가 있는지 체크한 뒤 게시판 등록 완료되었다는 경고창을 띄움
 			}
+			
+			if(result === "modify success"){
+				alert("수정이 완료되었습니다"); 
+			}
 		}
 	
 	});
