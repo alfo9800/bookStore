@@ -1,6 +1,6 @@
 package com.bookStore.model;
 
-import java.util.Date;
+import java.sql.Date; //util -> sql //자료형이 맞지 않아 '수정'을 구현할 때, java에서 DB로 넘어갈 때 오류 발생
 
 import lombok.Getter;
 import lombok.Setter;

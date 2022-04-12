@@ -7,9 +7,7 @@
    : 해결) list.jsp의 js에서 
    		  moveForm.append("<input type='hidden' name='bno' value=' "+$(this).attr("href")+" '>");
    		  -->
-   		  moveForm.append("<input type='hidden' name='bno' value=' "+$(this).attr("href")+" '>");
-
-
+   		  moveForm.append("<input type='hidden' name='bno' value='"+ $(this).attr("href") +"'>");
 
 
 
