@@ -92,8 +92,8 @@ textarea {width:800px;  height:200px; font-size:15px; padding:10px;}
 	});
 	
 	/* 취소 버튼 */
-	$("cancel_btn").on("click", function(e){
-		form.attr("action", "/board/get");
+	$("#cancel_btn").on("click", function(e){
+		form.attr("action", "/board/list");
 		form.submit();
 	});
 	
