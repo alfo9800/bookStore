@@ -52,7 +52,7 @@ textarea {width:800px;  height:200px; font-size:15px; padding:10px;}
 	</div>
 	<div class="input_wrap">
 		<label>게시판 수정일</label>
-		<input name="updatedate" readonly="readonly" value='<fmt:formatDate pattern="yyyy-MM-dd" value="${pageInfo.updatedate}" />'>
+		<input name="updateDate" readonly="readonly" value='<fmt:formatDate pattern="yyyy-MM-dd" value="${pageInfo.updateDate}" />'>
 	</div>
 	
 	<!-- 버튼 관련 -->
