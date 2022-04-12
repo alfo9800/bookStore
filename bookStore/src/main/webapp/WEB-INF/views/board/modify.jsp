@@ -23,6 +23,7 @@ textarea {width:800px;  height:200px; font-size:15px; padding:10px;}
 .btn {display:inline-block; font-size:22px; padding:6px 12px; background-color:#fff; border:1px solid #ddd; font-weight:600;
     width:140px; height:41px; line-height:39px; text-align: enter; margin-left:30px; cursor:pointer;}
 .btn_wrap {padding-left:80px; margin-top:50px;}
+#delete_btn {background-color:#f3e3e7;}
 </style>
 
 </head>
@@ -62,8 +63,9 @@ textarea {width:800px;  height:200px; font-size:15px; padding:10px;}
 		<!-- 버튼 관련 -->
 		<div class="btn_wrap">
 			<a class="btn" id="list_btn">목록</a>
-			<a class="btn" id="modify_btn">수정</a>
+			<a class="btn" id="modify_btn">수정 저장</a>
 			<a class="btn" id="cancel_btn">수정 취소</a>
+			<a class="btn" id="delete_btn">삭제</a>
 		</div>
 	
 	</form>	
@@ -92,6 +94,13 @@ textarea {width:800px;  height:200px; font-size:15px; padding:10px;}
 	/* 취소 버튼 */
 	$("cancel_btn").on("click", function(e){
 		form.attr("action", "/board/get");
+		form.submit();
+	});
+	
+	/* 삭제 버튼 */
+	$("#delete_btn").on("click", function(e){
+		form.attr("action", "/board/delete");
+		form.attr("method", "post");
 		form.submit();
 	});
 	

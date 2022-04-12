@@ -79,4 +79,14 @@ public class BoardController {
 		return "redirect:/board/list"; 
 	}
 	
+	
+	/* 게시판 삭제 */
+	@PostMapping("/delete")
+	public String boardDeletePOST(int bno, RedirectAttributes rttr) { //삭제 실행 위해서 게시판 번호 bno 필요하기 때문에 파라미터로 부여, 삭제 기능 실행 후 리다이렉트 방식으로 리스트 페이지 이동 시 데이터를 같이 전송
+		bservice.delete(bno);
+		
+		rttr.addFlashAttribute("result", "delete success");
+		
+		return "redirect:/board/list";
+	}
 }

@@ -32,7 +32,7 @@
 
 <body>
 
-<h1>목록페이지 입니다.</h1>
+<h1>목록페이지 입니다</h1>
 <!-- <a href="/board/enroll">게시판 등록</a> -->
 
 <div class="table_wrap">
@@ -106,6 +106,10 @@
 			
 			if(result === "modify success"){
 				alert("수정이 완료되었습니다"); 
+			}
+			
+			if(result === "delete success"){
+				alert("삭제가 완료되었습니다");
 			}
 		}
 	
