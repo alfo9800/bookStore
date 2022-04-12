@@ -3,6 +3,7 @@ package com.bookStore.mapper;
 import java.util.List;
 
 import com.bookStore.model.BoardVO;
+import com.bookStore.model.Criteria;
 
 /* DAO의 역할이었다.. */
 public interface BoardMapper {
@@ -15,6 +16,10 @@ public interface BoardMapper {
 	/* 게시판 목록 */
 	public List<BoardVO> getList();
 	
+	//getList의 역할도 하면서 단지 쿼리만 조금 수정되는 것이기 때문에 반환타입은 동일 & pageNum, amount의 정보를 DB에 전달하기 위해서 Criteria클래스 파라미터로 부여
+	/* 게시판 목록(페이징 적용) */
+	public List<BoardVO> getListPaging(Criteria cri);
+	
 	//하나의 게시판 정보를 얻기 위해서 -> 그 게시판의 게시판 번호를 알아야하기 때문 -> 게시판 정보 데이터를 전달 받을 수 있도록, int형 변수를 파라미터로 추가
 	/* 게시판 상세조회 */
 	public BoardVO getPage(int bno);
@@ -25,4 +30,5 @@ public interface BoardMapper {
 	
 	//bno='게시판 번호' 지정을 통하여, 특정페이지만 삭제 되도록 함 / 반환 타입은 수정과 동일 하게 int형 / 수정 성공 시 1, 수정 실패 0 반환
 	public int delete(int bno);
+		
 }

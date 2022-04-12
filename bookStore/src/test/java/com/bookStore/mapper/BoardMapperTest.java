@@ -11,6 +11,7 @@ import org.springframework.test.context.ContextConfiguration;
 import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
 
 import com.bookStore.model.BoardVO;
+import com.bookStore.model.Criteria;
 
 import lombok.extern.log4j.Log4j; 
 
@@ -59,6 +60,18 @@ public class BoardMapperTest {
 		
 		//foreach문 & 람다식 (**참고** list배열에서 forEach함수를 사용하기 위해서는 Stream API를 이용!)
 		list.forEach(board -> log.info(board));
+	}
+	
+	//게시판 목록(페이징 적용) 테스트
+	@Test
+	public void testGetListPaging() {
+		Criteria cri = new Criteria();
+		
+		cri.setPageNum(4);
+		
+		List list = mapper.getListPaging(cri);
+		
+		list.forEach(board -> log.info("" + board));
 	}
 	
 	//게시판 상세조회

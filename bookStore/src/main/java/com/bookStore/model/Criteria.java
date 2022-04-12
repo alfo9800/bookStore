@@ -11,7 +11,7 @@ import lombok.ToString;
 
 public class Criteria {
 
-	/*
+	/* 기존 vo생성
 	// 현재 페이지  
 	private int pageNum;
 	
@@ -25,7 +25,7 @@ public class Criteria {
 	private int pageNum;
 	public void setPageNum(int pageNum) {
 		this.skip = (pageNum-1)*this.amount;
-		this.skip = pageNum;
+		//this.skip = pageNum; -> set custom을 해놓고 다시 초기화를 했음.. (사용 안함)
 	}
 	
 	/* 한 페이지 당 보여질 게시물 갯수 */ //set할 때 특별히 커스텀을 해야하는 상황
@@ -33,7 +33,7 @@ public class Criteria {
 	private int amount;
 	public void setAmount(int amount) {
 		this.skip = (this.pageNum-1)*amount;
-		this.amount = amount;
+		//this.amount = amount; -> 
 	}
 	
 	

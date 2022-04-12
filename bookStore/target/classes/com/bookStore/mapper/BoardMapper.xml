@@ -16,6 +16,15 @@
 	select * from bookStore_board
 </select>
 
+<!-- 게시판 목록 (페이징 처리 + Mysql) -->
+<select id="getListPaging" resultType="com.bookStore.model.BoardVO">
+	 select * from (
+             select bno, title, writer, regdate, updatedate  
+             from bookStore_board order by bno desc) as T1 
+     <!-- limit ((${pageNum}-1)*${amount}), ${amount} -->
+     limit #{skip},#{amount}
+</select>
+
 
 <!-- 게시판 상세조회 -->
 <select id="getPage" resultType="com.bookStore.model.BoardVO">
