@@ -63,8 +63,20 @@ public class BoardController {
 		model.addAttribute("pageInfo", bservice.getPage(bno)); //"pageInfo"라는 속성명에 BoardService클래스의 getPage메소드 반환값(=게시판 상세 조회 데이터)을 속성값으로 저장
 	}
 	
+	/* 수정페이지 이동 (위 상세조회페이지 이동과 메소드 동일) */
+	@GetMapping("/modify")
+	public void boardModifyGet(int bno, Model model) {
+		model.addAttribute("pageInfo", bservice.getPage(bno));
+	}
 	
-	
-	
+	/* 게시판 수정 */
+	@GetMapping("/modify")
+	public String boardModifyPOST(BoardVO board, RedirectAttributes rttr) { //수정될 내용의 데이터를 가져오기 위해 BoardVO 클래스를 파라미터로 부여, 수정기능 실행 후 리다이렉트 방식으로 리스트 페이지 이동 시 데이터를 같이 전송
+		bservice.modify(board);
+		
+		rttr.addFlashAttribute("result", "modify success"); //list페이지 이동 시 수정이 완료되었음을 알리는 창 띄우기 위해 "modify success"스트링 데이터를 "result"속성값에 저장하는 addFlashAttribute() 메소드 호출
+		
+		return "redirect:/board/list"; 
+	}
 	
 }
