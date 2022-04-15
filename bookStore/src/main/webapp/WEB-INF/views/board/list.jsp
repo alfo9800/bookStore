@@ -13,6 +13,19 @@
 	src="http://code.jquery.com/jquery-3.4.1.js"
 	integrity="sha256-WpOohJOqMqqyKL9FccASB9O0KwACQJpFTUBLTYOVvVU="
 	crossorigin="anonymous"></script>
+<%-- 
+<script>
+	history.pushState(null, null, ''); //data, title, url의 값이 들어감. 비워두면 이벤트 발생의 플래그 정도로 사용할 수 있음
+									   //기존 페이지 이외에 입력한 url로 페이지가 하나 더 만들어지는 것을 알 수 있음
+	
+	window.onpopstate = function(event){ //뒤로 가기 이벤트 캐치
+		history.back(); //pushState로 인하여 페이지가 하나 더 생성 되기 때문에 한 번에 뒤로 가기 위해서 뒤로 가기 한 번 더 해줌
+		
+		console.log('뒤로가기 ck');
+	};
+</script>
+--%>
+
 </head>
 
 <style>
@@ -125,6 +138,24 @@
 		moveForm.attr("action", "/board/get"); //form태그 action속성 추가
 		moveForm.submit(); //form태그 내부 데이터 서버 전송
 	});
+</script>
+
+<script> //문제 : 마우스 뒤로가기로 했을 때는 된다. 그런데 브라우저 왼쪽 상단의 뒤로가기를 눌렀을 때는 안된다.
+	history.pushState(null, null, ''); 
+	
+	window.onpopstate = function(event){ 
+		var prevUrl = document.referrer;
+		
+		if(prevUrl.indexOf('/board/enroll') < 0){ // /board/list로 작성하면 prevUrl에 없기때문에 -1로 반환이 됨. 그래서 무조건 '값이 존재할 것'이 실행 된다. 
+			console.log('데이터 값 그대로 있음 : ' + prevUrl);
+			alert('제출한 양식을 가져옵니다'); 
+			history.back(); //등록 창으로 감, 데이터 값은 존재
+		}else{
+			console.log('데이터 값 사라짐 : ' + prevUrl);
+			alert('제출한 양식이 사라집니다');
+			location.href = prevUrl; //등록 창으로 감, 데이터 값은 사라짐
+		}
+	};
 </script>
 
 </body>
