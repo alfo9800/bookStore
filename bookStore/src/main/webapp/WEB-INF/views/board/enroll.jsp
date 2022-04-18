@@ -30,8 +30,8 @@
 	
 	<button class="btn">등록</button>
 </form>
-
-<script>
+<!-- 
+<script> //구현되지 않음
 	history.pushState(null, null, ''); 
 
 	var checkUnload = true;
@@ -39,6 +39,6 @@
 		if(checkUnload) return "작성 중인 글이 있습니다. 정말로 나가시겠습니까?";
 	});
 </script>
-
+-->
 </body>
 </html>

@@ -8,6 +8,15 @@
 <meta charset="utf-8">
 <title>Insert title here</title>
 
+
+<!-- Bootstrap css파일 사용 -->
+<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet" 
+integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
+
+<!-- Bootstrap javascript파일 사용 -->
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js" 
+integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM" crossorigin="anonymous"></script>
+
 <%-- JQuery라이브러리를 추가하는 코드 --%>
 <script 
 	src="http://code.jquery.com/jquery-3.4.1.js"
@@ -140,20 +149,20 @@
 	});
 </script>
 
-<script> //문제 : 마우스 뒤로가기로 했을 때는 된다. 그런데 브라우저 왼쪽 상단의 뒤로가기를 눌렀을 때는 안된다.
+<script> //문제 : 1) 마우스 뒤로가기로 했을 때는 된다. 그런데 브라우저 왼쪽 상단의 뒤로가기를 눌렀을 때는 안된다. 2) 뒤로가기 3번하면 다시 데이터 있는 상태로 돌아오게 됨.
 	history.pushState(null, null, ''); 
 	
 	window.onpopstate = function(event){ 
 		var prevUrl = document.referrer;
 		
 		if(prevUrl.indexOf('/board/enroll') < 0){ // /board/list로 작성하면 prevUrl에 없기때문에 -1로 반환이 됨. 그래서 무조건 '값이 존재할 것'이 실행 된다. 
-			console.log('데이터 값 그대로 있음 : ' + prevUrl);
-			alert('제출한 양식을 가져옵니다'); 
+			//console.log('이전 페이지는 게시판 등록이 아님 : ' + prevUrl);
+			//alert('제출한 양식을 가져옵니다'); //이벤트 감지 시 무조건 alert가 출력됨 -> 주석처리
 			history.back(); //등록 창으로 감, 데이터 값은 존재
 		}else{
 			console.log('데이터 값 사라짐 : ' + prevUrl);
 			alert('제출한 양식이 사라집니다');
-			location.href = prevUrl; //등록 창으로 감, 데이터 값은 사라짐
+			location.href = prevUrl; //등록 창으로 감, 데이터 값은 사라짐		
 		}
 	};
 </script>
