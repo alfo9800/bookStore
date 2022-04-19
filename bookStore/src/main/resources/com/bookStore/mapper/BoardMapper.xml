@@ -20,8 +20,7 @@
 <select id="getListPaging" resultType="com.bookStore.model.BoardVO">
 	 select * from (
              select bno, title, writer, regdate, updatedate  
-             from bookStore_board order by bno desc) as T1 
-     <!-- limit ((${pageNum}-1)*${amount}), ${amount} -->
+             from bookStore_board order by bno desc) as T1
      limit #{skip},#{amount}
 </select>
 
