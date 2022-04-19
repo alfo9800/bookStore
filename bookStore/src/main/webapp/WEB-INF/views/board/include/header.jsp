@@ -14,8 +14,57 @@
 	integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM" crossorigin="anonymous"></script>
 	
 	<meta name="viewport" content="width=device-width, initial-scale=1.0"> <!-- 반응형 홈페이지 : 없으면 모바일 환경에서 제대로 작동하지 않음 -->
+	
+	<%-- JQuery라이브러리를 추가하는 코드 --%>
+<script 
+	src="http://code.jquery.com/jquery-3.4.1.js"
+	integrity="sha256-WpOohJOqMqqyKL9FccASB9O0KwACQJpFTUBLTYOVvVU="
+	crossorigin="anonymous"></script>
+	
 </head>
 <body>
+
+<header class="p-3 mb-3 border-bottom">
+    <div class="container">
+      <div class="d-flex flex-wrap align-items-center justify-content-center justify-content-lg-start">
+        <a href="/" class="d-flex align-items-center mb-2 mb-lg-0 text-dark text-decoration-none" style="margin-right:15px;">
+          <img src="../../resources/img/home.svg" width="40" height="32">
+        </a>
+        <ul class="nav col-12 col-lg-auto me-lg-auto mb-2 justify-content-center mb-md-0">
+          <li><a href="#" class="nav-link px-2 link-secondary">분야</a></li>
+          <li><a href="#" class="nav-link px-2 link-dark">베스트 셀러</a></li>
+          <li><a href="#" class="nav-link px-2 link-dark">신간 도서</a></li>
+          <li><a href="/board/list" class="nav-link px-2 link-dark">후기</a></li>
+        </ul>
+
+        <form class="col-12 col-lg-auto mb-3 mb-lg-0 me-lg-3">
+          <input type="search" class="form-control" placeholder="검색어를 입력하세요" aria-label="Search">
+        </form>
+
+		<!-- 로그인 하지 않았을 때 -->
+		<div class="d-flex flex-wrap align-items-center justify-content-center justify-content-lg-start">
+		  <ul class="nav col-12 col-lg-auto me-lg-auto mb-2 justify-content-center mb-md-0">
+          	<li><a href="#" class="btn nav-link px-2 link-secondary" style="color:#fff; background-color:#198754; border-color:#198754;">로그인</a></li>
+          </ul>
+        </div>
+
+        <!-- 로그인을 했을 때
+        <div class="dropdown text-end">
+          <a href="#" class="d-block link-dark text-decoration-none dropdown-toggle" id="dropdownUser1" data-bs-toggle="dropdown" aria-expanded="false">
+            <img src="https://github.com/mdo.png" alt="mdo" width="32" height="32" class="rounded-circle">
+          </a>
+          <ul class="dropdown-menu text-small" aria-labelledby="dropdownUser1" style="">
+            <li><a class="dropdown-item" href="#">New project...</a></li>
+            <li><a class="dropdown-item" href="#">Settings</a></li>
+            <li><a class="dropdown-item" href="#">Profile</a></li>
+            <li><hr class="dropdown-divider"></li>
+            <li><a class="dropdown-item" href="#">Sign out</a></li>
+          </ul>
+        </div> -->
+      </div>
+    </div>
+  </header>
+
 
 </body>
 </html>

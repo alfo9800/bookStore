@@ -5,23 +5,9 @@
 <!DOCTYPE html>
 <html>
 <head>
-<meta charset="utf-8">
-<title>Insert title here</title>
 
+<jsp:include page="/WEB-INF/views/board/include/header.jsp" />
 
-<!-- Bootstrap css파일 사용 -->
-<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet" 
-integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
-
-<!-- Bootstrap javascript파일 사용 -->
-<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js" 
-integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM" crossorigin="anonymous"></script>
-
-<%-- JQuery라이브러리를 추가하는 코드 --%>
-<script 
-	src="http://code.jquery.com/jquery-3.4.1.js"
-	integrity="sha256-WpOohJOqMqqyKL9FccASB9O0KwACQJpFTUBLTYOVvVU="
-	crossorigin="anonymous"></script>
 <%-- 
 <script>
 	history.pushState(null, null, ''); //data, title, url의 값이 들어감. 비워두면 이벤트 발생의 플래그 정도로 사용할 수 있음
@@ -54,61 +40,76 @@ integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxV
 
 <body>
 
-<h1>목록페이지 입니다</h1>
+<!-- <h1>목록페이지 입니다</h1> -->
 <!-- <a href="/board/enroll">게시판 등록</a> -->
 
-<div class="table_wrap">
-	<a href="/board/enroll" class="top_btn">게시판 등록</a>
-	<table>
-		<thead>
-			<tr>
-				<th class="bno_width">번호</th>
-				<th class="title_width">제목</th>
-				<th class="writer_width">작성자</th>
-				<th class="regdate_width">작성일</th>
-				<th class="updatedate_width">수정일</th>
-			</tr>
-		</thead>
-			<c:forEach items="${list}" var="list">
-				<tr>
-					<td><c:out value="${list.bno}" /></td>
-					<!-- 제목을 눌렀을 때, 해당 조회페이지로 이동할 수 있도록 함 -->
-					<td> 
-					<!-- 
-						<a class="move" href='/board/get?bno=<c:out value="${list.bno}" />'>
-							<c:out value="${list.title}" />
-						</a>
-					-->
-						<a class="move" href='<c:out value="${list.bno}" />'>
-							<c:out value="${list.title}"/>
-						</a>
-					</td>
-					
-					<td><c:out value="${list.writer}" /></td>
-					<td><fmt:formatDate pattern="yyyy-MM-dd" value="${list.regdate}" /></td><%-- <td><c:out value="${list.regdate}" /></td> --%>
-					<td><fmt:formatDate pattern="yyyy-MM-dd" value="${list.updateDate}" /></td><%-- <td><c:out value="${list.updateDate}" /></td> --%>
-				</tr>
-			</c:forEach>
-			<!-- <tr>
-				<td>1</td>
-				<td>책1</td>
-				<td>책1에 대한 내용입니다</td>
-				<td>2022-04-10</td>
-				<td>2022-04-10</td>
-			</tr>
-			<tr>
-				<td>2</td>
-				<td>책2</td>
-				<td>책2에 대한 내용입니다</td>
-				<td>2022-04-10</td>
-				<td>2022-04-10</td>
-			</tr> -->
-	</table>
-	
-	<!-- 제목을 눌렀을 때, 해당 게시판 상세조회 -->
-	<form id="moveForm" method="get">
-	</form>
+
+<div class="container" style="padding-top:50px;">
+
+		<!-- 후기 게시판 배너 -->
+		<div class="banner_wrap" style="text-align:center;background-color:#f8f9fa;">			
+			<a href="#"><!-- <a href="/board/best_review"> -->
+				<img src="../../../resources/img/Best_Review.jpg" width="500" height="250">
+			</a>
+		</div>
+
+
+		<div class="table_wrap" style="padding-top:50px;">
+			<a href="/board/enroll" class="top_btn">게시판 등록</a>
+			<table>
+				<thead>
+					<tr>
+						<th class="bno_width">번호</th>
+						<th class="title_width">제목</th>
+						<th class="writer_width">작성자</th>
+						<th class="regdate_width">작성일</th>
+						<th class="updatedate_width">수정일</th>
+					</tr>
+				</thead>
+					<c:forEach items="${list}" var="list">
+						<tr>
+							<td><c:out value="${list.bno}" /></td>
+							<!-- 제목을 눌렀을 때, 해당 조회페이지로 이동할 수 있도록 함 -->
+							<td> 
+							<!-- 
+								<a class="move" href='/board/get?bno=<c:out value="${list.bno}" />'>
+									<c:out value="${list.title}" />
+								</a>
+							-->
+								<a class="move" href='<c:out value="${list.bno}" />'>
+									<c:out value="${list.title}"/>
+								</a>
+							</td>
+							
+							<td><c:out value="${list.writer}" /></td>
+							<td><fmt:formatDate pattern="yyyy-MM-dd" value="${list.regdate}" /></td><%-- <td><c:out value="${list.regdate}" /></td> --%>
+							<td><fmt:formatDate pattern="yyyy-MM-dd" value="${list.updateDate}" /></td><%-- <td><c:out value="${list.updateDate}" /></td> --%>
+						</tr>
+					</c:forEach>
+					<!-- <tr>
+						<td>1</td>
+						<td>책1</td>
+						<td>책1에 대한 내용입니다</td>
+						<td>2022-04-10</td>
+						<td>2022-04-10</td>
+					</tr>
+					<tr>
+						<td>2</td>
+						<td>책2</td>
+						<td>책2에 대한 내용입니다</td>
+						<td>2022-04-10</td>
+						<td>2022-04-10</td>
+					</tr> -->
+			</table>
+			
+			<!-- 제목을 눌렀을 때, 해당 게시판 상세조회 -->
+			<form id="moveForm" method="get">
+			</form>
+		</div>
 </div>
+
+
+
 
 <script>
 <%-- 게시판 등록 완료 시 띄우는 '알림창' --%>
