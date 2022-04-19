@@ -30,5 +30,8 @@ public interface BoardMapper {
 	
 	//bno='게시판 번호' 지정을 통하여, 특정페이지만 삭제 되도록 함 / 반환 타입은 수정과 동일 하게 int형 / 수정 성공 시 1, 수정 실패 0 반환
 	public int delete(int bno);
+	
+	/* 게시판 총 갯수 */
+	public int getTotal();
 		
 }

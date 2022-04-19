@@ -9,6 +9,8 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
 import com.bookStore.model.BoardVO;
+import com.bookStore.model.Criteria;
+import com.bookStore.model.PageMakerDTO;
 import com.bookStore.service.BoardService;
 
 import lombok.extern.log4j.Log4j;
@@ -32,11 +34,28 @@ public class BoardController {
 	
 	
 	/* 게시판 목록 페이지 진입 (view에 데이터 전송 위해 Model 파라미터 추가)*/
+	/*
 	@GetMapping("/list")
 	public void boardListGET(Model model) {	
 		log.info("게시판 목록 페이지 진입");	
 		
 		model.addAttribute("list", bservice.getList()); //"list"라는 속성명에 BoardService클래스의 getList메소드 반환값(=게시판 목록 데이터)을 속성값으로 저장
+	}
+	*/
+	
+	/* 게시판 목록 페이지 접속 (페이징 적용) */
+	@GetMapping("/list")
+	public void boardListGET(Model model, Criteria cri) {
+		log.info("boardListGET");
+		
+		model.addAttribute("list", bservice.getListPaging(cri)); //보고자 하는 페이지의 정보를 얻기 위헤서
+		
+		
+		int total = bservice.getTotal(); //게시판 총 갯수
+		
+		PageMakerDTO pageMake = new PageMakerDTO(cri, total); //변수를 일일 선언 (total, pageMake)한 것은 이해를 위해서 -> 파라미터에 바로 메소드와 인스턴스 선언을 작성해도 됨
+		
+		model.addAttribute("pageMaker", pageMake);
 	}
 	
 	/* 게시판 등록 페이지 진입 */

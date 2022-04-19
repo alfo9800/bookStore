@@ -7,6 +7,7 @@ import org.springframework.stereotype.Service;
 
 import com.bookStore.mapper.BoardMapper;
 import com.bookStore.model.BoardVO;
+import com.bookStore.model.Criteria;
 
 @Service
 public class BoardServiceImpl implements BoardService {
@@ -43,6 +44,18 @@ public class BoardServiceImpl implements BoardService {
 	@Override
 	public int delete(int bno) {
 		return mapper.delete(bno); //int를 반환해야기 때문에 return값에서 mapper메소드 호출
+	}
+
+
+	@Override
+	public List<BoardVO> getListPaging(Criteria cri) {
+		return mapper.getListPaging(cri);
+	}
+
+
+	@Override
+	public int getTotal() {
+		return mapper.getTotal();
 	}
 	
 }

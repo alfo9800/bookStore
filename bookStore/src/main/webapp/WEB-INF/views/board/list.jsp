@@ -102,8 +102,24 @@
 					</tr> -->
 			</table>
 			
+			<!--  -->
+			<div class="pageInfo_wrap">
+				<div class="pageInfo_area">
+					<ul id="pageInfo" class="pageInfo">
+						<!-- 각 번호 페이지 버튼 -->
+						<c:forEach var="num" begin="${pageMaker.startPage}" end="${pageMaker.endPage}">
+							<li class="pageInfo_btn"><a href="${num}">${num}</a></li>
+						</c:forEach>
+					</ul>
+				</div>
+			</div>
+			
+			
 			<!-- 제목을 눌렀을 때, 해당 게시판 상세조회 -->
 			<form id="moveForm" method="get">
+				<!-- 서버에 페이지 이동 할 때 필요정보인 pageNum과 amount정보를 전송하기 위해 -->
+				<input type="hidden" name="pageNum" value="${pageMaker.cri.pageNum}">
+				<input type="hidden" name="amount" value="${pageMaker.cri.amount}">
 			</form>
 		</div>
 </div>
@@ -148,7 +164,21 @@
 		moveForm.attr("action", "/board/get"); //form태그 action속성 추가
 		moveForm.submit(); //form태그 내부 데이터 서버 전송
 	});
+	
+<%-- 페이징 처리 --%>	
+	$(".pageInfo a").on("click", function(e){ //페이지 번호 (a태그) 클릭하였을 때
+		e.preventDefault(); //a태그 동작 멈춤
+		moveForm.find("input[name='pageNum']").val($(this).attr("href")); //form 태그 내부 pageNum과 관련된 input태그의 value속성값을 클릭한 a태그의 페이지 번호를 삽입
+		moveForm.attr("action", "/board/list"); //form태그 action속성 추가 및 '/board/list' 속성값으로 추가
+		moveForm.submit();
+	});
+	
+	
 </script>
+
+
+
+
 
 <script> //문제 : 1) 마우스 뒤로가기로 했을 때는 된다. 그런데 브라우저 왼쪽 상단의 뒤로가기를 눌렀을 때는 안된다. 2) 뒤로가기 3번하면 다시 데이터 있는 상태로 돌아오게 됨.
 	history.pushState(null, null, ''); 

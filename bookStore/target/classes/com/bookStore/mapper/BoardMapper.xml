@@ -38,7 +38,12 @@
 
 <!-- 게시판 삭제 -->
 <delete id="delete">
-	delete from bookstore_board where bno = #{bno};
+	delete from bookstore_board where bno = #{bno}
 </delete>
+
+<!-- 게시판 총 갯수 -->
+<select id="getTotal" resultType="int">
+	select count(*) from bookstore_board
+</select>
 
 </mapper>

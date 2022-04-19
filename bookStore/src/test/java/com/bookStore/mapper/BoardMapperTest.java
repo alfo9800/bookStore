@@ -67,7 +67,7 @@ public class BoardMapperTest {
 	public void testGetListPaging() {
 		Criteria cri = new Criteria();
 		
-		cri.setPageNum(4);
+		cri.setPageNum(5);
 		
 		List list = mapper.getListPaging(cri);
 		
@@ -102,4 +102,14 @@ public class BoardMapperTest {
 		
 		log.info("result : " + result);
 	}
+	
+	
+	//게시판 총 갯수
+	@Test 
+	public void testgetTotal() {
+		int result = mapper.getTotal();
+		
+		log.info("result : " + result);
+	}
+	
 }
