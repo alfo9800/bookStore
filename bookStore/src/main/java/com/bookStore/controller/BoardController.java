@@ -78,14 +78,18 @@ public class BoardController {
 	
 	/* 게시판 상세조회 */
 	@GetMapping("/get")
-	public void boardGetPageGET(int bno, Model model) {
+	public void boardGetPageGET(int bno, Model model, Criteria cri) {
 		model.addAttribute("pageInfo", bservice.getPage(bno)); //"pageInfo"라는 속성명에 BoardService클래스의 getPage메소드 반환값(=게시판 상세 조회 데이터)을 속성값으로 저장
+		
+		model.addAttribute("cri", cri); //뷰에서 전송하는 pageNum, amount 데이터를 사용할 수 있도록 파라미터를 추가해야 함. //"cri"속성명에 속성값으로 뷰로부터 전달 받은 Criteria 인스턴스를 저장
 	}
 	
 	/* 수정페이지 이동 (위 상세조회페이지 이동과 메소드 동일) */
 	@GetMapping("/modify")
-	public void boardModifyGET(int bno, Model model) {
+	public void boardModifyGET(int bno, Model model, Criteria cri) {
 		model.addAttribute("pageInfo", bservice.getPage(bno));
+		
+		model.addAttribute("cri", cri);
 	}
 	
 	/* 게시판 수정 (@GetMapping 아니고, @PostMapping이다) */

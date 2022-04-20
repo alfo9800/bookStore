@@ -72,6 +72,8 @@ textarea {width:800px;  height:200px; font-size:15px; padding:10px;}
 		
 	<form id="infoForm" action="/board/modify" method="get">
 		<input type="hidden" id="bno" name="bno" value='<c:out value="${pageInfo.bno}" />'>
+		<input type="hidden" name="pageNum" value='<c:out value="${cri.pageNum}"/>' > 
+		<input type="hidden" name="amount" value='<c:out value="${cri.amount}"/>' > 
 	</form>
 	
 <!-- 버튼 동작되도록 js구현 / '#'은 태그들의 id값이다 -->

@@ -6,35 +6,39 @@ import lombok.Setter;
 import lombok.ToString;
 
 @Getter
-@Setter
 @ToString
 
 public class Criteria {
 
-	/* 기존 vo생성
+	
 	// 현재 페이지  
 	private int pageNum;
 	
 	// 한 페이지 당 보여질 게시물 갯수
 	private int amount;
-	*/
 	
 	
-	/* 현재 페이지 */ //set할 때 특별히 커스텀을 해야하는 상황
-	@Setter(AccessLevel.PROTECTED)
+	/* 아래는 setter할 때, 영향을 주는 것으로 보아서 직접 아래 setter,getter */	
+	//참고 : setter의 경우 실무에서 무분별하게 사용할 경우 후에 의도치 않은 값의 변경으로 인한 어려움을 겪을 수 있기에 상황에 맞춰서 필요할 때만 사용할 것
+	
+	/*
+	//현재 페이지 //set할 때 특별히 커스텀을 해야하는 상황
+	@Setter(AccessLevel.PUBLIC)
 	private int pageNum;
 	public void setPageNum(int pageNum) {
 		this.skip = (pageNum-1)*this.amount;
-		//this.skip = pageNum; //-> set custom을 해놓고 다시 초기화를 했음.. (사용 안함)
+		this.skip = pageNum; 
 	}
 	
-	/* 한 페이지 당 보여질 게시물 갯수 */ //set할 때 특별히 커스텀을 해야하는 상황
-	@Setter(AccessLevel.PROTECTED)
+	//한 페이지 당 보여질 게시물 갯수 //set할 때 특별히 커스텀을 해야하는 상황
+	@Setter(AccessLevel.PUBLIC)
 	private int amount;
 	public void setAmount(int amount) {
 		this.skip = (this.pageNum-1)*amount;
-		this.amount = amount; //이거는 사용해줘야 함 ...??!?
+		this.amount = amount; 
 	}
+	*/
+		
 	
 	
 	/* (Mysql) 스킵 할 게시물 수 -> (pageNum-1)*amount */
@@ -52,5 +56,26 @@ public class Criteria {
 		this.amount = amount;
 		this.skip = (pageNum-1) * amount;
 	}
+
+	
+	
+	
+	//getter/setter
+	public void setPageNum(int pageNum) {
+		this.skip = (pageNum-1) * this.amount;
+		this.pageNum = pageNum;
+	}
+
+	public void setAmount(int amount) {
+		this.skip = (this.pageNum-1) * amount;
+		this.amount = amount;
+	}
+
+	public void setSkip(int skip) {
+		this.skip = skip;
+	}
+	
+	
+	
 	
 }

@@ -66,7 +66,9 @@ textarea {width:800px;  height:200px; font-size:15px; padding:10px;}
 	</div>
 	<form id="infoForm" action="/board/modify" method="get">
 		<input type="hidden" id="bno" name="bno" value='<c:out value="${pageInfo.bno}" />'>
-	</form>
+		<input type="hidden" name="pageNum" value='<c:out value="${cri.pageNum}" />'> <!-- 페이징 이동 정보에 필요함 -->
+		<input type="hidden" name="amount" value='<c:out value="${cri.amount}" />'> <!-- 페이징 이동 정보에 필요함 -->
+	</form> 
 	
 <!-- 버튼 동작되도록 js구현 / '#'은 태그들의 id값이다 -->
 <script>
