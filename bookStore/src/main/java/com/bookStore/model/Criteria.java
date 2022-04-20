@@ -60,7 +60,7 @@ public class Criteria {
 	
 	
 	
-	//getter/setter
+	//setter
 	public void setPageNum(int pageNum) {
 		this.skip = (pageNum-1) * this.amount;
 		this.pageNum = pageNum;
