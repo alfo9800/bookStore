@@ -104,6 +104,7 @@
 								</a>
 							</td>
 							
+							<td><c:out value="${list.content}"/></td>
 							<td><c:out value="${list.writer}" /></td>
 							<td><fmt:formatDate pattern="yyyy-MM-dd" value="${list.regdate}" /></td><%-- <td><c:out value="${list.regdate}" /></td> --%>
 							<td><fmt:formatDate pattern="yyyy-MM-dd" value="${list.updateDate}" /></td><%-- <td><c:out value="${list.updateDate}" /></td> --%>

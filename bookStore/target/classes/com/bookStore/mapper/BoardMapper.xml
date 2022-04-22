@@ -19,7 +19,7 @@
 	<!-- 게시판 목록 (페이징 처리 + Mysql) -->
 	<select id="getListPaging" resultType="com.bookStore.model.BoardVO">
 		 select * from (
-	             select bno, title, writer, regdate, updatedate  
+	             select bno, title, content, writer, regdate, updatedate  
 	             from bookStore_board order by bno desc) as T1
 	     limit #{skip},#{amount}
 	</select>
