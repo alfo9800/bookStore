@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<!-- namespace 속성 값을 앞에서 생성하고, 작성한 Mapper인터페이스의 경로를 포함하는 인터페이스의 이름을 작성해야 함 -->
+<mapper namespace="com.bookStore.mapper.AccountMapper">
+
+	<!-- 로그인 -->
+	<select id="getAccountById" parameterType="string" resultType="UserVO"> <!-- 밖에서 값이 들어올 때는 parameter / 나갈 때는 result -->
+		select 
+			userId, userPassword, userName, userGender, userEmail, userPhone, role
+		from user
+		where userId = #{userId}
+	</select>
+
+
+	<!-- 회원가입 -->
+	<insert id="insertAccount" parameterType="UserVO">
+		insert into user (
+			userId, 
+			userPassword, 
+			userName, 
+			userGender, 
+			userEmail, 
+			userPhone, 
+			role
+		) values (
+			#{userId}, 
+			#{userPassword}, 
+			#{userName}, 
+			#{userGender}, 
+			#{userEmail}, 
+			#{userPhone}, 
+			'ROLE_USER'
+		)
+	</insert>
+	
+</mapper>

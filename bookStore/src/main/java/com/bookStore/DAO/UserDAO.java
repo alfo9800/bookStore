@@ -5,6 +5,8 @@ import java.sql.DriverManager;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 
+import com.bookStore.model.UserVO;
+
 import com.zaxxer.hikari.HikariConfig;
 
 public class UserDAO {
@@ -38,20 +40,23 @@ public class UserDAO {
 	
 	/* 로그인 영역 */
 	public int login(String userId, String userPassword) {
-		String sql = "select userPassword from user where userId = ?";
+		String sql = "select userPassword from user where userId = ?"; //실제로 DB에서 입력할 쿼리문을 'sql' 변수에 미리 담아 둠
 		try {
-			pstmt = conn.prepareStatement(sql); //sql문을 대기시킴
-			pstmt.setString(1, userId); //첫번째 '?'에 매개변수로 받아온 'userId' 대입
+			pstmt = conn.prepareStatement(sql); //미리 설정한 'sql'울 셋팅
+			pstmt.setString(1, userId); //쿼리문의 '1'번째 '?물음표'에 매개변수로 받아온 'userId' 대입
 			rs = pstmt.executeQuery(); //쿼리를 실행한 결과를 rs에 저장
 			
+			
+			//위의 결과값에 따라 로그인 처리를 각각 상황에 맞게 구현
+			//--> 실제 사용자가 입력한 id의 비밀번호를 구하는 쿼리문
 			if(rs.next()) {
-				if(rs.getString(1).equals(userPassword)) {
-					return 1; //로그인 성공
+				if(rs.getString(1).equals(userPassword)) { //rs.getString(1)은 쿼리문을 실행하고 나온 첫번째 결과값을 'string'타입으로 얻어옴
+					return 1; //로그인 성공 == 결과값이 존재하고, 그 결과값이 매개변수로 넘어온 'userpassword'와 일치
 				}else {
-					return 0; //비밀번호 틀림
+					return 0; //비밀번호 틀림 == 결과값이 존재하지만, 그 결과값이 매개변수로 넘어온 'userpassword'와 일치하지 않음
 				}
 			}else {
-				return -1; //아이디 없음
+				return -1; //아이디 없음 == 쿼리문을 실행했지만, 결과값이 나오지 않음
 			}
 			
 		}catch (Exception e) {

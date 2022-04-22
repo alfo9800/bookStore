@@ -15,7 +15,7 @@
 	<div class="col-lg-4" style="left:50%;position:absolute;transform:translateX(-50%);padding-top:140px;">
 	
 					<main class="form-signin">
-					  <form>
+					  <form action="/login" method="post">
 					    <h1 class="h3 mb-3 fw-normal">로그인</h1>
 					
 					    <div class="form-floating" style="padding-bottom:20px;">
