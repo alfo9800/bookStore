@@ -33,7 +33,7 @@ public class HomeController {
 		
 		model.addAttribute("serverTime", formattedDate );
 		
-		return "home";
+		return "home"; // '/'로 사용자가 접근을 하면, 'home.jsp'를 보여준다
 	}
 	
 }
