@@ -1,5 +1,8 @@
 package com.bookStore.controller;
 
+import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpSession;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -24,6 +27,13 @@ public class UserController {
 	@Autowired
 	private UserService uService;
 	
+
+	/* 회원가입 페이지 이동 */
+	  @GetMapping("/join") public void joinGET() {
+	  
+	  log.info("회원가입 페이지 진입");
+	  
+	  }
 	
 	//회원가입
 	@PostMapping("/join")
@@ -60,12 +70,6 @@ public class UserController {
 	
 	
 	
-	/* 회원가입 페이지 이동 */
-	  @GetMapping("/join") public void joinGET() {
-	  
-	  log.info("회원가입 페이지 진입");
-	  
-	  }
 	 
 	/* 로그인 페이지 이동 */
 	@GetMapping("/login")
@@ -74,4 +78,28 @@ public class UserController {
 		log.info("로그인 페이지 진입");
 		
 	}
+	
+	
+	/* 로그인 */
+	@PostMapping("/login")
+	public String loginPOST(UserVO user, HttpServletRequest request, RedirectAttributes rttr) throws Exception {
+		
+		//log.info("login메서드 진입");
+		//log.info("전달된 데이터 : " + user);
+		
+		HttpSession session = request.getSession(); //session 변수를 선언 및 초기화 //다음 코드는 session을 사용하기 위한 전형적인 방법
+		UserVO lvo = uService.userLogin(user); //lvo 변수를 선업 및 초기화 //userLogin 메소드를 요청하게 되면 ~거쳐서~ 로그인 쿼리가 실행되게 되고 그 결과 값이 담긴 userVO 객체를 반환 받아 변수 lvo에 저장 
+		
+		if(lvo == null) {
+			int result = 0;
+			rttr.addFlashAttribute("result", result);
+			
+			return "redirect:/user/login";
+		}
+		
+		session.setAttribute("user", lvo);
+		
+		return "redirect:/";
+	}
+	
 }

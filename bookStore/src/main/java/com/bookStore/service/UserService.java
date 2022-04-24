@@ -9,4 +9,7 @@ public interface UserService {
 	
 	//아이디 중복 검사
 	public int idCk(String userId) throws Exception;
+	
+	//로그인
+	public UserVO userLogin(UserVO user) throws Exception;
 }
