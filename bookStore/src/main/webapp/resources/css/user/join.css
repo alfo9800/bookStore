@@ -1,21 +1,46 @@
 @charset "UTF-8";
+/* 기존 body -> container로 변경 (background css가 header까지 적용이 됐음
+container { 
+	min-height: 100vh; 
+	background: -webkit-gradient(linear, left bottom, right top, from(#92b5db), to(#1d466c)); 
+	background: -webkit-linear-gradient(bottom left, #92b5db 0%, #1d466c 100%); 
+	background: -moz-linear-gradient(bottom left, #92b5db 0%, #1d466c 100%); 
+	background: -o-linear-gradient(bottom left, #92b5db 0%, #1d466c 100%); 
+	background: linear-gradient(to top right, #92b5db 0%, #1d466c 100%); 
+} 
+ */
+.input-form {
+	max-width: 680px; 
+	margin-top: 80px; 
+	padding: 32px; 
+	background: #fff; 
+	-webkit-border-radius: 10px; 
+	-moz-border-radius: 10px; 
+	border-radius: 10px; 
+	-webkit-box-shadow: 0 8px 20px 0 rgba(0, 0, 0, 0.15); 
+	-moz-box-shadow: 0 8px 20px 0 rgba(0, 0, 0, 0.15);
+	box-shadow: 0 8px 20px 0 rgba(0, 0, 0, 0.15) 
+}
+
+
+/* 
 
 *{
 	margin: 0;
 	padding:0;
 }
 
-/* 화면 전체 렙 */
+화면 전체 렙
 .wrapper{
 	width: 1900px;	
 }
 
-/* content 랩 */
+content 랩
 .wrap{
 	width : 800px;
 	margin: auto;
 }
-/* 페이지 제목 */
+페이지 제목
 .subjecet{
 	width: 100%;
     height: 120px;
@@ -28,7 +53,7 @@
     color: white;
 }
 
-/* 아이디 영역 */
+아이디 영역
 .id_wrap{
 	width: 100%;
     margin-top: 20px;
@@ -50,7 +75,7 @@
 	font-size:28px;
 }
 
-/* 비밀번호 영역 */
+비밀번호 영역
 .pw_wrap{
 	width: 100%;
     margin-top: 20px;
@@ -72,7 +97,7 @@
 	font-size:28px;
 }
 
-/* 비밀번호 확인 영역 */
+비밀번호 확인 영역
 .pwck_wrap{
 	width: 100%;
     margin-top: 20px;
@@ -94,7 +119,7 @@
 	font-size:28px;
 }
 
-/* 이름 영역 */
+이름 영역
 .user_wrap{
 	width: 100%;
     margin-top: 20px;
@@ -116,7 +141,7 @@
 	font-size:28px;
 }
 
-/* 메일 영역 */
+메일 영역
 .mail_wrap{
 	width: 100%;
     margin-top: 20px;
@@ -166,7 +191,7 @@
     cursor: pointer;
 }
 
-/* 주소 영역 */
+주소 영역
 .address_wrap{
 	width: 100%;
     margin-top: 20px;
@@ -232,7 +257,7 @@
 	font-size:28px;
 }
 
-/* 가입하기 버튼 */
+가입하기 버튼
 .join_button_wrap{
 	margin-top: 40px;
 	text-align: center;
@@ -246,10 +271,13 @@
     color: white;
 }
 
-/* float 속성 해제 */
+float 속성 해제
 .clearfix{
 	clear: both;
 }
+
+ */
+
 
 /* 중복아이디 존재하지 않는 경우 */
 .id_input_re_1 {

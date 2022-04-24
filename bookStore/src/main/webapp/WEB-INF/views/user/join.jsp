@@ -11,6 +11,94 @@
 </head>
 <body>
 
+<div class="container">
+	<div class="input-form-backgroud row"> 
+		<div class="input-form col-md-12 mx-auto"> 
+			<h4 class="mb-3">회원가입</h4> 
+			<form class="join_form" novalidate> 
+				
+				<div class="row"> 
+					<div class="col-md-6 mb-3"> 
+						<label for="name">아이디</label> 
+						<input type="text" class="form-control id_input" id="userId" name="userId" placeholder="" value="" required> 
+						<div class="invalid-feedback"> 아이디를 입력해주세요. </div> 
+						<span class="id_input_re_1">사용가능한 아이디입니다</span>
+						<span class="id_input_re_2">아이디가 이미 존재합니다</span>
+					</div> 
+					<div class="col-md-6 mb-3"> 
+						<label for="Password">비밀번호</label> 
+						<input type="text" class="form-control pw_input" id="userPw" name="userPw" placeholder="" value="" required> 
+						<div class="invalid-feedback"> 비밀번호를 입력해주세요. </div>
+					</div> 
+					<div class="col-md-6 mb-3"> 
+						<label for="name">이름</label> 
+						<input type="text" class="form-control user_input" id="userName" name="userName" placeholder="" value="" required> 
+						<div class="invalid-feedback"> 이름을 입력해주세요. </div>
+					</div> 
+				</div> 
+								
+				<div class="mb-3"> 
+					<label for="email">이메일</label> 
+					<input type="email" class="form-control email_input" id="userEmail" name="userEmail" placeholder="you@example.com" required> 
+					<div class="invalid-feedback"> 이메일을 입력해주세요. </div> 
+				</div>
+									<!-- 추후에 하단 주석된 소스 참고 하여 이메일 인증 진행 예정 -->  
+				
+				<div class="mb-3"> 
+					<label for="address">주소</label> 
+					<input type="text" class="form-control address_input_1" id="userAddr1" name="userAddr1" placeholder="서울특별시 강남구" required>
+					<div class="invalid-feedback"> 주소를 입력해주세요.</div> 
+				</div> 
+				<div class="mb-3"> 
+					<label for="address2">상세주소<span class="text-muted">&nbsp;(필수 아님)</span></label> 
+					<input type="text" class="form-control address_input_2" id="userAddr2" name="userAddr2" placeholder="상세주소를 입력해주세요."> 
+				</div> 
+				
+<!-- 				<div class="row"> 
+					<div class="col-md-8 mb-3"> 
+						<label for="root">가입 경로</label> 
+						<select class="custom-select d-block w-100" id="root"> 
+							<option value=""></option> 
+							<option>검색</option> 
+							<option>카페</option> 
+						</select> 
+						<div class="invalid-feedback"> 가입 경로를 선택해주세요. </div> 
+					</div> 
+					
+					<div class="col-md-4 mb-3"> 
+						<label for="code">추천인 코드</label> 
+						<input type="text" class="form-control" id="code" placeholder="" required> 
+						<div class="invalid-feedback"> 추천인 코드를 입력해주세요. </div> 
+					</div> 
+				</div>  -->
+				
+					<div class="custom-control custom-checkbox"> 
+						<input type="checkbox" class="custom-control-input" id="aggrement" required> 
+						<label class="custom-control-label" for="aggrement">개인정보 수집 및 이용에 동의합니다.</label> 
+					</div> 
+					
+					<div class="mb-4"></div>
+					
+					<button class="btn btn-primary btn-lg btn-block join_button" type="submit" value="가입하기">가입 완료</button> 
+				</form> 
+			</div> 
+		</div> 
+		
+		<footer class="my-3 text-center text-small"> <p class="mb-1">&copy; 2021 YD</p> </footer>
+</div>
+
+
+
+
+
+
+
+
+
+
+
+
+<!--  
 		<div class="wrapper">
 			<form id="join_form" method="post">
 			<div class="wrap">
@@ -86,13 +174,13 @@
 				</div>
 			</form>
 		</div>
-
+-->
 
 <!-- 회원가입 기능 작동 -->
 <script>
 <%-- 
 	'가입하기 버튼' -> <input type="button" class="join_button" value="가입하기">
-	클릭하였을 때, form태그에 속성 action(url경로)가 추가되거, form태그가 서버에 제출디 된다는 의미
+	클릭하였을 때, form태그에 속성 action(url경로)가 추가되고, form태그가 서버에 제출디 된다는 의미
 	** post는 form에 미리 추가되어져있음 **
 --%>
 	$(document).ready(function(){
@@ -136,7 +224,20 @@ $('.id_input').on("propertychange change keyup paste input", function(){
 	$.ajax({
 		type : "post",
 		url : "/user/userIdCk",
-		data : data
+		data : data,
+		success : function(result){
+			//console.log("성공 여부" + result);
+			
+			if(result != 'fail'){ //성공일 때
+				$('.id_input_re_1').css("display","inline-block");
+				$('.id_input_re_2').css("display","none");
+			} else { //실패일 때
+				$('.id_input_re_2').css("display","inline-block");
+				$('.id_input_re_1').css("display","none");
+			}
+			
+		}
+	
 	});//ajax 종료
 	
 });//function 종료

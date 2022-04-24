@@ -17,22 +17,21 @@ public class UserMapperTest {
 	@Autowired
 	private UserMapper userMapper;
 	
-	/*
+	
 	@Test
 	public void UserJoin() throws Exception {
 		UserVO user = new UserVO();
 		
-		user.setUserId("test");
+		user.setUserId("test123");
 		user.setUserPw("test");
 		user.setUserName("test");
 		user.setUserEmail("test@test.com");
 		user.setUserAddr1("test");
 		user.setUserAddr2("test");
-		user.setUserAddr3("test");
 		
 		userMapper.userJoin(user);
 	}
-	*/
+	
 	
 	@Test
 	public void userIdCk() throws Exception {

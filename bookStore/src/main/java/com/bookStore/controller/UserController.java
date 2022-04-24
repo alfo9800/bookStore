@@ -49,27 +49,24 @@ public class UserController {
 				//log.info("userIdCk 진입");
 				int result = uService.idCk(userId);
 				
-				log.info("결과 값 : " + result);
+				//log.info("결과 값 : " + result);
 
 				if(result != 0) {
 					return "fail"; //중복아이디가 존재
 				}else {
 					return "success"; //중복아이디 없음
-				}
-				
-				return "";
+				}				
 			}
 	
 	
 	
 	/* 회원가입 페이지 이동 */
-	@GetMapping("/join")
-	public void joinGET() {
-		
-		log.info("회원가입 페이지 진입");
-	
-	}
-	
+	  @GetMapping("/join") public void joinGET() {
+	  
+	  log.info("회원가입 페이지 진입");
+	  
+	  }
+	 
 	/* 로그인 페이지 이동 */
 	@GetMapping("/login")
 	public void loginGET() {

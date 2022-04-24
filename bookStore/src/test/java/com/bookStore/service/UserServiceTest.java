@@ -23,7 +23,7 @@ public class UserServiceTest {
 	public void testUserJoin() throws Exception {
 		UserVO user = new UserVO();
 		
-		user.setUserId("test2");
+		user.setUserId("test456");
 		user.setUserPw("1234");
 		user.setUserName("아무개");
 		

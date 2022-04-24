@@ -26,14 +26,11 @@ public class UserVO {
 	/* 회원 이메일 */
 	private String userEmail;
 	
-	/* 회원 우편번호 */
+	/* 회원 주소 */
 	private String userAddr1;
 	
-	/* 회원 주소 */
-	private String userAddr2;
-	
 	/* 회원 상세 주소 */
-	private String userAddr3;
+	private String userAddr2;
 	
 	/* 관리자 구분 (0:일반사용자 / 1:관리자) */
 	private int adminCK;

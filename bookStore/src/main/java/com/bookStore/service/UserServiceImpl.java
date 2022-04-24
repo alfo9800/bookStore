@@ -17,6 +17,11 @@ public class UserServiceImpl implements UserService {
 	public void userJoin(UserVO user) throws Exception {
 		userMapper.userJoin(user);
 	}
+
+	@Override
+	public int idCk(String userId) throws Exception {
+		return userMapper.idCk(userId);
+	}
 	
 	
 }
