@@ -15,7 +15,7 @@
 	<div class="input-form-backgroud row"> 
 		<div class="input-form col-md-12 mx-auto"> 
 			<h4 class="mb-3">회원가입</h4> 
-			<form class="join_form" novalidate> 
+			<form id="join_form" method="post"> <!-- novalidate 유효성검사를 하지 않겠다 -->
 				
 				<div class="row"> 
 					<div class="col-md-6 mb-3"> 
