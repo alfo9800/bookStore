@@ -8,7 +8,9 @@
 	input class="id_input" name="memberId"
 - 기존 form 태그에 기존에 있던 action속성은 지우고, id속성과 method속성을 추가 (id=join_from, method=post)
 
-
+- 아이디 중복 체크 JQuery
+	.on("propertychange change keyup paste input") 
+	==> input태그에 무언가를 입력한 순간을 감지하여 이벤트 발생시키기
 
 
 ======= 페이징 구현 보충 =======

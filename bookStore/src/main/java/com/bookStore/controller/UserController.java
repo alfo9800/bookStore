@@ -6,6 +6,7 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
 import com.bookStore.model.UserVO;
@@ -24,7 +25,7 @@ public class UserController {
 	private UserService uService;
 	
 	
-	//회원가입 : 반환형식을 string으로 하여 return에 home페이지로 이동하도록 함
+	//회원가입
 	@PostMapping("/join")
 	public String joinPOST(UserVO user, RedirectAttributes rttr) throws Exception {
 		
@@ -40,7 +41,24 @@ public class UserController {
 		return "redirect:/";
 	}
 	
-	
+			//회원가입 : join.jsp로 메서드의 결과 반환되기 위해서 어노테이션 ResponseBody 사용
+			//아이디 중복검사
+			@PostMapping("/userIdCk")
+			@ResponseBody
+			public String userIdCkPOST(String userId) throws Exception {
+				//log.info("userIdCk 진입");
+				int result = uService.idCk(userId);
+				
+				log.info("결과 값 : " + result);
+
+				if(result != 0) {
+					return "fail"; //중복아이디가 존재
+				}else {
+					return "success"; //중복아이디 없음
+				}
+				
+				return "";
+			}
 	
 	
 	

@@ -84,6 +84,7 @@
 					<tr>
 						<th class="bno_width">번호</th>
 						<th class="title_width">제목</th>
+						<th class="content_width">내용</th>
 						<th class="writer_width">작성자</th>
 						<th class="regdate_width">작성일</th>
 						<th class="updatedate_width">수정일</th>
