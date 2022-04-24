@@ -177,5 +177,30 @@ section {background-color:#34495e;color:#fff;width:200px;padding-top:30px;paddin
   </div>
 --%>
  
+ 
+ <script>
+ <%-- 회원가입 완료 시 띄우는 '알림창' --%>
+ $(document).ready(function(){
+	 let result = '<c:out value="${result}" />';
+	 
+	 checkAlert(result);
+	 
+	 fuction checkAlert(result){
+		 if(result === ''){
+			 return;
+		 }
+		 
+		 if(result === 'join success'){
+			 alert("회원가입이 완료되었습니다");
+		 }
+	 }
+ });
+ 
+ </script>
+ 
+ 
+ 
+ 
+ 
 </body>
 </html>

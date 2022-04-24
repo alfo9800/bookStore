@@ -2,9 +2,11 @@ package com.bookStore.controller;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
+import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
 import com.bookStore.model.UserVO;
 import com.bookStore.service.UserService;
@@ -24,7 +26,7 @@ public class UserController {
 	
 	//회원가입 : 반환형식을 string으로 하여 return에 home페이지로 이동하도록 함
 	@PostMapping("/join")
-	public String joinPOST(UserVO user) throws Exception {
+	public String joinPOST(UserVO user, RedirectAttributes rttr) throws Exception {
 		
 		log.info("join 진입");
 		
@@ -33,7 +35,9 @@ public class UserController {
 		
 		log.info("join service 성공");
 		
-		return "redirect:/home";
+		//rttr.addFlashAttribute("result", "join success"); 
+		
+		return "redirect:/";
 	}
 	
 	

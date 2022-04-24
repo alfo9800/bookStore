@@ -1,7 +1,12 @@
 ======= 회원가입 페이지 구현 =======
 
-- 
-
+- join.jsp에서 정보를 입력해야할 input태그에 속성 name태그를 추가함.
+- 속성 name의 값은 해당 input태그에 들어가야할 정보에 해당하는 UserVO에서 정의한 변수 이름을 삽입
+- ex)
+	input class="id_input"
+	=>
+	input class="id_input" name="memberId"
+- 기존 form 태그에 기존에 있던 action속성은 지우고, id속성과 method속성을 추가 (id=join_from, method=post)
 
 
 
