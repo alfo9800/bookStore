@@ -21,4 +21,10 @@
 		);
 </insert>
 
+
+<!-- 아이디 중복검사 -->
+<select id="idCk" resultType="int">
+	select count(*) from user where userId = #{userId} <!-- userId로 받아온 값이 있으면 count가 1, 없으면 0 /// 결과 값을 int형으로 -->
+</select>
+
 </mapper>

@@ -17,6 +17,7 @@ public class UserMapperTest {
 	@Autowired
 	private UserMapper userMapper;
 	
+	/*
 	@Test
 	public void UserJoin() throws Exception {
 		UserVO user = new UserVO();
@@ -31,4 +32,16 @@ public class UserMapperTest {
 		
 		userMapper.userJoin(user);
 	}
+	*/
+	
+	@Test
+	public void userIdCk() throws Exception {
+		String id = "hihi"; //존재하는 아이디
+		String id2 = "alfo"; //존재하지 않는 아이디
+		
+		userMapper.idCk(id);
+		userMapper.idCk(id2);
+	}
+	
+	
 }
