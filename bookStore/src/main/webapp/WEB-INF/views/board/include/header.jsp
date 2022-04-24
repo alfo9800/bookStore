@@ -44,7 +44,13 @@
 		<!-- 로그인 하지 않았을 때 -->
 		<div class="d-flex flex-wrap align-items-center justify-content-center justify-content-lg-start">
 		  <ul class="nav col-12 col-lg-auto me-lg-auto mb-2 justify-content-center mb-md-0">
-          	<li><a href="/member/login" class="btn nav-link px-2 link-secondary" style="color:#fff; background-color:#198754; border-color:#198754;">로그인</a></li>
+          	<li><a href="/user/login" class="btn nav-link px-2 link-secondary" style="color:#fff; background-color:#198754; border-color:#198754;margin-right:15px;">로그인</a></li>
+          </ul>
+        </div>
+
+	<div class="d-flex flex-wrap align-items-center justify-content-center justify-content-lg-start">
+		  <ul class="nav col-12 col-lg-auto me-lg-auto mb-2 justify-content-center mb-md-0">
+          	<li><a href="/user/join" class="btn nav-link px-2 link-secondary" style="color:#198754;border-color:#198754;">회원가입</a></li>
           </ul>
         </div>
 
