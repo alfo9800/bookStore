@@ -31,4 +31,7 @@ public class BoardVO {
     /* 수정 날짜 */
     private Date updateDate;
     
+    /* 조회 수 */
+    private int boardcnt;
+    
 }

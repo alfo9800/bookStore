@@ -8,6 +8,8 @@
 
 <jsp:include page="/WEB-INF/views/board/include/header.jsp" />
 
+<link rel="stylesheet" href="/resources/css/board/list.css" >
+
 <%-- 
 <script>
 	history.pushState(null, null, ''); //data, title, url의 값이 들어감. 비워두면 이벤트 발생의 플래그 정도로 사용할 수 있음
@@ -23,43 +25,6 @@
 
 </head>
 
-<style>
-	a {text-decoration:none;}
-	table {border-collapse:collapse; width:1000px; margin-top:20px; text-align:center;}
-	td,th {border:1px solid black; height:50px;}
-	th {font-size:17px;}
-	thead {font-weight:700;}
-	
-	.table_wrap {margin:50px 0 0 50px;}
-	.bno_width {width:12%;}
-	.writer_width {width:20%;}
-	.regdate_width {width:15%;}
-	.updatedate_width {width:15%;}
-	.top_btn {font-size:20px; padding:6px 12px; background-color:#fff; border:1px solid #ddd; font-weight:600;}
-	
-	 
-	.pageInfo {
-	    list-style : none;
-	    display: inline-block;
-	    margin: 50px 0 0 100px;      
-	  }
-	.pageInfo li{
-	    float: left;
-	    font-size: 20px;
-	    margin-left: 18px;
-	    padding: 7px;
-	    font-weight: 500;
-	  }
-	  
-	 .active{
-      background-color: #cdd5ec;
- 	 }
- 	 
-	 a:link {color:black; text-decoration: none;}
-	 a:visited {color:black; text-decoration: none;}
-	 a:hover {color:black; text-decoration: underline;}
-	
-</style>
 
 <body>
 
@@ -77,24 +42,24 @@
 		</div>
 
 
-		<div class="table_wrap" style="padding-top:50px;">
+		<div class="table_wrap" id="table_wrap">
 			<a href="/board/enroll" class="top_btn">게시판 등록</a>
-			<table>
+			<table id="Btable">
 				<thead>
 					<tr>
-						<th class="bno_width">번호</th>
+						<th class="bno_width">No</th>
 						<th class="title_width">제목</th>
-						<th class="content_width">내용</th>
-						<th class="writer_width">작성자</th>
 						<th class="regdate_width">작성일</th>
-						<th class="updatedate_width">수정일</th>
+						<th class="writer_width">작성자</th>			
+						<!-- <th class="updatedate_width">작성일</th> -->
+						<th class="boardcnt_width">조회수</th>
 					</tr>
 				</thead>
 					<c:forEach items="${list}" var="list">
 						<tr>
 							<td><c:out value="${list.bno}" /></td>
 							<!-- 제목을 눌렀을 때, 해당 조회페이지로 이동할 수 있도록 함 -->
-							<td> 
+							<td class="left"> 
 							<!-- 
 								<a class="move" href='/board/get?bno=<c:out value="${list.bno}" />'>
 									<c:out value="${list.title}" />
@@ -105,10 +70,10 @@
 								</a>
 							</td>
 							
-							<td><c:out value="${list.content}"/></td>
-							<td><c:out value="${list.writer}" /></td>
 							<td><fmt:formatDate pattern="yyyy-MM-dd" value="${list.regdate}" /></td><%-- <td><c:out value="${list.regdate}" /></td> --%>
-							<td><fmt:formatDate pattern="yyyy-MM-dd" value="${list.updateDate}" /></td><%-- <td><c:out value="${list.updateDate}" /></td> --%>
+							<td><c:out value="${list.writer}" /></td>
+							<%-- <td><fmt:formatDate pattern="yyyy-MM-dd" value="${list.updateDate}" /></td><td><c:out value="${list.updateDate}" /></td> --%>
+							<td><c:out value="${list.boardcnt}" /></td>
 						</tr>
 					</c:forEach>
 					<!-- <tr>
@@ -129,12 +94,12 @@
 			
 			<!--  -->
 			<div class="pageInfo_wrap">
-				<div class="pageInfo_area">
+				<div class="pageInfo_area" id="paging">
 					<ul id="pageInfo" class="pageInfo">
 					
 						<!-- 이전페이지 버튼 -->
 						<c:if test="${pageMaker.prev}">
-							<li class="pageInfo_btn previous"><a href="${pageMaker.startPage-1}">Previous</a></li>
+							<li class="pageInfo_btn previous"><a href="${pageMaker.startPage-1}">◀Previous</a></li>
 						</c:if>
 					
 						<!-- 각 번호 페이지 버튼 -->
@@ -145,7 +110,7 @@
 						
 						<!-- 다음페이지 버튼 -->
 						<c:if test="${pageMaker.next}">
-							<li class="pageInfo_btn next"><a href="${pageMaker.endPage+1}">Next</a></li>
+							<li class="pageInfo_btn next"><a href="${pageMaker.endPage+1}">▶Next</a></li>
 						</c:if>
 						 
 						
@@ -163,6 +128,127 @@
 			</form>
 		</div>
 </div>
+
+
+
+
+
+
+
+
+    <div id="mainWrapper">
+
+        <ul>
+            <!-- 게시판 제목 -->
+            <li>게시판 Title </li>
+
+            <!-- 게시판 목록  -->
+            <li>
+                Table
+                <ul id ="ulTable">
+                    <li>
+                        <ul>
+                            <li>No</li>
+                            <li>제목</li>
+                            <li>작성일</li>
+                            <li>작성자</li>
+                            <li>조회수</li>
+                        </ul>
+                    </li>
+                    <!-- 게시물이 출력될 영역 -->
+                    <li>
+                        <ul>
+                            <li>1</li>
+                            <li class="left">제목제목제목제목1</li>
+                            <li>2014.07.09</li>
+                            <li>자바킹</li>
+                            <li>0</li>
+                        </ul>
+                    </li>
+
+                    <li>
+                        <ul>
+                            <li>2</li>
+                            <li class="left">제목제목제목제목1</li>
+                            <li>2014.07.09</li>
+                            <li>자바킹</li>
+                            <li>0</li>
+                        </ul>
+                    </li>
+
+                    <li>
+                        <ul>
+                            <li>3</li>
+                            <li class="left">제목제목제목제목1</li>
+                            <li>2014.07.09</li>
+                            <li>자바킹</li>
+                            <li>0</li>
+                        </ul>
+                    </li>
+
+                    <li>
+                        <ul>
+                            <li>4</li>
+                            <li class="left">제목제목제목제목1</li>
+                            <li>2014.07.09</li>
+                            <li>자바킹</li>
+                            <li>0</li>
+                        </ul>
+                    <li>                                        
+                </ul>
+            </li>
+
+            <!-- 게시판 페이징 영역 -->
+            <li>
+                <div id="divPaging">
+                    <div>◀</div>
+                       <div><b>1</b></div>
+                    <div>2</div>
+                    <div>3</div>
+                    <div>4</div>
+                    <div>5</div>
+                    <div>▶</div>
+                </div>
+            </li>
+
+            <!-- 검색 폼 영역 -->
+            <li id='liSearchOption'>
+                <div>
+                    <select id='selSearchOption' >
+                        <option value='A'>제목+내용</option>
+                        <option value='T'>제목</option>
+                        <option value='C'>내용</option>
+                    </select>
+                    <input id='txtKeyWord' />
+                    <input type='button' value='검색'/>
+                </div>
+                </li>
+
+        </ul>
+    </div>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 
