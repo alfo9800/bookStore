@@ -14,18 +14,18 @@
 
 <body>
 
-<div class="container text-center">
-	<div class="col-lg-4" style="left:50%;position:absolute;transform:translateX(-50%);padding-top:140px;">
+<div class="login_container container text-center">
+	<div class="col-lg-4">
 	
 					<main class="form-signin">
 					  <form id="login_form" method="post">
 					    <h1 class="h3 mb-3 fw-normal">로그인</h1>
 					
-					    <div class="form-floating" style="padding-bottom:20px;">
+					    <div class="form-floating">
 					      <input type="text" class="form-control id_input" id="userId" name="userId" placeholder="아이디">
 					      <label for="floatingInput">아이디</label>
 					    </div>
-					    <div class="form-floating" style="padding-bottom:20px;">
+					    <div class="form-floating">
 					      <input type="password" class="form-control pw_input" id="userPw" name="userPw" placeholder="비밀번호">
 					      <label for="floatingPassword">비밀번호</label>
 					    </div>
@@ -47,32 +47,6 @@
 					 
 	</div>
 </div>
-
-
-
-<%--  
-	<!-- 로그인 양식 -->
-	<div class="container"> 하나의 영역 생성
-		<div class="col-lg-4"> 영역 크기
-			<!-- 점보트론은 특정 컨텐츠, 정보를 두드러지게 하기 위한 큰 박스 -->
-			<div class="jumbotron" style="padding-top:20px;">
-				<form method="post" action="loginAction.jsp">
-				
-					<h3 style="text-align:center;">로그인 화면</h3>
-					
-					<div class="form-group">
-						<input type="text" class="form-control" placeholder="아이디" name="userID" maxlength="20">
-					</div>
-					<div class="form-group">
-						<input type="password" class="form-control" placeholder="비밀번호" name="userPassword" maxlength="20">
-					</div>
-					
-					<input type="submit" class="btn btn-primary form-control" value="로그인">
-				</form>
-			</div>
-		</div>
-	</div>
-  --%>
 
 
 <script>

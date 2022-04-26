@@ -22,13 +22,19 @@
 	integrity="sha256-WpOohJOqMqqyKL9FccASB9O0KwACQJpFTUBLTYOVvVU="
 	crossorigin="anonymous"></script>
 	
+	
+<link rel="stylesheet" href="/resources/css/include/header.css">
+	
+
 </head>
+
+
 <body>
 
 <header class="p-3 mb-3 border-bottom">
     <div class="container">
       <div class="d-flex flex-wrap align-items-center justify-content-center justify-content-lg-start">
-        <a href="/" class="d-flex align-items-center mb-2 mb-lg-0 text-dark text-decoration-none" style="margin-right:15px;">
+        <a href="/" class="d-flex align-items-center mb-2 mb-lg-0 text-dark text-decoration-none" style="">
           <img src="../../resources/img/home.svg" width="40" height="32">
         </a>
         <ul class="nav col-12 col-lg-auto me-lg-auto mb-2 justify-content-center mb-md-0">
@@ -45,15 +51,15 @@
 		<!-- 로그인 하지 않았을 때 -->
 		<c:if test="${user == null}">
 			<div class="d-flex flex-wrap align-items-center justify-content-center justify-content-lg-start">
-			  <ul class="nav col-12 col-lg-auto me-lg-auto mb-2 justify-content-center mb-md-0">
-	          	<li><a href="/user/login" class="btn nav-link px-2 link-secondary" style="color:#fff; background-color:#198754; border-color:#198754;margin-right:15px;">로그인</a></li>
+			  <ul class="login_ul nav col-12 col-lg-auto me-lg-auto mb-2 justify-content-center mb-md-0">
+	          	<li><a href="/user/login" class="btn nav-link px-2 link-secondary">로그인</a></li>
 	          </ul>
 	        </div>
 	    
 	
 			<div class="d-flex flex-wrap align-items-center justify-content-center justify-content-lg-start">
-			  <ul class="nav col-12 col-lg-auto me-lg-auto mb-2 justify-content-center mb-md-0">
-	          	<li><a href="/user/join" class="btn nav-link px-2 link-secondary" style="color:#198754;border-color:#198754;">회원가입</a></li>
+			  <ul class="join_ul nav col-12 col-lg-auto me-lg-auto mb-2 justify-content-center mb-md-0">
+	          	<li><a href="/user/join" class="btn nav-link px-2 link-secondary">회원가입</a></li>
 	          </ul>
 	        </div>
 		</c:if>

@@ -1,0 +1,17 @@
+@charset "UTF-8";
+
+.home_container {
+	padding-top:50px;
+}
+
+.card_container {
+	padding-top:100px;
+	text-align:center;
+}
+
+.card_container > .card {
+	width:18rem;
+	float:left;
+	margin-right:30px;
+}
+

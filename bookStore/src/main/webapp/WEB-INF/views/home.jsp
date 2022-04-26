@@ -3,7 +3,10 @@
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
 <!DOCTYPE html>
 <html>
+
 <jsp:include page="/WEB-INF/views/board/include/header.jsp" />
+
+<link rel="stylesheet" href="/resources/css/home/home.css" >
 
 <%-- 
 <style>
@@ -19,14 +22,10 @@ section {background-color:#34495e;color:#fff;width:200px;padding-top:30px;paddin
 </style>
 --%>
 
+
 <body>	
-	<!-- 
-	<div class="d-flex flex-row-reverse bd-highlight">
-	  <div class="p-2 bd-highlight">회원가입</div>
-	  <div class="p-2 bd-highlight">로그인</div>
-	</div>
- -->
-<div class="container" style="padding-top:50px;">
+
+<div class="home_container container">
 		 <div id="carouselExampleCaptions" class="carousel slide" data-bs-ride="carousel">
 		  <div class="carousel-indicators">
 		    <button type="button" data-bs-target="#carouselExampleCaptions" data-bs-slide-to="0" class="active" aria-current="true" aria-label="Slide 1"></button>
@@ -69,8 +68,8 @@ section {background-color:#34495e;color:#fff;width:200px;padding-top:30px;paddin
  
  
  <!-- 책 정보 띄우는 카드 --> 
- <div class="container" style="padding-top:100px;text-align:center;">
-			<div class="card" style="width: 18rem;float:left;margin-right:30px;">
+ <div class="card_container container">
+			<div class="card" style="">
 			  <img src="../../resources/img/Book1.jpg" class="card-img-top" alt="...">
 			  <div class="card-body">
 			    <h5 class="card-title">2022년 젊은작가상 수상작품집</h5>
@@ -79,7 +78,7 @@ section {background-color:#34495e;color:#fff;width:200px;padding-top:30px;paddin
 			  </div>
 			</div>
 			
-			<div class="card" style="width: 18rem;float:left;margin-right:30px;">
+			<div class="card" style="">
 			  <img src="../../resources/img/Book2.jpg" class="card-img-top" alt="...">
 			  <div class="card-body">
 			    <h5 class="card-title">저주토끼</h5>
@@ -88,7 +87,7 @@ section {background-color:#34495e;color:#fff;width:200px;padding-top:30px;paddin
 			  </div>
 			</div>
 			
-			<div class="card" style="width: 18rem;float:left;margin-right:30px;">
+			<div class="card" style="">
 			  <img src="../../resources/img/Book3.jpg" class="card-img-top" alt="...">
 			  <div class="card-body">
 			    <h5 class="card-title">아무튼, 노래</h5>
@@ -100,7 +99,7 @@ section {background-color:#34495e;color:#fff;width:200px;padding-top:30px;paddin
  
  
  
- <!-- 하단의 소스를 가져다가 사용을 해봅시다 -->
+ <!-- 사이드의 네비게이션 바의 소스를 가져다가 사용을 해봅시다 -->
  <%--  
  <div class="flex-shrink-0 p-3 bg-white" style="width: 280px;">
     <a href="/" class="d-flex align-items-center pb-3 mb-3 link-dark text-decoration-none border-bottom">
