@@ -102,4 +102,20 @@ public class UserController {
 		return "redirect:/";
 	}
 	
+	
+	/* 로그아웃 */
+	@GetMapping("/logout") //메서드 방식은 GET방식 //a태그의 요청은 GET방식이기 때문
+	public String logoutGET(HttpServletRequest request) throws Exception { //session에 대한 작업을 위해서 HttpServletRequest타입의 매개변수 작성
+		
+		log.info("logoutGET메서드 진입");
+		
+		HttpSession session = request.getSession(); //session 변수를 선언 및 초기화
+		
+		session.invalidate(); //session 전체를 무효화
+		
+		return "redirect:/";
+	}
+	
+	
+	
 }
