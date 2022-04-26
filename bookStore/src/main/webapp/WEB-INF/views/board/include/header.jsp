@@ -1,5 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
 <!DOCTYPE html>
 <html>
 <head>
@@ -42,31 +43,38 @@
         </form>
 
 		<!-- 로그인 하지 않았을 때 -->
-		<div class="d-flex flex-wrap align-items-center justify-content-center justify-content-lg-start">
-		  <ul class="nav col-12 col-lg-auto me-lg-auto mb-2 justify-content-center mb-md-0">
-          	<li><a href="/user/login" class="btn nav-link px-2 link-secondary" style="color:#fff; background-color:#198754; border-color:#198754;margin-right:15px;">로그인</a></li>
-          </ul>
-        </div>
-
-	<div class="d-flex flex-wrap align-items-center justify-content-center justify-content-lg-start">
-		  <ul class="nav col-12 col-lg-auto me-lg-auto mb-2 justify-content-center mb-md-0">
-          	<li><a href="/user/join" class="btn nav-link px-2 link-secondary" style="color:#198754;border-color:#198754;">회원가입</a></li>
-          </ul>
-        </div>
-
-        <!-- 로그인을 했을 때
-        <div class="dropdown text-end">
-          <a href="#" class="d-block link-dark text-decoration-none dropdown-toggle" id="dropdownUser1" data-bs-toggle="dropdown" aria-expanded="false">
-            <img src="https://github.com/mdo.png" alt="mdo" width="32" height="32" class="rounded-circle">
-          </a>
-          <ul class="dropdown-menu text-small" aria-labelledby="dropdownUser1" style="">
-            <li><a class="dropdown-item" href="#">New project...</a></li>
-            <li><a class="dropdown-item" href="#">Settings</a></li>
-            <li><a class="dropdown-item" href="#">Profile</a></li>
-            <li><hr class="dropdown-divider"></li>
-            <li><a class="dropdown-item" href="#">Sign out</a></li>
-          </ul>
-        </div> -->
+		<c:if test="${user == null}">
+			<div class="d-flex flex-wrap align-items-center justify-content-center justify-content-lg-start">
+			  <ul class="nav col-12 col-lg-auto me-lg-auto mb-2 justify-content-center mb-md-0">
+	          	<li><a href="/user/login" class="btn nav-link px-2 link-secondary" style="color:#fff; background-color:#198754; border-color:#198754;margin-right:15px;">로그인</a></li>
+	          </ul>
+	        </div>
+	    
+	
+			<div class="d-flex flex-wrap align-items-center justify-content-center justify-content-lg-start">
+			  <ul class="nav col-12 col-lg-auto me-lg-auto mb-2 justify-content-center mb-md-0">
+	          	<li><a href="/user/join" class="btn nav-link px-2 link-secondary" style="color:#198754;border-color:#198754;">회원가입</a></li>
+	          </ul>
+	        </div>
+		</c:if>
+		
+		
+        <!-- 로그인을 했을 때 -->
+        <c:if test="${user != null}">
+	        <div class="dropdown text-end">
+	          <a href="#" class="d-block link-dark text-decoration-none dropdown-toggle" id="dropdownUser1" data-bs-toggle="dropdown" aria-expanded="false">
+	            <img src="https://github.com/mdo.png" alt="mdo" width="32" height="32" class="rounded-circle">
+	          </a>
+	          <ul class="dropdown-menu text-small" aria-labelledby="dropdownUser1" style="">
+	            <li><a class="dropdown-item" href="#">New project...</a></li>
+	            <li><a class="dropdown-item" href="#">Settings</a></li>
+	            <li><a class="dropdown-item" href="#">Profile</a></li>
+	            <li><hr class="dropdown-divider"></li>
+	            <li><a class="dropdown-item" href="#">Sign out</a></li>
+	          </ul>
+	        </div> 
+      	</c:if>
+      
       </div>
     </div>
   </header>

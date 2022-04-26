@@ -1,5 +1,74 @@
 @charset "UTF-8";
 
+/* 
+.page_wrap {
+	text-align:center;
+	font-size:0;
+ }
+ 
+.page_nation {
+	display:inline-block;
+}
+
+.page_nation .none {
+	display:none;
+}
+
+.page_nation a {
+	display:block;
+	margin:0 3px;
+	float:left;
+	border:1px solid #e6e6e6;
+	width:28px;
+	height:28px;
+	line-height:28px;
+	text-align:center;
+	background-color:#fff;
+	font-size:13px;
+	color:#999999;
+	text-decoration:none;
+}
+
+.page_nation .arrow {
+	border:1px solid #ccc;
+}
+
+.page_nation .prev {
+	background:#f8f8f8 no-repeat center center;
+	margin-right:7px;
+}
+
+.page_nation .next {
+	background:#f8f8f8 no-repeat center center;
+	margin-left:7px;
+}
+
+.page_nation a.active {
+	background-color:#42454c;
+	color:#fff;
+	border:1px solid #42454c;
+} */
+/* 
+ .active {
+	background-color:#42454c;
+	color:#fff;
+	border:1px solid #42454c;
+}
+
+ */
+
+
+
+
+
+
+
+
+
+
+
+
+
     body{
         line-height:2em;        
         font-family:"맑은 고딕";
@@ -14,7 +83,7 @@
         border-bottom:1px solid silver;
 }
 
-
+/* 
   ul, li{ 
         list-style:none;
         text-align:center;
@@ -22,7 +91,7 @@
         margin:0;
 }
 
-
+ */
    .left {
         text-align : left;
 }
@@ -99,19 +168,20 @@
 }    
 
 
-	#ulTable > li > ul > li:first-child               {width:10%;} /*No 열 크기*/
-    #ulTable > li > ul > li:first-child +li           {width:45%;} /*제목 열 크기*/
-    #ulTable > li > ul > li:first-child +li+li        {width:20%;} /*작성일 열 크기*/
-    #ulTable > li > ul > li:first-child +li+li+li     {width:15%;} /*작성자 열 크기*/
-    #ulTable > li > ul > li:first-child +li+li+li+li{width:10%;} /*조회수 열 크기*/
+
+	#ulTable > li > ul > li:first-child               {width:10%;} 
+    #ulTable > li > ul > li:first-child +li           {width:45%;} 
+    #ulTable > li > ul > li:first-child +li+li        {width:20%;} 
+    #ulTable > li > ul > li:first-child +li+li+li     {width:15%;} 
+    #ulTable > li > ul > li:first-child +li+li+li+li{width:10%;} 
 
 
 
-    #Btable > thead > th:first-child               {width:10%;} /*No 열 크기*/
-    #Btable > thead > th:first-child +th           {width:45%;} /*제목 열 크기*/
-    #Btable > thead > th:first-child +th+th        {width:20%;} /*작성일 열 크기*/
-    #Btable > thead > th:first-child +th+th+th     {width:15%;} /*작성자 열 크기*/
-    #Btable > thead > th:first-child +th+th+th+th  {width:10%;} /*조회수 열 크기*/
+    #Btable > thead > th:first-child               {width:10%;} 
+    #Btable > thead > th:first-child +th           {width:45%;} 
+    #Btable > thead > th:first-child +th+th        {width:20%;} 
+    #Btable > thead > th:first-child +th+th+th     {width:15%;} 
+    #Btable > thead > th:first-child +th+th+th+th  {width:10%;} 
 
 
     #divPaging {
@@ -120,29 +190,45 @@
         width:220px; 
         height:50px;
 }
-
-	#paging {
+/* 
+	.pageInfo {
+		list-style : none;
+    	display: inline-block;
+    	margin: 50px 0 0 100px;
+		
        	clear:both; 
         margin:0 auto; 
         width:220px; 
         height:50px;
+        
 }
-
+ */
     #divPaging > div {
         float:left;
         width: 30px;
         margin:0 auto;
         text-align:center;
 }
-
-    #paging > ul {
+/* 
+    .pageInfo li {
+    
+	    float: left;
+	    font-size: 20px;
+	    margin-left: 18px;
+	    padding: 7px;
+	    font-weight: 500;
+	    
+	    
         float:left;
         width: 30px;
         margin:0 auto;
         text-align:center;
+        
 }
 
-    #liSearchOption {clear:both;}
+   
+ */
+#liSearchOption {clear:both;}
     #liSearchOption > div {
         margin:0 auto; 
         margin-top: 30px; 
@@ -155,17 +241,8 @@
 
 
 
+/*기존 css 적용*/
 
-
-
-
-
-
-
-
-
-/* 기존 css 적용 */
-/*
 a {text-decoration:none;}
 table {border-collapse:collapse; width:1000px; margin-top:20px; text-align:center;}
 td,th {border:1px solid black; height:50px;}
@@ -200,4 +277,3 @@ thead {font-weight:700;}
  a:link {color:black; text-decoration: none;}
  a:visited {color:black; text-decoration: none;}
  a:hover {color:black; text-decoration: underline;}
-*/

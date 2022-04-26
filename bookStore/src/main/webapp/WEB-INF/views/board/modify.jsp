@@ -53,10 +53,6 @@ textarea {width:800px;  height:200px; font-size:15px; padding:10px;}
 			<input name="writer" readonly="readonly" value='<c:out value="${pageInfo.writer}" />'>
 		</div>
 		<div class="input_wrap">
-			<label>게시판 등록일</label>
-			<input name="regdate" readonly="readonly" value='<fmt:formatDate pattern="yyyy-MM-dd" value="${pageInfo.regdate}" />'>
-		</div>
-		<div class="input_wrap">
 			<label>게시판 수정일</label>
 			<input name="updateDate" readonly="readonly" value='<fmt:formatDate pattern="yyyy-MM-dd" value="${pageInfo.updateDate}" />'>
 		</div>

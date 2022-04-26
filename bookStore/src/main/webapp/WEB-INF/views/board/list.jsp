@@ -135,14 +135,14 @@
 
 
 
-
+<!-- 
     <div id="mainWrapper">
 
         <ul>
-            <!-- 게시판 제목 -->
+            게시판 제목
             <li>게시판 Title </li>
 
-            <!-- 게시판 목록  -->
+            게시판 목록 
             <li>
                 Table
                 <ul id ="ulTable">
@@ -155,7 +155,7 @@
                             <li>조회수</li>
                         </ul>
                     </li>
-                    <!-- 게시물이 출력될 영역 -->
+                    게시물이 출력될 영역
                     <li>
                         <ul>
                             <li>1</li>
@@ -198,7 +198,7 @@
                 </ul>
             </li>
 
-            <!-- 게시판 페이징 영역 -->
+            게시판 페이징 영역
             <li>
                 <div id="divPaging">
                     <div>◀</div>
@@ -211,7 +211,7 @@
                 </div>
             </li>
 
-            <!-- 검색 폼 영역 -->
+            검색 폼 영역
             <li id='liSearchOption'>
                 <div>
                     <select id='selSearchOption' >
@@ -227,7 +227,7 @@
         </ul>
     </div>
 
-
+ -->
 
 
 
