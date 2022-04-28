@@ -27,7 +27,9 @@ textarea {width:800px;  height:200px; font-size:15px; padding:10px;}
 <!-- 부트스트랩의 경우는 header에 포함되어 있다 -->
 
 <!-- font awesome -->
+<!-- 
 <link rel="stylesheet" href="http://cdnjs.cloudeflare.com/ajax/libs/font-awesome/5.8.2/css/all.min.css" />
+ -->
 
 <!-- adminLTE -->
 <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/admin-lte@3.1/dist/css/adminlte.min.css">
@@ -38,6 +40,8 @@ textarea {width:800px;  height:200px; font-size:15px; padding:10px;}
 
 
 <!-- 조회 페이지 관련 -->
+
+<%-- 
 <h1>조회 페이지</h1>
 	<div class="input_wrap">
 		<label>게시판 번호</label>
@@ -63,23 +67,32 @@ textarea {width:800px;  height:200px; font-size:15px; padding:10px;}
 		<label>게시판 수정일</label>
 		<input name="updateDate" readonly="readonly" value='<fmt:formatDate pattern="yyyy-MM-dd" value="${pageInfo.updateDate}" />'>
 	</div>
+ --%>	
+	
 	
 	<!-- 버튼 관련 -->
-	<div class="btn_wrap">
+	<!-- 
+	<div class="btn_wrap"> -->
 		<!-- url경로에 직접 서버로 전송할 데이터를 작성할 수 있음
 		<a class="btn" id="list_btn" href="/board/list">조회</a> 
         <a class="btn" id="modify_btn" href="/board/modify?bno='${pageInfo.bno}'}">수정</a>
          //하지만 추후 페이징 적용, 검색 조건 적용 등 여러 기능이 추가에 따라 유연하게 다양한 상황을 처리하기 위해서 아래 form태그 사용 -->
+		<!-- 
 		<a class="btn" id="list_btn">목록</a>
 		<a class="btn" id="modify_btn">수정</a>
 	</div>
+	 -->
+	<%--  
 	<form id="infoForm" action="/board/modify" method="get">
 		<input type="hidden" id="bno" name="bno" value='<c:out value="${pageInfo.bno}" />'>
 		<input type="hidden" name="pageNum" value='<c:out value="${cri.pageNum}" />'> <!-- 페이징 이동 정보에 필요함 -->
 		<input type="hidden" name="amount" value='<c:out value="${cri.amount}" />'> <!-- 페이징 이동 정보에 필요함 -->
 	</form> 
+	 --%>
+	
 	
 <!-- 버튼 동작되도록 js구현 / '#'은 태그들의 id값이다 -->
+<!-- 
 <script>
 	let form = $("#infoForm");
 	
@@ -97,32 +110,7 @@ textarea {width:800px;  height:200px; font-size:15px; padding:10px;}
 	});
 </script>
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
+ -->
 
 
 
@@ -133,11 +121,12 @@ textarea {width:800px;  height:200px; font-size:15px; padding:10px;}
 		<!-- 메인본문영역 -->
 		<div class="bodytext_area box_inner">			
 			<ul class="bbsview_list">
-				<li class="bbs_title">제목입니다</li>
-				<li class="bbs_hit">작성일 : 2021-09-18</li>
-				<li class="bbs_date">조회수 : 34</li>
+				<li class="bbs_title" name="title"><c:out value="${pageInfo.title}" /></li><!-- 게시판 제목 -->
+				<li class="bbs_hit" name="regdate">작성일 : <fmt:formatDate pattern="yyyy-MM-dd" value="${pageInfo.regdate}" /></li> <!-- 작성일 -->
+				<li class="bbs_boardcnt">조회수 : <c:out value="${pageInfo.boardcnt}" /></li><!-- 조회수 -->
 				<li class="bbs_content">
-					<div class="editer_content">
+					<div class="editer_content" name="content" readonly="readonly">
+						<c:out value="${pageInfo.content}" />
 						내용입니다
 						전주한옥마을
 						안산
@@ -175,32 +164,49 @@ textarea {width:800px;  height:200px; font-size:15px; padding:10px;}
 					 --%>
 				</li>
 			</ul>
-			<p class="btn_line txt_right">
-				<a href="#" class="btn_bbs">목록</a>
-				<a href="#" class="btn_bbs">수정</a>				
-				<button class="btn_baseColor btn_smallColor" id="btn_board_delete">삭제</button>
-			</p>
-			
+			<div class="btn_line txt_right">
+				<a type="button" class="btn_bbs" id="list_btn">목록</a>
+				<a type="button" class="btn_bbs" id="modify_btn">수정</a>				
+				<!-- <button class="btn_baseColor btn_smallColor" id="btn_board_delete">삭제</button> -->
+			</div>
+			<form id="infoForm" action="/board/modify" method="get">
+				<input type="hidden" id="bno" name="bno" value='<c:out value="${pageInfo.bno}" />'>
+				<input type="hidden" name="pageNum" value='<c:out value="${cri.pageNum}" />'> <!-- 페이징 이동 정보에 필요함 -->
+				<input type="hidden" name="amount" value='<c:out value="${cri.amount}" />'> <!-- 페이징 이동 정보에 필요함 -->
+			</form> 
 		</div>
 	</div>
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
+<!-- 버튼 동작되도록 js구현 / '#'은 태그들의 id값이다 -->
+<script>
+	let form = $("#infoForm");
+	
+	//목록으로 가기
+	$("#list_btn").on("click", function(e){
+		form.find("#bno").remove();
+		form.attr("action", "/board/list");
+		form.submit();
+	});
+	
+	//수정하기
+	$("#modify_btn").on("click", function(e){
+		form.attr("action", "/board/modify");
+		form.submit();
+	});
+</script>
+<!-- 
+<script>
+$(document).ready(function(){
+	$("#btn_board_delete").on("click",function(){
+		if(confirm("정말로 삭제 하시겠습니까?")) {
+			$("form[name='action_form']").attr("method","post");
+			$("form[name='action_form']").attr("action","/home/board/board_delete");
+			$("form[name='action_form']").submit();
+		}
+	});	
+});
+</script>
+ -->
 
 
 
