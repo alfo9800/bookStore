@@ -8,13 +8,11 @@
 <meta charset="UTF-8">
 <title>Insert title here</title>
 
-<!-- JQuery추가 -->
-<script
-  src="https://code.jquery.com/jquery-3.4.1.js"
-  integrity="sha256-WpOohJOqMqqyKL9FccASB9O0KwACQJpFTUBLTYOVvVU="
-  crossorigin="anonymous"></script>
+<jsp:include page="/WEB-INF/views/board/include/header.jsp" />
 
+<link rel="stylesheet" href="/resources/css/board/get.css">
 <!-- css -->
+<!-- 
 <style type="text/css"> 
 .input_wrap {padding:5px 20px;}
 label {display:block; margin:10px 0; font-size:20px;}
@@ -24,9 +22,20 @@ textarea {width:800px;  height:200px; font-size:15px; padding:10px;}
     width:140px; height:41px; line-height:39px; text-align: enter; margin-left:30px; cursor:pointer;}
 .btn_wrap {padding-left:80px; margin-top:50px;}
 </style>
+ -->
+
+<!-- 부트스트랩의 경우는 header에 포함되어 있다 -->
+
+<!-- font awesome -->
+<link rel="stylesheet" href="http://cdnjs.cloudeflare.com/ajax/libs/font-awesome/5.8.2/css/all.min.css" />
+
+<!-- adminLTE -->
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/admin-lte@3.1/dist/css/adminlte.min.css">
 
 </head>
 <body>
+
+
 
 <!-- 조회 페이지 관련 -->
 <h1>조회 페이지</h1>
@@ -87,6 +96,113 @@ textarea {width:800px;  height:200px; font-size:15px; padding:10px;}
 		form.submit();
 	});
 </script>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+	<div class="container" id="container">
+		<!-- 메인본문영역 -->
+		<div class="bodytext_area box_inner">			
+			<ul class="bbsview_list">
+				<li class="bbs_title">제목입니다</li>
+				<li class="bbs_hit">작성일 : 2021-09-18</li>
+				<li class="bbs_date">조회수 : 34</li>
+				<li class="bbs_content">
+					<div class="editer_content">
+						내용입니다
+						전주한옥마을
+						안산
+						스타벅스
+						일본여행 가고싶다
+						오사카 도쿄
+                    </div>
+				</li>
+				<li class="bbs_title" style="height:inherit;">
+					첨부파일 다운로드
+					<%-- 
+					<c:forEach begin="0" end="1" var="index">
+						<c:if test="${boardVO.save_file_names[index] != null}">
+							<br>
+							<a href="/download?save_file_name=${boardVO.save_file_names[index]}&real_file_name=${boardVO.real_file_names[index]}" >${boardVO.real_file_names[index]} 다운로드 링크[${index}]</a>
+							<c:set var="fileNameArray" value="${fn:split(boardVO.save_file_names[index],'.')}" />
+			                <c:set var="extName" value="${fileNameArray[fn:length(fileNameArray)-1]}" />
+							<!-- lenght의 결과는 2-1= 배열의 인덱스1 -->
+							<!-- 첨부파일이 이미지 인지 아닌지 비교해서 img태그를 사용할 지 결정 -->
+							
+							<!-- fn:contains함수({'jpg','gif','png'...}비교배열내용,JPG,jpg첨부파일확장자) -->
+							<c:choose>
+								<c:when test="${fn:containsIgnoreCase(checkImgArray,extName)}">
+									<br>
+									<img style="width:100%;" src="/image_preview?save_file_name=${boardVO.save_file_names[index]}&real_file_name=${boardVO.real_file_names[index]}">
+								</c:when>
+								<c:otherwise>
+									<c:out value="${checkImgArray}" />
+									<!-- 사용자 홈페이지 메인 최근게시물 미리보기 이미지가 없을 때 사용 예정. -->
+								</c:otherwise>
+							</c:choose>
+							<!-- true이면 이미지 파일이란 의미 -->		
+						</c:if>
+					</c:forEach>
+					 --%>
+				</li>
+			</ul>
+			<p class="btn_line txt_right">
+				<a href="#" class="btn_bbs">목록</a>
+				<a href="#" class="btn_bbs">수정</a>				
+				<button class="btn_baseColor btn_smallColor" id="btn_board_delete">삭제</button>
+			</p>
+			
+		</div>
+	</div>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 </body>
 </html>
