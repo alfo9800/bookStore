@@ -87,7 +87,7 @@ public class UserController {
 		//log.info("login메서드 진입");
 		log.info("전달된 데이터 : " + user);
 		
-		HttpSession session = request.getSession(); //session 변수를 선언 및 초기화 //다음 코드는 session을 사용하기 위한 전형적인 방법
+		HttpSession session = request.getSession(); //session 변수를 선언 및 초기화 //다음 코드는 session을 사용하기 위한 전형적인 방법 //requset.getSession() 메서드는 session이 생성되어 있는 경우 생성된 session을 리턴하고, 생성되어 있지 않은 경우 새롭게 session을 생성하여 return한다
 		UserVO lvo = uService.userLogin(user); //lvo 변수를 선업 및 초기화 //userLogin 메소드를 요청하게 되면 ~거쳐서~ 로그인 쿼리가 실행되게 되고 그 결과 값이 담긴 userVO 객체를 반환 받아 변수 lvo에 저장 
 		
 		if(lvo == null) { //만약, lvo에 userVO에 대한 객체가 null값이라면
@@ -96,9 +96,9 @@ public class UserController {
 			
 			return "redirect:/user/login"; //다시 로그인 페이지로 가서 
 		}
+		session.setAttribute("user", lvo); //세션이 유지되는 동안 저장됨 //setAttribute는 name, value 쌍으로 객체 object를 저장하는 메서드 
 		
-		session.setAttribute("user", lvo);
-		
+		//log.info("세션값에는 이게 저장됨 :" + session.getAttribute("user"));
 		return "redirect:/";
 	}
 	

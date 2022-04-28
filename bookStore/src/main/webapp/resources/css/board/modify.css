@@ -1,12 +1,19 @@
 @charset "UTF-8";
 
+.container {
+	padding:20px;
+}
+
+.clear {
+	overflow: hidden;
+}
 
 /* 게시판 글쓰기 폼 */
 .appForm {
 	margin:20px auto;
 	text-align: left;
 }
-.appForm legend {
+.appForm > legend {
 	font-size: 0px;
 }
 .pilsoo_item::before {
@@ -29,15 +36,16 @@
 	color: red;
 }
 .app_list {
-	padding: 10px 0;
-	/* border-bottom: 1px solid #ccc; */
-}
-.app_list li {
-	position: relative;
+	border-top:2px solid #384d75;
 	padding: 10px 0;
 	border-bottom: 1px solid #ccc;
 }
-.app_list li .tit_lbl {
+.app_list > li {
+	position: relative;
+	padding: 10px 0;
+	/* border-bottom: 1px solid #ccc; */
+}
+.app_list > li > .tit_lbl {
 	float: none;
 	line-height: 50px;
 	position: relative;
@@ -53,7 +61,7 @@
 	border: 1px solid #ccc;
 	margin-left: 1px;
 }
-.app_content input {
+.app_content > input {
 	border: none;
 	/* width: 100% !important; */
 	width: inherit; /* 브라우저 설정 상속.= 넓이 초기화 */
@@ -65,7 +73,7 @@
 	line-height: normal;
 	font-size: 15px;
 }
-.appForm textarea {
+.appForm > textarea {
 	height: 130px;
 	box-sizing: border-box;
 	padding: 10px;
@@ -74,7 +82,7 @@
 	color: #444;
 	border: none;
 }
-.appForm textarea::placeholder {
+.appForm > textarea::placeholder {
 	color: #999;
 }
 textarea:-ms-input-placeholder {
@@ -87,22 +95,40 @@ input:-ms-input-placeholder {
 	margin-top: 10px;
 }
 
-
+.btn_bbs {
+	margin-bottom: 5px;
+	display: inline-block;
+	width: 100%;
+	height: 35px;
+	font-size: 14px;
+	line-height: 35px;
+	background: #198754;
+	color: #fff !important;
+	text-align: center;
+}
 
 
 
 
 @media all and (min-width: 801px) {
 /* 태블릿+PC용 */
-.app_list .tit_lbl {
+.app_list > .tit_lbl {
 	width: 20%;
 }
-.app_list .app_content {
+.app_list > .app_content {
 	width: 79%;
 	float:right;
 	border: 1px solid #ccc;
 }
-.btn_line {text-align: center;}
-.appForm textarea {height: 230px;}
+.btn_line {
+	text-align: right;
+	}
+.appForm > textarea {height: 230px;}
+
+.btn_bbs {
+		width: 70px;
+		float: none;
+		text-align: center;
+	}
 
 }
