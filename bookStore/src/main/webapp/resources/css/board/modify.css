@@ -1,0 +1,108 @@
+@charset "UTF-8";
+
+
+/* 게시판 글쓰기 폼 */
+.appForm {
+	margin:20px auto;
+	text-align: left;
+}
+.appForm legend {
+	font-size: 0px;
+}
+.pilsoo_item::before {
+	/* top:1px; */
+	content: '*';
+	display: inline-block;
+	position: absolute;
+	left: 5px;
+	width: 15px;
+	font-weight: bold;
+	font-size: 17px;
+	color: red;
+}
+.info_pilsoo {
+	position: relative;
+	padding-left: 20px;
+	padding-bottom: 10px;
+	border-bottom: 2px solid #000;
+	font-size: 15px;
+	color: red;
+}
+.app_list {
+	padding: 10px 0;
+	/* border-bottom: 1px solid #ccc; */
+}
+.app_list li {
+	position: relative;
+	padding: 10px 0;
+	border-bottom: 1px solid #ccc;
+}
+.app_list li .tit_lbl {
+	float: none;
+	line-height: 50px;
+	position: relative;
+	box-sizing: border-box;
+	padding-left: 20px;
+	font-weight: bold;
+	font-size: 17px;
+	letter-spacing: -2px;
+}
+.app_content {
+	float: none;
+	width: auto;
+	border: 1px solid #ccc;
+	margin-left: 1px;
+}
+.app_content input {
+	border: none;
+	/* width: 100% !important; */
+	width: inherit; /* 브라우저 설정 상속.= 넓이 초기화 */
+	box-sizing: border-box;
+	display: inline-block;
+	height: 45px;
+	padding: 0 10px;
+	/* background-color: #fff; 이클립스에서 영향을 주기 때문에 주석처리*/
+	line-height: normal;
+	font-size: 15px;
+}
+.appForm textarea {
+	height: 130px;
+	box-sizing: border-box;
+	padding: 10px;
+	font-size: 15px;
+	letter-spacing: -1px;
+	color: #444;
+	border: none;
+}
+.appForm textarea::placeholder {
+	color: #999;
+}
+textarea:-ms-input-placeholder {
+	color: #999;
+}
+input:-ms-input-placeholder {
+	color: #999;
+}
+.btn_baseColor {
+	margin-top: 10px;
+}
+
+
+
+
+
+
+@media all and (min-width: 801px) {
+/* 태블릿+PC용 */
+.app_list .tit_lbl {
+	width: 20%;
+}
+.app_list .app_content {
+	width: 79%;
+	float:right;
+	border: 1px solid #ccc;
+}
+.btn_line {text-align: center;}
+.appForm textarea {height: 230px;}
+
+}
