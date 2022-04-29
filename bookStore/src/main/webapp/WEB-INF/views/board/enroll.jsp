@@ -119,7 +119,7 @@
 				
 				<div class="btn_line">
 					<a type="button" class="btn_bbs" id="enroll_btn">등록</a>
-					<!-- <a type="button" class="btn_bbs" id="cancel_btn">작성 취소</a> -->
+					<!-- <a type="button" class="btn_bbs" id="cancel_btn">작성 취소</a> --> <!-- Resolved [org.springframework.web.HttpRequestMethodNotSupportedException: Request method 'POST' not supported] -->
 				</div>
 				
 			</div>		
