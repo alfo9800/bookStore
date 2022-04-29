@@ -37,7 +37,7 @@
 <!-- <h1>목록페이지 입니다</h1> -->
 <!-- <a href="/board/enroll">게시판 등록</a> -->
 
-
+<%-- 
 <div class="container" style="padding-top:50px;">
 
 		<!-- 후기 게시판 배너 -->
@@ -76,9 +76,9 @@
 								</a>
 							</td>
 							
-							<td><fmt:formatDate pattern="yyyy-MM-dd" value="${list.regdate}" /></td><%-- <td><c:out value="${list.regdate}" /></td> --%>
+							<td><fmt:formatDate pattern="yyyy-MM-dd" value="${list.regdate}" /></td><td><c:out value="${list.regdate}" /></td>
 							<td><c:out value="${list.writer}" /></td>
-							<%-- <td><fmt:formatDate pattern="yyyy-MM-dd" value="${list.updateDate}" /></td><td><c:out value="${list.updateDate}" /></td> --%>
+							<td><fmt:formatDate pattern="yyyy-MM-dd" value="${list.updateDate}" /></td><td><c:out value="${list.updateDate}" /></td>
 							<td><c:out value="${list.boardcnt}" /></td>
 						</tr>
 					</c:forEach>
@@ -96,7 +96,7 @@
 					
 						<!-- 각 번호 페이지 버튼 -->
 						<c:forEach var="num" begin="${pageMaker.startPage}" end="${pageMaker.endPage}">
-							<%-- <li class="pageInfo_btn"><a href="${num}">${num}</a></li> --%>
+							<li class="pageInfo_btn"><a href="${num}">${num}</a></li>
 							<li class="pageInfo_btn ${pageMaker.cri.pageNum == num ? 'active' : ''}"><a href="${num}">${num} </a></li>
 						</c:forEach>
 						<!-- 다음페이지 버튼 -->
@@ -121,39 +121,13 @@
 </div>
 
 
-
-새로 목록 만듦
-<%-- 
-<c:forEach items="${list}" var="list">
-	<tr>
-		<td><c:out value="${list.bno}" /></td>
-		<td class="left"> 
-			<a class="move" href='<c:out value="${list.bno}" />'>
-				<c:out value="${list.title}"/>
-			</a>
-		</td>
-		
-		<td><fmt:formatDate pattern="yyyy-MM-dd" value="${list.regdate}" /></td><td><c:out value="${list.regdate}" /></td>
-		<td><c:out value="${list.writer}" /></td>
-		<td><fmt:formatDate pattern="yyyy-MM-dd" value="${list.updateDate}" /></td><td><c:out value="${list.updateDate}" /></td>
-		<td><c:out value="${list.boardcnt}" /></td>
-	</tr>
-</c:forEach>
-
-
-
-
  --%>
+			
 
 
 
 
-							
-
-
-
-
-<div class="container" id="container">
+<div class="container" id="container" style="padding-top:50px;">
 		<!-- 메인본문영역 -->
 		<div class="bodytext_area box_inner">
 			<!-- 검색폼영역 -->
@@ -222,7 +196,7 @@
 			</div>
 			<!-- //페이징처리영역 -->
 			
-			<p class="btn_line">
+			<p class="btn_line" align="right">
 				<a href="/board/enroll" class="btn_baseColor enroll_go">등록</a>
 			</p>
 		</div>
