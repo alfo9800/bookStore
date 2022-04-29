@@ -8,7 +8,13 @@
 
 <jsp:include page="/WEB-INF/views/board/include/header.jsp" />
 
-<link rel="stylesheet" href="/resources/css/board/list.css" >
+<!-- <link rel="stylesheet" href="/resources/css/board/list.css" > -->
+<link rel="stylesheet" href="/resources/css/board/list2.css" >
+
+
+<!-- adminLTE -->
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/admin-lte@3.1/dist/css/adminlte.min.css">
+
 
 <%-- 
 <script>
@@ -76,20 +82,6 @@
 							<td><c:out value="${list.boardcnt}" /></td>
 						</tr>
 					</c:forEach>
-					<!-- <tr>
-						<td>1</td>
-						<td>책1</td>
-						<td>책1에 대한 내용입니다</td>
-						<td>2022-04-10</td>
-						<td>2022-04-10</td>
-					</tr>
-					<tr>
-						<td>2</td>
-						<td>책2</td>
-						<td>책2에 대한 내용입니다</td>
-						<td>2022-04-10</td>
-						<td>2022-04-10</td>
-					</tr> -->
 			</table>
 			
 			<!--  -->
@@ -105,9 +97,8 @@
 						<!-- 각 번호 페이지 버튼 -->
 						<c:forEach var="num" begin="${pageMaker.startPage}" end="${pageMaker.endPage}">
 							<%-- <li class="pageInfo_btn"><a href="${num}">${num}</a></li> --%>
-							<li class="pageInfo_btn ${pageMaker.cri.pageNum == num ? 'active' : ''}"><a href="${num}">${num}</a></li>
+							<li class="pageInfo_btn ${pageMaker.cri.pageNum == num ? 'active' : ''}"><a href="${num}">${num} </a></li>
 						</c:forEach>
-						
 						<!-- 다음페이지 버튼 -->
 						<c:if test="${pageMaker.next}">
 							<li class="pageInfo_btn next"><a href="${pageMaker.endPage+1}">▶Next</a></li>
@@ -131,125 +122,120 @@
 
 
 
+새로 목록 만듦
+<%-- 
+<c:forEach items="${list}" var="list">
+	<tr>
+		<td><c:out value="${list.bno}" /></td>
+		<td class="left"> 
+			<a class="move" href='<c:out value="${list.bno}" />'>
+				<c:out value="${list.title}"/>
+			</a>
+		</td>
+		
+		<td><fmt:formatDate pattern="yyyy-MM-dd" value="${list.regdate}" /></td><td><c:out value="${list.regdate}" /></td>
+		<td><c:out value="${list.writer}" /></td>
+		<td><fmt:formatDate pattern="yyyy-MM-dd" value="${list.updateDate}" /></td><td><c:out value="${list.updateDate}" /></td>
+		<td><c:out value="${list.boardcnt}" /></td>
+	</tr>
+</c:forEach>
 
 
 
 
-<!-- 
-    <div id="mainWrapper">
-
-        <ul>
-            게시판 제목
-            <li>게시판 Title </li>
-
-            게시판 목록 
-            <li>
-                Table
-                <ul id ="ulTable">
-                    <li>
-                        <ul>
-                            <li>No</li>
-                            <li>제목</li>
-                            <li>작성일</li>
-                            <li>작성자</li>
-                            <li>조회수</li>
-                        </ul>
-                    </li>
-                    게시물이 출력될 영역
-                    <li>
-                        <ul>
-                            <li>1</li>
-                            <li class="left">제목제목제목제목1</li>
-                            <li>2014.07.09</li>
-                            <li>자바킹</li>
-                            <li>0</li>
-                        </ul>
-                    </li>
-
-                    <li>
-                        <ul>
-                            <li>2</li>
-                            <li class="left">제목제목제목제목1</li>
-                            <li>2014.07.09</li>
-                            <li>자바킹</li>
-                            <li>0</li>
-                        </ul>
-                    </li>
-
-                    <li>
-                        <ul>
-                            <li>3</li>
-                            <li class="left">제목제목제목제목1</li>
-                            <li>2014.07.09</li>
-                            <li>자바킹</li>
-                            <li>0</li>
-                        </ul>
-                    </li>
-
-                    <li>
-                        <ul>
-                            <li>4</li>
-                            <li class="left">제목제목제목제목1</li>
-                            <li>2014.07.09</li>
-                            <li>자바킹</li>
-                            <li>0</li>
-                        </ul>
-                    <li>                                        
-                </ul>
-            </li>
-
-            게시판 페이징 영역
-            <li>
-                <div id="divPaging">
-                    <div>◀</div>
-                       <div><b>1</b></div>
-                    <div>2</div>
-                    <div>3</div>
-                    <div>4</div>
-                    <div>5</div>
-                    <div>▶</div>
-                </div>
-            </li>
-
-            검색 폼 영역
-            <li id='liSearchOption'>
-                <div>
-                    <select id='selSearchOption' >
-                        <option value='A'>제목+내용</option>
-                        <option value='T'>제목</option>
-                        <option value='C'>내용</option>
-                    </select>
-                    <input id='txtKeyWord' />
-                    <input type='button' value='검색'/>
-                </div>
-                </li>
-
-        </ul>
-    </div>
-
- -->
+ --%>
 
 
 
 
+							
 
 
 
 
+<div class="container" id="container">
+		<!-- 메인본문영역 -->
+		<div class="bodytext_area box_inner">
+			<!-- 검색폼영역 -->
+			<!-- 
+			<form id="search_form" name="search_form" action="/home/board/board_list" class="minisrch_form">
+				<fieldset>
+					<legend>검색</legend>
+					<input name="search_type" value="all" type="hidden">
+					<input name="search_keyword" type="text" class="tbox" title="검색어를 입력해주세요" placeholder="검색어를 입력해주세요">
+					<button class="btn_srch">검색</button>
+				</fieldset>
+			</form>
+			 -->
+			<!-- //검색폼영역 -->
+			
+			<!-- 게시물리스트영역 -->
+			<table class="bbsListTbl" summary="번호,제목,조회수,작성일 등을 제공하는 표">
+				<%-- <caption class="hdd">후기</caption> --%>
+				<thead>
+					<tr>
+						<th class="bno_width" scope="col">No</th>
+						<th class="title_width" scope="col">제목</th>
+						<th class="writer_width" scope="col">작성자</th>
+						<th class="regdate_width" scope="col">작성일</th>
+						<th class="boardcnt_width" scope="col">조회수</th>
+					</tr>
+				</thead>
+				<tbody>			
+					<c:forEach items="${list}" var="list" varStatus="status">
+						<tr>
+							<%-- 
+							<td>
+							<!-- 전체게시물-(현재페이지x1페이지당보여줄개수)+1페이지당보여줄개수-현재인덱스값 -->
+		                      ${pageVO.totalCount-(pageVO.page*pageVO.queryPerPageNum)+pageVO.queryPerPageNum-status.index}
+							</td>
+							 --%>
+							<td><c:out value="${list.bno}"></c:out></td>
+							<td class="tit_notice">
+								<a class="move" href='<c:out value="${list.bno}" />'>
+									<c:out value="${list.title}" />
+								</a> 
+							</td>
+							<td><c:out value="${list.writer}" /></td>
+							<td><fmt:formatDate pattern="yyyy-MM-dd HH:mm" value="${list.regdate}"/></td>
+							<td><c:out value="${list.boardcnt}" /></td>
+						</tr>
+					</c:forEach>
+				</tbody>
+			</table>
+
+			
+			<!-- 페이징처리영역 -->
+			<div class="pagination">
+			
+				<c:if test="${pageMaker.prev}">
+					<a href="${pageMaker.startPage-1}" class="prevpage pbtn"><img src="../../../resources/img/btn_prevpage.png" alt="이전 페이지로 이동"></a>
+				</c:if>
+				
+				<c:forEach begin="${pageMaker.startPage}" end="${pageMaker.endPage}" var="num">
+					<li class="pagenum ${pageMaker.cri.pageNum == num ? 'active' : ''}"><a href="${num}">${num}</a></li>
+				</c:forEach>
+				
+				<c:if test="${pageMaker.next}">
+					<a href="${pageMaker.endPage+1}" class="nextpage pbtn"><img src="../../../resources/img/btn_nextpage.png" alt="다음 페이지로 이동"></a>
+				</c:if>
+			</div>
+			<!-- //페이징처리영역 -->
+			
+			<p class="btn_line">
+				<a href="/board/enroll" class="btn_baseColor enroll_go">등록</a>
+			</p>
+		</div>
+		
+		<!-- 제목을 눌렀을 때, 해당 게시판 상세조회 -->
+		<form id="moveForm" method="get">
+			<!-- 서버에 페이지 이동 할 때 필요정보인 pageNum과 amount정보를 전송하기 위해 -->
+			<input type="hidden" name="pageNum" value="${pageMaker.cri.pageNum}">
+			<input type="hidden" name="amount" value="${pageMaker.cri.amount}">
+		</form>
 
 
-
-
-
-
-
-
-
-
-
-
-
-
+	</div>
 
 
 
@@ -292,7 +278,7 @@
 	});
 	
 <%-- 페이징 처리 --%>	
-	$(".pageInfo a").on("click", function(e){ //페이지 번호 (a태그) 클릭하였을 때
+	$(".pagination a").on("click", function(e){ //페이지 번호 (a태그) 클릭하였을 때
 		e.preventDefault(); //a태그 동작 멈춤
 		moveForm.find("input[name='pageNum']").val($(this).attr("href")); //form 태그 내부 pageNum과 관련된 input태그의 value속성값을 클릭한 a태그의 페이지 번호를 삽입
 		moveForm.attr("action", "/board/list"); //form태그 action속성 추가 및 '/board/list' 속성값으로 추가
@@ -303,6 +289,93 @@
 </script>
 
 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<%-- 
+<script>
+
+게시판 등록 완료 시 띄우는 '알림창'
+	$(document).ready(function(){
+		let result = '<c:out value="${result}" />'; //서버로부터 전달 받은 값을 저장하기 위한 result변수를 선언한 뒤, 전달받은 값으로 초기화
+		
+		checkAlert(result);
+		
+		function checkAlert(result){
+			if(result === ''){
+				return; //result에 담긴 값이 아무것도 없을 경우 실행되지 않음
+			}
+			
+			if(result === "enroll success"){
+				alert("등록이 완료되었습니다"); //result에 담긴 값이 있을 경우 어떠한 메시지가 있는지 체크한 뒤 게시판 등록 완료되었다는 경고창을 띄움
+			}
+			
+			if(result === "modify success"){
+				alert("수정이 완료되었습니다"); 
+			}
+			
+			if(result === "delete success"){
+				alert("삭제가 완료되었습니다");
+			}
+		}
+	
+	});
+	
+게시판 제목을 클릭 했을 때, 상세조회로 이동
+	let moveForm = $("#moveForm");
+	
+	$(".move").on("click", function(e){ 
+		e.preventDefault(); //클릭한 a태그 기능 정지 //이벤트 작동 X
+		
+		moveForm.append("<input type='hidden' name='bno' value='"+ $(this).attr("href") +"'>"); //form태그 내부 bno값을 저장하는 input태그 생성
+		moveForm.attr("action", "/board/get"); //form태그 action속성 추가
+		moveForm.submit(); //form태그 내부 데이터 서버 전송
+	});
+	
+페이징 처리	
+	$(".pageInfo a").on("click", function(e){ //페이지 번호 (a태그) 클릭하였을 때
+		e.preventDefault(); //a태그 동작 멈춤
+		moveForm.find("input[name='pageNum']").val($(this).attr("href")); //form 태그 내부 pageNum과 관련된 input태그의 value속성값을 클릭한 a태그의 페이지 번호를 삽입
+		moveForm.attr("action", "/board/list"); //form태그 action속성 추가 및 '/board/list' 속성값으로 추가
+		moveForm.submit();
+	});
+	
+	
+</script>
+
+ --%>
 
 
 
