@@ -48,8 +48,6 @@ textarea {width:800px;  height:200px; font-size:15px; padding:10px;}
 </head>
 <body>
 
-<!-- 조회 페이지 관련 -->
-<h1>수정 페이지</h1>
 
 	<!-- 사용자가 수정하는 input태그를 감싸는 form태그 추가 / 목적 : 사용자가 수정한 데이터 내용을 서버에 전송하기 위한 목적 -->
 	<%-- 

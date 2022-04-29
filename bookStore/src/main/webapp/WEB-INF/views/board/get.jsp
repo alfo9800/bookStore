@@ -114,6 +114,7 @@ textarea {width:800px;  height:200px; font-size:15px; padding:10px;}
 
 
 
+<!-- content의 html태그 없애기 해야함~!~! -->
 
 
 
