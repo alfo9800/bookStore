@@ -87,9 +87,9 @@ public class BoardMapperTest {
 	@Test
 	public void testModify() {
 		BoardVO board = new BoardVO();
-		board.setBno(8);
-		board.setTitle("수정 제목");
-		board.setContent("수정 내용");
+		board.setBno(1);
+		board.setTitle("수정할 제목으롱");
+		board.setContent("수정 내용으롱");
 	
 		int result = mapper.modify(board); //게시판 번호(bno)가 존재하는 것 result = 1 / 존재하지 않는 것 result = 0
 		log.info("result : " + result);

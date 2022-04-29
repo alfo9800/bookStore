@@ -20,7 +20,7 @@ public interface BoardService {
 	public BoardVO getPage(int bno);
 	
 	/* 게시판 수정 */ //반환 타입은 int로. Controller에서 활용을 하지 않더라도 선택지를 넓혀주는 의미에서.
-	public int modify(BoardVO board);
+	public int modify (BoardVO board);
 	
 	/* 게시판 삭제 */ //게시판 번호'bno'에 대한 정보만 있으면 되기 때문, int형 변수를 파라미터로 부여
 	public int delete(int bno);

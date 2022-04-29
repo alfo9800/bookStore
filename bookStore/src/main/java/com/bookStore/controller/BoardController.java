@@ -96,6 +96,9 @@ public class BoardController {
 	@PostMapping("/modify")
 	public String boardModifyPOST(BoardVO board, RedirectAttributes rttr) { //수정될 내용의 데이터를 가져오기 위해 BoardVO 클래스를 파라미터로 부여, 수정기능 실행 후 리다이렉트 방식으로 리스트 페이지 이동 시 데이터를 같이 전송
 		bservice.modify(board);
+
+		log.info("수정된 값들 확인 : " + board); //수정된 값들은 다 들어왔음
+		log.info("서비스에서 테스트 했을 때는 되는 데.. ========== 수정 성공 여부 (1: 성공 / 0: 실패) ========== " + bservice.modify(board));
 		
 		rttr.addFlashAttribute("result", "modify success"); //list페이지 이동 시 수정이 완료되었음을 알리는 창 띄우기 위해 "modify success"스트링 데이터를 "result"속성값에 저장하는 addFlashAttribute() 메소드 호출
 		

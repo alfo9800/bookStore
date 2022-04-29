@@ -52,19 +52,21 @@ public class BoardServiceTest {
 	}
 	*/
 	
-	/* //게시판 수정
+	 //게시판 수정
 	@Test
 	public void testModify() {
 		BoardVO board = new BoardVO();
 		
-		board.setBno(3);
-		board.setTitle("제목입니다");
-		board.setContent("내용입니다");
+		board.setBno(1);
+		board.setTitle("xoxo");
+		board.setContent("수고");
+		board.setWriter(null);
+		board.setUpdateDate(null);
 		
 		int result = service.modify(board);
 		log.info("result : " + result);
 	}
-	*/
+	
 	
 	//게시판 삭제
 	@Test

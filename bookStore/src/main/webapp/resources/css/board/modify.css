@@ -1,11 +1,20 @@
 @charset "UTF-8";
 
-.container {
-	padding:20px;
+.mod_container {
+	padding: 80px;
 }
 
 .clear {
 	overflow: hidden;
+}
+
+.bodytext_area {
+	box-sizing: border-box;
+	padding: 0px;
+}
+
+.box_inner {
+	width: 100%; margin: 0 auto;
 }
 
 /* 게시판 글쓰기 폼 */
@@ -107,8 +116,13 @@ input:-ms-input-placeholder {
 	text-align: center;
 }
 
+#delete_btn {
+	background: #dc3545;
+}
 
-
+#cancel_btn {
+	background: #6c757d;
+}
 
 @media all and (min-width: 801px) {
 /* 태블릿+PC용 */

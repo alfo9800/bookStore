@@ -23,10 +23,10 @@
  -->
  
  <!-- font awesome -->
-
+<!-- 
 <link rel="stylesheet" href="http://cdnjs.cloudeflare.com/ajax/libs/font-awesome/5.8.2/css/all.min.css" />
 
- 
+ --> 
 <!-- adminLTE -->
 <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/admin-lte@3.1/dist/css/adminlte.min.css">
 
@@ -52,6 +52,7 @@ textarea {width:800px;  height:200px; font-size:15px; padding:10px;}
 <h1>수정 페이지</h1>
 
 	<!-- 사용자가 수정하는 input태그를 감싸는 form태그 추가 / 목적 : 사용자가 수정한 데이터 내용을 서버에 전송하기 위한 목적 -->
+	<%-- 
 	<form id="modifyForm" action="/board/modify" method="post">
 
 		<div class="input_wrap">
@@ -84,6 +85,7 @@ textarea {width:800px;  height:200px; font-size:15px; padding:10px;}
 		</div>
 	
 	</form>	
+	 --%>
 <%-- 		
 	<form id="infoForm" action="/board/modify" method="get">
 		<input type="hidden" id="bno" name="bno" value='<c:out value="${pageInfo.bno}" />'>
@@ -126,32 +128,13 @@ textarea {width:800px;  height:200px; font-size:15px; padding:10px;}
 </script>
  -->
 
-
-
-
-
-
-
-
-
-
-
-
-
-<div class="input_wrap">
-			<label>게시판 내용</label>
-			<textarea rows="3" name="content"><c:out value="${pageInfo.content}" /></textarea> <!-- readonly 속성 지움 -->
-		</div>
-
-
-
-
-<div class="container" id="container">
+<div class="container mod_container">
 	<div class="bodytext_area box_inner">
 				<!-- 폼영역 -->
 				<form method="post" id="modifyForm" action="/board/modify" class="appForm">
+					<input type="hidden" value="<c:out value='${pageInfo.bno}' />" name="bno" />
 					<fieldset>
-						<ul class="app_list">
+						<ul class="app_list">			
 							<li class="clear">
 								<label for="title_lbl" class="tit_lbl pilsoo_item">제목</label>
 								<div class="app_content">
@@ -167,10 +150,15 @@ textarea {width:800px;  height:200px; font-size:15px; padding:10px;}
 							<li class="clear">
 								<label for="writer_lbl" class="tit_lbl pilsoo_item">작성자명</label>
 								<div class="app_content">
-									<input value="<c:out value='${pageInfo.writer}' />" type="text" name="writer" class="w100p" id="writer_lbl" placeholder="이름을 입력해주세요" required/>
+									<input value="<c:out value='${pageInfo.writer}' />" readonly="readonly" type="text" name="writer" class="w100p" id="writer_lbl" />
 								</div>
 							</li>
-							
+							<li class="clear">
+								<label for="updatedate_lbl" class="tit_lbl pilsoo_item">수정일</label>
+								<div class="app_content">
+									<input value='<fmt:formatDate pattern="yyyy-MM-dd" value="${pageInfo.updateDate}" />' readonly="readonly" name="updateDate" class="w100p" id="updateDate_lbl"> 
+								</div>
+							</li>
 							<%-- 
 							<li class="clear">
 			                    <label for="file_lbl" class="tit_lbl">첨부파일</label>
@@ -206,15 +194,15 @@ textarea {width:800px;  height:200px; font-size:15px; padding:10px;}
 						
 					</fieldset>
 				</form>
-				
-				<form id="infoForm" action="/board/modify" method="get">
-					<input type="hidden" id="bno" name="bno" value='<c:out value="${pageInfo.bno}" />'>
-					<input type="hidden" name="pageNum" value='<c:out value="${cri.pageNum}"/>' > <!-- 페이징 이동 정보에 필요함 -->
-					<input type="hidden" name="amount" value='<c:out value="${cri.amount}"/>' > <!-- 페이징 이동 정보에 필요함 -->
-				</form>
-			
 
 			</div>
+		
+			<form id="infoForm" action="/board/modify" method="get">
+				<input type="hidden" id="bno" name="bno" value='<c:out value="${pageInfo.bno}" />'>
+				<input type="hidden" name="pageNum" value='<c:out value="${cri.pageNum}"/>' > <!-- 페이징 이동 정보에 필요함 -->
+				<input type="hidden" name="amount" value='<c:out value="${cri.amount}"/>' > <!-- 페이징 이동 정보에 필요함 -->
+			</form>
+		
 	</div>
 
 
@@ -226,6 +214,9 @@ $(document).ready(function () {
 });
 </script>
  -->
+ 
+ 
+ 
 
 
 <!-- 버튼 동작되도록 js구현 / '#'은 태그들의 id값이다 -->
@@ -240,9 +231,10 @@ $(document).ready(function () {
 		form.submit();
 	});
 	
-	/* 수정 버튼 */	
+	/* 수정 버튼 */	 
 	$("#modify_btn").on("click", function(e){
 		mform.submit();
+		
 	});
 	
 	/* 취소 버튼 */
@@ -259,6 +251,12 @@ $(document).ready(function () {
 	});
 	
 </script>
+
+
+
+
+
+
 
 <script>
 $(document).ready(function(){

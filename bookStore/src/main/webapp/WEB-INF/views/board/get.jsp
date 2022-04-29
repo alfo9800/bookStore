@@ -127,12 +127,6 @@ textarea {width:800px;  height:200px; font-size:15px; padding:10px;}
 				<li class="bbs_content">
 					<div class="editer_content" name="content" readonly="readonly">
 						<c:out value="${pageInfo.content}" />
-						내용입니다
-						전주한옥마을
-						안산
-						스타벅스
-						일본여행 가고싶다
-						오사카 도쿄
                     </div>
 				</li>
 				<li class="bbs_title" style="height:inherit;">
