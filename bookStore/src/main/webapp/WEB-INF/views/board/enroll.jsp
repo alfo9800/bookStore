@@ -1,5 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=utf-8"
     pageEncoding="utf-8"%>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
 <!DOCTYPE html>
 <html>
 <head>
@@ -86,7 +87,7 @@
 							<li class="clear">
 								<label for="writer_lbl" class="tit_lbl pilsoo_item">작성자명</label>
 								<div class="app_content">
-									<input type="text" name="writer" class="w100p" id="writer_lbl" required />
+									<input value="${user.userId}" type="text" name="writer" class="w100p" id="writer_lbl" readonly="readonly" />
 								</div>
 							</li>
 							<%-- 
@@ -134,7 +135,7 @@ $(document).ready(function () {
 });
 </script>
  -->
- 
+
  
 <!-- 버튼 동작되도록 js구현 / '#'은 태그들의 id값이다 -->
 <script>

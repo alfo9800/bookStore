@@ -72,7 +72,16 @@
 	            <img src="https://github.com/mdo.png" alt="mdo" width="32" height="32" class="rounded-circle">
 	          </a>
 	          <ul class="dropdown-menu text-small" aria-labelledby="dropdownUser1" style="">
-	            <li><a class="dropdown-item" href="#">마이페이지</a></li>
+	          	
+	          	<li><a class="dropdown-item"><c:out value="${user.userId}" /> 님</a></li>
+	          	<li><hr class="dropdown-divider"></li>
+	          	
+	          	<c:if test="${user.adminCK == 0}">
+	            	<li><a class="dropdown-item" href="#">마이페이지</a></li>
+	            </c:if>
+	            <c:if test="${user.adminCK == 1}">
+	            	<li><a class="dropdown-item" href="/admin/main">관리자 페이지</a></li>
+	            </c:if>
 	            <li><a class="dropdown-item" href="#">장바구니</a></li>
 	            <li><a class="dropdown-item" href="#">설정</a></li>
 	            <li><hr class="dropdown-divider"></li>

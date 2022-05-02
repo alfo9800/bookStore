@@ -197,7 +197,7 @@
 			<!-- //페이징처리영역 -->
 			
 			<p class="btn_line" align="right">
-				<a href="/board/enroll" class="btn_baseColor enroll_go">등록</a>
+				<a href="/board/enroll" class="btn_baseColor enroll_go" id="enroll_btn">등록</a>
 			</p>
 		</div>
 		
@@ -213,8 +213,38 @@
 
 
 
-<script>
-<%-- 게시판 등록 완료 시 띄우는 '알림창' --%>
+
+
+
+
+
+
+
+
+
+
+
+<script type="text/javascript">
+	let user = '<c:out value="${user.userId}" />';
+	
+	console.log('=========== ' + user);
+	
+	/* 등록버튼 클릭 시 이동 */
+	$("#enroll_btn").on("click",function(e){
+		e.preventDefault();
+		if(user == '') { //위 로그를 찍어보니 userId가 없을 때는 공백인 값이 나와서 비교를 ''으로 함
+			alert('로그인이 필요합니다. 로그인 페이지로 이동합니다');
+			location.href="/user/login";
+		}else{
+		 	alert('회원이므로 등록페이지로 이동합니다');
+		 	location.href="/board/enroll";
+		}
+	});
+	
+</script>
+
+<script type="text/javascript">
+	<%-- 게시판 등록 완료 시 띄우는 '알림창' --%>
 	$(document).ready(function(){
 		let result = '<c:out value="${result}" />'; //서버로부터 전달 받은 값을 저장하기 위한 result변수를 선언한 뒤, 전달받은 값으로 초기화
 		
@@ -240,66 +270,39 @@
 	
 	});
 	
-<%-- 게시판 제목을 클릭 했을 때, 상세조회로 이동 --%>
+	<%-- 게시판 제목을 클릭 했을 때, 상세조회로 이동 --%>
 	let moveForm = $("#moveForm");
 	
 	$(".move").on("click", function(e){ 
 		e.preventDefault(); //클릭한 a태그 기능 정지 //이벤트 작동 X
 		
-		moveForm.append("<input type='hidden' name='bno' value='"+ $(this).attr("href") +"'>"); //form태그 내부 bno값을 저장하는 input태그 생성
-		moveForm.attr("action", "/board/get"); //form태그 action속성 추가
-		moveForm.submit(); //form태그 내부 데이터 서버 전송
+		if(user == ''){
+			alert('회원만 읽을 수 있습니다');
+		}else{
+			moveForm.append("<input type='hidden' name='bno' value='"+ $(this).attr("href") +"'>"); //form태그 내부 bno값을 저장하는 input태그 생성
+			moveForm.attr("action", "/board/get"); //form태그 action속성 추가
+			moveForm.submit(); //form태그 내부 데이터 서버 전송
+		}
+		
+		
+		//moveForm.append("<input type='hidden' name='bno' value='"+ $(this).attr("href") +"'>"); //form태그 내부 bno값을 저장하는 input태그 생성
+		//moveForm.attr("action", "/board/get"); //form태그 action속성 추가
+		//moveForm.submit(); //form태그 내부 데이터 서버 전송
 	});
 	
-<%-- 페이징 처리 --%>	
+	<%-- 페이징 처리 --%>	
 	$(".pagination a").on("click", function(e){ //페이지 번호 (a태그) 클릭하였을 때
 		e.preventDefault(); //a태그 동작 멈춤
 		moveForm.find("input[name='pageNum']").val($(this).attr("href")); //form 태그 내부 pageNum과 관련된 input태그의 value속성값을 클릭한 a태그의 페이지 번호를 삽입
 		moveForm.attr("action", "/board/list"); //form태그 action속성 추가 및 '/board/list' 속성값으로 추가
 		moveForm.submit();
 	});
-	
-	
+
 </script>
 
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 <%-- 
-<script>
+<script type="text/javascript">
 
 게시판 등록 완료 시 띄우는 '알림창'
 	$(document).ready(function(){
