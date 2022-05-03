@@ -85,4 +85,12 @@ public class BoardServiceTest {
 		
 		list.forEach(board -> log.info(" " + board));
 	}
+	
+	//게시판 조회수
+	@Test
+	public void testBoardcnt() {
+		int result = service.boardcnt(4);
+		
+		log.info("result : " + result);
+	}
 }

@@ -7,7 +7,7 @@
 	<!-- 게시판 등록 -->
 	<!-- #{} : get/set을 의미 ====> boardVO 멤버변수인 title,content,writer에 값이 담긴 경우 그 값들이 각각 #{title}.. 대체하여 SQL문이 실행됨 -->
 	<insert id="enroll">
-		insert into bookstore_board(title, content, writer) values (#{title}, #{content}, #{writer})
+		insert into bookstore_board(title, content, writer, boardcnt) values (#{title}, #{content}, #{writer}, 0)
 	</insert>
 	 
 	<!-- 게시판 목록 -->
@@ -29,6 +29,11 @@
 	<select id="getPage" resultType="com.bookStore.model.BoardVO">
 		select * from bookStore_board where bno = #{bno}
 	</select>
+	
+	<!-- 게시판 조회수 -->
+	<update id="boardcnt">
+		update bookStore_board set boardcnt = boardcnt+1 where bno = #{bno}
+	</update>
 	
 	<!-- 게시판 수정 -->
 	<update id="modify">

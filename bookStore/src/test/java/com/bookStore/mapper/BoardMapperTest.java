@@ -112,4 +112,12 @@ public class BoardMapperTest {
 		log.info("result : " + result);
 	}
 	
+	
+	//게시판 조회수
+	@Test
+	public void testBoardcnt() {
+		int result = mapper.boardcnt(3); //(1)은 #{bno}에서 받아온 번호 값이다. 1번 번호를 찾아서 mapper의 boarcnt메서드를 실행 시킴!!
+
+		log.info("result : " + result); //게시판 번호(bno)가 존재하는 것 result = 1 / 존재하지 않는 것 result = 0
+	}
 }

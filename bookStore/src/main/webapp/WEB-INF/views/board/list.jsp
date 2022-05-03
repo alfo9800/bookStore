@@ -128,19 +128,27 @@
 
 
 <div class="container" id="container" style="padding-top:50px;">
+		
 		<!-- 메인본문영역 -->
 		<div class="bodytext_area box_inner">
+
+			
+			
 			<!-- 검색폼영역 -->
-			<!-- 
-			<form id="search_form" name="search_form" action="/home/board/board_list" class="minisrch_form">
+			<form id="search_form" name="search_form" action="/board/list" class="minisrch_form">		
 				<fieldset>
-					<legend>검색</legend>
+					<!-- 정렬 -->
+					<select id="sort">
+						<option value="1" selected>최신순</option>
+						<option value="2">오래된순</option>
+						<option value="3">조회순</option>
+					</select>
 					<input name="search_type" value="all" type="hidden">
 					<input name="search_keyword" type="text" class="tbox" title="검색어를 입력해주세요" placeholder="검색어를 입력해주세요">
 					<button class="btn_srch">검색</button>
 				</fieldset>
 			</form>
-			 -->
+			
 			<!-- //검색폼영역 -->
 			
 			<!-- 게시물리스트영역 -->
