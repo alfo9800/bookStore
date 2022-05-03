@@ -127,7 +127,7 @@ textarea {width:800px;  height:200px; font-size:15px; padding:10px;}
 				<li class="bbs_boardcnt">조회수 : <c:out value="${pageInfo.boardcnt}" /></li><!-- 조회수 -->
 				<li class="bbs_content">
 					<div class="editer_content" name="content" readonly="readonly">
-						<c:out value="${pageInfo.content}" />
+						<c:out value="${pageInfo.content}" escapeXml="false" />
                     </div>
 				</li>
 				<li class="bbs_title" style="height:inherit;">
