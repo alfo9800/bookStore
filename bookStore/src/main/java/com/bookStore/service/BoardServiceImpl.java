@@ -31,6 +31,7 @@ public class BoardServiceImpl implements BoardService {
 
 	@Override
 	public BoardVO getPage(int bno) {
+		mapper.boardcnt(bno);
 		return mapper.getPage(bno);
 	}
 
@@ -58,10 +59,4 @@ public class BoardServiceImpl implements BoardService {
 		return mapper.getTotal();
 	}
 
-
-	@Override
-	public int boardcnt(int bno) {
-		return mapper.boardcnt(bno);
-	}
-	
 }
