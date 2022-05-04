@@ -245,7 +245,7 @@
 	$("#enroll_btn").on("click",function(e){
 		e.preventDefault();
 		if(user == '') { //위 로그를 찍어보니 userId가 없을 때는 공백인 값이 나와서 비교를 ''으로 함
-			var yes = confirm('로그인이 필요합니다. 로그인 페이지로 이동하시겠습니까?');
+			var yes = confirm('로그인이 필요합니다. 로그인 페이지로 이동하시겠습니까?'); //확인을 선택하면, yes에 true 취소를 선책하면, yes에 false값이 들어감
 			if(yes == true) {
 				location.href="/user/login";
 			}
