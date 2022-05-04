@@ -51,6 +51,7 @@
 
 <script>
 <%-- 로그인 버튼 클릭 메서드 --%>
+<%--
 $(".login_button").on("click", function(){
 	//alert("로그인 버튼 작동");
 	
@@ -58,29 +59,43 @@ $(".login_button").on("click", function(){
 	$("#login_form").attr("action", "/user/login");
 	$("#login_form").submit();
 });
-
+--%>
 </script>
 
 <script>
 <%-- 페이지가 로드되었을 때, 어디서 넘어왔는지 체크 --%>
-//var prevUrl = document.referrer;
-//console.log("이전 페이지 정보" + prevUrl);
+var prevUrl = document.referrer;
+console.log("이전 페이지 정보" + prevUrl);
 
 
 
 
-//var subprevUrl = prevUrl.indexOf('/')
-//console.log('========= ' + subprevUrl); //5가 찍힘
+var subprevUrl = prevUrl.indexOf('/board/list')
+console.log('========= ' + subprevUrl); //5가 찍힘
+//var subprevUrl = prevUrl.indexOf('/*')
+//console.log('========= ' + subprevUrl); //-1이 찍힘
 
 //===================================================================
-/*
-if(prevUrl.indexOf('/*') < 0){ //-1 < 0
-	console.log('여기는 / 기준으로 없을 때니까, 전 페이지가 없음');
+
+if(prevUrl == 'http://localhost:8080/' 
+	|| prevUrl == 'http://localhost:8080/user/login'
+	|| prevUrl == 'http://localhost:8080/user/join' 	){ 
+	console.log('페이지가 없음');
 	
-}else{
-	console.log('여기는 / 기준으로, 값이 있을 때 즉 0보다 클 때, 전 페이지가 있음');
+}else if(prevUrl !== 'http://localhost:8080/'){
+	console.log('전 페이지가 있음');
+	
+	$(".login_button").on("click", function(){
+		//alert("로그인 버튼 작동");
+		
+		/* 로그인 버튼 클릭 메서드 내부에 로그인 메서드를 서버에 요청하는 코드 */
+		$("#login_form").attr("action", "/user/login");
+		$("#login_form").submit();
+		location.href = prevUrl;
+	});
+	
 }
-*/
+
 </script>
 
 
