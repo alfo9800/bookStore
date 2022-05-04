@@ -51,32 +51,52 @@
 
 <script>
 <%-- 로그인 버튼 클릭 메서드 --%>
-<%--
+//var prevUrl = document.referrer;
+//console.log('전 페이지 : ' + prevUrl);
+
 $(".login_button").on("click", function(){
 	//alert("로그인 버튼 작동");
 	
 	/* 로그인 버튼 클릭 메서드 내부에 로그인 메서드를 서버에 요청하는 코드 */
-	$("#login_form").attr("action", "/user/login");
+	$("#login_form").attr("action", "/user/login");	
 	$("#login_form").submit();
+	/* 
+	$("#login_form").submit(function(e){
+		e.preventDefault();
+		var prevUrl = document.referrer;
+		console.log('전 페이지 : ' + prevUrl);
+		location.href = prevUrl;
+	});
+ */
+	
 });
---%>
+
 </script>
 
 <script>
 <%-- 페이지가 로드되었을 때, 어디서 넘어왔는지 체크 --%>
+/* 
 var prevUrl = document.referrer;
 console.log("이전 페이지 정보" + prevUrl);
 
+var page = prevUrl.indexOf('/user/login');
+console.log('=======> ' + page); // -1 출력
+
+if(prevUrl.indexOf('/user/login') != -1){
+	//window.location.href = "/";
+}else{
+	//window.location.href = prevUrl;
+}
+ */
 
 
-
-var subprevUrl = prevUrl.indexOf('/board/list')
-console.log('========= ' + subprevUrl); //5가 찍힘
+//var subprevUrl = prevUrl.indexOf('/board/list')
+//console.log('========= ' + subprevUrl); //5가 찍힘
 //var subprevUrl = prevUrl.indexOf('/*')
 //console.log('========= ' + subprevUrl); //-1이 찍힘
 
 //===================================================================
-
+/* 
 if(prevUrl == 'http://localhost:8080/' 
 	|| prevUrl == 'http://localhost:8080/user/login'
 	|| prevUrl == 'http://localhost:8080/user/join' 	){ 
@@ -84,18 +104,8 @@ if(prevUrl == 'http://localhost:8080/'
 	
 }else if(prevUrl !== 'http://localhost:8080/'){
 	console.log('전 페이지가 있음');
-	
-	$(".login_button").on("click", function(){
-		//alert("로그인 버튼 작동");
-		
-		/* 로그인 버튼 클릭 메서드 내부에 로그인 메서드를 서버에 요청하는 코드 */
-		$("#login_form").attr("action", "/user/login");
-		$("#login_form").submit();
-		location.href = prevUrl;
-	});
-	
 }
-
+ */
 </script>
 
 
