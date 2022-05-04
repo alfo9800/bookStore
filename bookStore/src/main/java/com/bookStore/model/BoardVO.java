@@ -13,6 +13,8 @@ import lombok.ToString;
 
 public class BoardVO {
 	
+	private int idx;
+	
 	 /* 게시판 번호 */
     private int bno;
     

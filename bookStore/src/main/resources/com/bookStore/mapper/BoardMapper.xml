@@ -14,13 +14,20 @@
 	<!-- select태그의 id속성 값은 '게시판 목록'메서드명과 동일해야 함 -->
 	<select id="getList" resultType="com.bookStore.model.BoardVO">
 		select * from bookStore_board
+	</select>	
+	<!-- 
+	<select id="getList" resultType="com.bookStore.model.BoardVO">
+		select (@rownum:=@rownum+1) as idx, b.*
+			from bookstore_board b, (select @rownum:=0) tmp;
 	</select>
+	 -->
 	
 	<!-- 게시판 목록 (페이징 처리 + Mysql) -->
 	<select id="getListPaging" resultType="com.bookStore.model.BoardVO">
 		 select * from (
 	             select bno, title, writer, regdate, boardcnt  
 	             from bookStore_board order by bno desc) as T1
+	     order by bno desc
 	     limit #{skip},#{amount}
 	</select>
 	

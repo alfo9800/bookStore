@@ -2,6 +2,7 @@
     pageEncoding="utf-8"%>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/fmt" prefix="fmt" %>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/functions" prefix="fn" %>
 <!DOCTYPE html>
 <html>
 <head>
@@ -156,6 +157,7 @@
 				<%-- <caption class="hdd">후기</caption> --%>
 				<thead>
 					<tr>
+						<th class="idx_width" scope="col">idx</th>
 						<th class="bno_width" scope="col">No</th>
 						<th class="title_width" scope="col">제목</th>
 						<th class="writer_width" scope="col">작성자</th>
@@ -172,7 +174,13 @@
 		                      ${pageVO.totalCount-(pageVO.page*pageVO.queryPerPageNum)+pageVO.queryPerPageNum-status.index}
 							</td>
 							 --%>
-							<td><c:out value="${list.bno}"></c:out></td>
+							<%-- <td>${fn:length(list.bno) - status.index}</td> --%>
+					
+							<td><c:out value="${pageMaker.total - (pageMaker.cri.pageNum -1) * pageMaker.cri.amount - status.index}" /></td>
+							
+							
+							
+							<td><c:out value="${list.bno}" /></td>
 							<td class="tit_notice">
 								<a class="move" href='<c:out value="${list.bno}" />'>
 									<c:out value="${list.title}" />
