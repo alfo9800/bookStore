@@ -157,7 +157,6 @@
 				<%-- <caption class="hdd">후기</caption> --%>
 				<thead>
 					<tr>
-						<th class="idx_width" scope="col">idx</th>
 						<th class="bno_width" scope="col">No</th>
 						<th class="title_width" scope="col">제목</th>
 						<th class="writer_width" scope="col">작성자</th>
@@ -176,11 +175,8 @@
 							 --%>
 							<%-- <td>${fn:length(list.bno) - status.index}</td> --%>
 					
-							<td><c:out value="${pageMaker.total - (pageMaker.cri.pageNum -1) * pageMaker.cri.amount - status.index}" /></td>
-							
-							
-							
-							<td><c:out value="${list.bno}" /></td>
+							<td><c:out value="${pageMaker.total - (pageMaker.cri.pageNum -1) * pageMaker.cri.amount - status.index}" /></td>							
+							<%-- <td><c:out value="${list.bno}" /></td> --%>
 							<td class="tit_notice">
 								<a class="move" href='<c:out value="${list.bno}" />'>
 									<c:out value="${list.title}" />
@@ -249,8 +245,10 @@
 	$("#enroll_btn").on("click",function(e){
 		e.preventDefault();
 		if(user == '') { //위 로그를 찍어보니 userId가 없을 때는 공백인 값이 나와서 비교를 ''으로 함
-			alert('로그인이 필요합니다. 로그인 페이지로 이동합니다');
-			location.href="/user/login";
+			var yes = confirm('로그인이 필요합니다. 로그인 페이지로 이동하시겠습니까?');
+			if(yes == true) {
+				location.href="/user/login";
+			}
 		}else{
 		 	alert('회원이므로 등록페이지로 이동합니다');
 		 	location.href="/board/enroll";
@@ -376,7 +374,7 @@
 	history.pushState(null, null, ''); 
 	
 	window.onpopstate = function(event){ 
-		var prevUrl = document.referrer;
+		var prevUrl = document.referrer; //링크를 통해 현재페이지로 이동 시킨, 전 페이지의 url정보를 반환.
 		
 		if(prevUrl.indexOf('/board/enroll') < 0){ // /board/list로 작성하면 prevUrl에 없기때문에 -1로 반환이 됨. 그래서 무조건 '값이 존재할 것'이 실행 된다. 
 			//console.log('이전 페이지는 게시판 등록이 아님 : ' + prevUrl);

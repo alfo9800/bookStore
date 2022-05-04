@@ -84,6 +84,15 @@ public class UserController {
 	@PostMapping("/login")
 	public String loginPOST(UserVO user, HttpServletRequest request, RedirectAttributes rttr) throws Exception {
 		
+		//========================================= 등록 버튼 클릭 후 회원이 아닐 시, 로그인 페이지로 이동하는 것은 '자바스크립트'로 구현이 되어있기 때문에.. 가져와지지 않음 / 결국 자바스크립트로 구현을 해야한다 / 목록 -> 조회로 이동을 했을 떄는 referer 잘 가져와 진다
+		//String referer = request.getHeader("referer");
+		//request.getSession().setAttribute("redirectUrl", referer);
+		
+		//log.info("referer : " + referer);
+		//=========================================
+
+		
+		
 		//log.info("login메서드 진입");
 		log.info("전달된 데이터 : " + user);
 		
@@ -99,6 +108,7 @@ public class UserController {
 		session.setAttribute("user", lvo); //세션이 유지되는 동안 저장됨 //setAttribute는 name, value 쌍으로 객체 object를 저장하는 메서드 
 		
 		//log.info("세션값에는 이게 저장됨 :" + session.getAttribute("user"));
+		
 		return "redirect:/";
 	}
 	

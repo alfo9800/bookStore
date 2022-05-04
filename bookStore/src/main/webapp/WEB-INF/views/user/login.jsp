@@ -57,10 +57,32 @@ $(".login_button").on("click", function(){
 	/* 로그인 버튼 클릭 메서드 내부에 로그인 메서드를 서버에 요청하는 코드 */
 	$("#login_form").attr("action", "/user/login");
 	$("#login_form").submit();
-	
 });
 
 </script>
+
+<script>
+<%-- 페이지가 로드되었을 때, 어디서 넘어왔는지 체크 --%>
+//var prevUrl = document.referrer;
+//console.log("이전 페이지 정보" + prevUrl);
+
+
+
+
+//var subprevUrl = prevUrl.indexOf('/')
+//console.log('========= ' + subprevUrl); //5가 찍힘
+
+//===================================================================
+/*
+if(prevUrl.indexOf('/*') < 0){ //-1 < 0
+	console.log('여기는 / 기준으로 없을 때니까, 전 페이지가 없음');
+	
+}else{
+	console.log('여기는 / 기준으로, 값이 있을 때 즉 0보다 클 때, 전 페이지가 있음');
+}
+*/
+</script>
+
 
 </body>
 </html>
