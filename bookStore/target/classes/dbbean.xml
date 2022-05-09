@@ -16,7 +16,7 @@
 	<!-- bean정의 -->
 	<bean id="entityManagerFactory" class="org.springframework.orm.jpa.LocalContainerEntityManagerFactoryBean">
 		<property name="dataSource" ref="dataSource" ></property> <!-- jdbc:embedded-database 마련한 Bean이 지정됨 -->
-		<property name="jpaVendorAdaptor"> <!-- JPA어댑터라는 것을 지정 -->
+		<property name="jpaVendorAdapter"> <!-- JPA어댑터라는 것을 지정 -->
 			<bean class="org.springframework.orm.jpa.vendor.HibernateJpaVendorAdapter"> <!-- 여기에서는 HibernateJpaVendorAdapter 클래스의 Bean을 사용할 수 있어야 함 -->
 				<property name="generateDdl" value="true" /> <!-- 또한, 이 bean에는 generateDdl이라는 속성을 제공하고, 데이터베이스를 자동으로 생성할 수 있도록 해야 함 -->
 			</bean>
@@ -26,3 +26,5 @@
 </beans>
 
 <!-- entityManagerFactory 속성은 Hibernate의 것을 이용하고 있지만, 다른 라이브러리를 사용할 수도 있다 -->
+
+<!-- SampleEntityConfig.java클래스를 구현 함으로써, 불필요해짐 -->
