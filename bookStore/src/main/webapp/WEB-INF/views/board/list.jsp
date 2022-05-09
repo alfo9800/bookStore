@@ -139,8 +139,8 @@
 			<form id="search_form" name="search_form" action="/board/list" class="minisrch_form">		
 				<fieldset>
 					<!-- 정렬 -->
-					<select id="sort">
-						<option value="1" selected>최신순</option>
+					<select id="sort" onchange="showValue(this)">
+						<option value="<c:out value="${list}" />" selected>최신순</option>
 						<option value="2">오래된순</option>
 						<option value="3">조회순</option>
 					</select>
@@ -232,8 +232,12 @@
 
 
 
-
-
+<script type="text/javascript">
+	let showValue = (target) => {
+		//선택한 option의 value값
+		console.log(target.value);
+	}
+</script>
 
 
 <script type="text/javascript">

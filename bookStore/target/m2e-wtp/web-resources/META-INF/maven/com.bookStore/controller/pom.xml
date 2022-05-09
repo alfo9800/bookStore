@@ -162,6 +162,21 @@
 		    <version>${org.springframework-version}</version>
 		</dependency>
 		
+		
+		<!-- 하이버네이트 추가 -->
+		<dependency>
+		   <groupId>org.hibernate</groupId>
+		   <artifactId>hibernate-entitymanager</artifactId>
+		   <version>5.1.0.Final</version>
+		</dependency>
+      	<!-- JPA 추가 -->
+		<dependency>
+		   <groupId>org.springframework</groupId>
+		   <artifactId>spring-orm</artifactId>
+		   <version>${org.springframework-version}</version>
+		</dependency>
+		
+		
 		<!-- ======================================================================== -->
 
 		<!-- @Inject -->
