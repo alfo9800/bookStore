@@ -32,7 +32,10 @@ public class App {
 		/* update entity */
 		updateEntity(1L);
 		updateEntity(3L);
-		
+
+		/* delete entity */
+		deleteEntity(1L);
+		deleteEntity(3L);
 		
 		/* get list */
 		Query query = manager.createQuery("from SampleEntity"); //해당 메소드를 호출하여 전체 엔티티 목록을 검색 //SampleEntity엔티티를 모두 취득하는 것을 나타내는 구문 //(from 엔티티)를 인수로 받으면 그 엔티티 목록을 얻을 수 있음
@@ -100,6 +103,26 @@ public class App {
 			
 			manager.flush();
 		
+		transaction.commit();
+	}
+	
+	
+	
+	
+	
+	
+	/* delete entity */
+	public static void deleteEntity(long id) {
+		SampleEntity entity = manager.find(SampleEntity.class, id); //manager의 find를 사용하여 지정된 id의 엔티티를 얻어옴
+		
+		EntityTransaction transaction = manager.getTransaction();
+		
+		transaction.begin();
+		
+			manager.remove(entity);
+			
+			manager.flush();
+			
 		transaction.commit();
 	}
 	
