@@ -1,4 +1,4 @@
-package com.bookStore.DAO;
+package com.bookStore.mapper;
 
 import com.bookStore.model.UserVO;
 

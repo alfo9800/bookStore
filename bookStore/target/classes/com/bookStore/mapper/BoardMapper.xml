@@ -2,7 +2,7 @@
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 
 <!-- namespace 속성 값을 앞에서 생성하고, 작성한 Mapper인터페이스의 경로를 포함하는 인터페이스의 이름을 작성해야 함 -->
-<mapper namespace="com.bookStore.DAO.BoardMapper">
+<mapper namespace="com.bookStore.mapper.BoardMapper">
 
 	<!-- 게시판 등록 -->
 	<!-- #{} : get/set을 의미 ====> boardVO 멤버변수인 title,content,writer에 값이 담긴 경우 그 값들이 각각 #{title}.. 대체하여 SQL문이 실행됨 -->

@@ -5,7 +5,7 @@ import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
-import com.bookStore.DAO.BoardMapper;
+import com.bookStore.mapper.BoardMapper;
 import com.bookStore.model.BoardVO;
 import com.bookStore.model.Criteria;
 

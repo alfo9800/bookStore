@@ -3,7 +3,7 @@ package com.bookStore.service;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
-import com.bookStore.DAO.UserMapper;
+import com.bookStore.mapper.UserMapper;
 import com.bookStore.model.UserVO;
 
 @Service

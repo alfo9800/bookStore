@@ -10,7 +10,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.test.context.ContextConfiguration;
 import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
 
-import com.bookStore.DAO.BoardMapper;
+import com.bookStore.mapper.BoardMapper;
 import com.bookStore.model.BoardVO;
 import com.bookStore.model.Criteria;
 

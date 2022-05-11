@@ -141,7 +141,6 @@ $(document).ready(function () {
 <script>
 	let form = $("#insertForm"); //게시물 등록
 	
-	/* 수정 버튼 */	 
 	$("#insert_btn").on("click", function(e){
 		form.submit();
 	});
