@@ -11,7 +11,7 @@ public interface BoardService {
 	public void insert(BoardVO board);
 	
 	/* 게시판 목록 */
-	public List<BoardVO> getList();
+	public List<BoardVO> list();
 	
 	/* 게시판 목록(체이징 적용) */
 	public List<BoardVO> getListPaging(Criteria cri);

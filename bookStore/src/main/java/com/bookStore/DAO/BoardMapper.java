@@ -8,13 +8,13 @@ import com.bookStore.model.Criteria;
 /* DAO의 역할이었다.. */
 public interface BoardMapper {
 
-	//게시판 등록 쿼리를 요청하는 enroll()메서드 코드
+	//게시판 등록 쿼리를 요청하는 insert()메서드 코드
 	/* 작가 등록 */
 	public void insert(BoardVO board);
 	
 	//DB에 저장된 board테이블의 모든 행의 정보를 출력 시키기 위해 getList()메서드 코드
 	/* 게시판 목록 */
-	public List<BoardVO> getList();
+	public List<BoardVO> list();
 	
 	//getList의 역할도 하면서 단지 쿼리만 조금 수정되는 것이기 때문에 반환타입은 동일 & pageNum, amount의 정보를 DB에 전달하기 위해서 Criteria클래스 파라미터로 부여
 	/* 게시판 목록(페이징 적용) */

@@ -147,11 +147,13 @@ $(document).ready(function () {
 	});
 	
 	/* 작성 취소 버튼 */
+	/* 
 	$("#cancel_btn").on("click", function(e){
 		form.find("#bno").remove();
 		form.attr("action", "/board/list");
 		form.submit();
 	});
+	 */
 	
 </script>
 

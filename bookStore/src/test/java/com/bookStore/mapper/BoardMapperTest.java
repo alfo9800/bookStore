@@ -29,7 +29,7 @@ public class BoardMapperTest {
 	
 	//게시판 등록 테스트 : DB에 title, Content, Writer를 test로 넣어준다
 	@Test 
-	public void testEnroll() {
+	public void testInsert() {
 		BoardVO vo = new BoardVO();
 		
 		vo.setTitle("mapper test");
@@ -43,7 +43,7 @@ public class BoardMapperTest {
 	@Test 
 	public void testGetList() {
 		//게시판 목록 메소드를 수행 후 반환 받은 list객체
-		List list = mapper.getList();
+		List list = mapper.list();
 		
 		//일반 for문을 통해 모든 요소를 출력
 		/*

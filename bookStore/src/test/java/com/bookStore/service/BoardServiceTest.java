@@ -38,7 +38,7 @@ public class BoardServiceTest {
 	
 	/* //게시판 목록
 	@Test
-	public void testGetList() {
+	public void testList() {
 		service.getList().forEach(board -> log.info("" + board));
 	}
 	*/

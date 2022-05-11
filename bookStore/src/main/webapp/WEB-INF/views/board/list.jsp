@@ -36,7 +36,7 @@
 <body>
 
 <!-- <h1>목록페이지 입니다</h1> -->
-<!-- <a href="/board/enroll">게시판 등록</a> -->
+<!-- <a href="/board/insert">게시판 등록</a> -->
 
 <%-- 
 <div class="container" style="padding-top:50px;">
@@ -50,7 +50,7 @@
 
 
 		<div class="table_wrap" id="table_wrap">
-			<a href="/board/enroll" class="top_btn">게시판 등록</a>
+			<a href="/board/insert" class="top_btn">게시판 등록</a>
 			<table id="Btable">
 				<thead>
 					<tr>
@@ -209,7 +209,7 @@
 			<!-- //페이징처리영역 -->
 			
 			<p class="btn_line" align="right">
-				<a href="/board/enroll" class="btn_baseColor enroll_go" id="enroll_btn">등록</a>
+				<a href="/board/insert" class="btn_baseColor insert_go" id="insert_btn">등록</a>
 			</p>
 		</div>
 		
@@ -246,7 +246,7 @@
 	console.log('=========== ' + user);
 	
 	/* 등록버튼 클릭 시 이동 */
-	$("#enroll_btn").on("click",function(e){
+	$("#insert_btn").on("click",function(e){
 		e.preventDefault();
 		if(user == '') { //위 로그를 찍어보니 userId가 없을 때는 공백인 값이 나와서 비교를 ''으로 함
 			var yes = confirm('로그인이 필요합니다. 로그인 페이지로 이동하시겠습니까?'); //확인을 선택하면, yes에 true 취소를 선책하면, yes에 false값이 들어감
@@ -255,7 +255,7 @@
 			}
 		}else{
 		 	alert('회원이므로 등록페이지로 이동합니다');
-		 	location.href="/board/enroll";
+		 	location.href="/board/insert";
 		}
 	});
 	
@@ -273,7 +273,7 @@
 				return; //result에 담긴 값이 아무것도 없을 경우 실행되지 않음
 			}
 			
-			if(result === "enroll success"){
+			if(result === "insert success"){
 				alert("등록이 완료되었습니다"); //result에 담긴 값이 있을 경우 어떠한 메시지가 있는지 체크한 뒤 게시판 등록 완료되었다는 경고창을 띄움
 			}
 			
@@ -333,7 +333,7 @@
 				return; //result에 담긴 값이 아무것도 없을 경우 실행되지 않음
 			}
 			
-			if(result === "enroll success"){
+			if(result === "insert success"){
 				alert("등록이 완료되었습니다"); //result에 담긴 값이 있을 경우 어떠한 메시지가 있는지 체크한 뒤 게시판 등록 완료되었다는 경고창을 띄움
 			}
 			
@@ -380,7 +380,7 @@
 	window.onpopstate = function(event){ 
 		var prevUrl = document.referrer; //링크를 통해 현재페이지로 이동 시킨, 전 페이지의 url정보를 반환.
 		
-		if(prevUrl.indexOf('/board/enroll') < 0){ // /board/list로 작성하면 prevUrl에 없기때문에 -1로 반환이 됨. 그래서 무조건 '값이 존재할 것'이 실행 된다. 
+		if(prevUrl.indexOf('/board/insert') < 0){ // /board/list로 작성하면 prevUrl에 없기때문에 -1로 반환이 됨. 그래서 무조건 '값이 존재할 것'이 실행 된다. 
 			//console.log('이전 페이지는 게시판 등록이 아님 : ' + prevUrl);
 			//alert('제출한 양식을 가져옵니다'); //이벤트 감지 시 무조건 alert가 출력됨 -> 주석처리
 			history.back(); //등록 창으로 감, 데이터 값은 존재
