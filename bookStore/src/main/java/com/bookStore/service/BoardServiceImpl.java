@@ -5,7 +5,7 @@ import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
-import com.bookStore.mapper.BoardMapper;
+import com.bookStore.DAO.BoardMapper;
 import com.bookStore.model.BoardVO;
 import com.bookStore.model.Criteria;
 
@@ -17,8 +17,8 @@ public class BoardServiceImpl implements BoardService {
 	
 	
 	@Override //BoardService interface에서 선언한 메서드를 오버라이딩하여 메서드의 구현부를 작성
-	public void enroll(BoardVO board) {
-		mapper.enroll(board);
+	public void insert(BoardVO board) {
+		mapper.insert(board);
 		
 	}
 

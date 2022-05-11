@@ -61,19 +61,19 @@ public class BoardController {
 	}
 	
 	/* 게시판 등록 페이지 진입 */
-	@GetMapping("/enroll")
-	public void boardEnrollGET() {		
+	@GetMapping("/insert")
+	public void boardInsertGET() {		
 		log.info("게시판 등록 페이지 진입");		
 	}
 	
-	/* 게시판 등록 POST (enroll.jsp view에서 받은 값) */
-	@PostMapping("/enroll")
-	public String boardEnrollPOST(BoardVO board, RedirectAttributes rttr) {
+	/* 게시판 등록 POST (insert.jsp view에서 받은 값) */
+	@PostMapping("/insert")
+	public String boardInsertPOST(BoardVO board, RedirectAttributes rttr) {
 		log.info("BoardVO : " + board);
 		
-		bservice.enroll(board); //enroll에서 받은 파라미터값을 service로 넘겨줌
+		bservice.insert(board); //insert에서 받은 파라미터값을 service로 넘겨줌
 		
-		rttr.addFlashAttribute("result", "enroll success"); //'게시판 목록'화면으로 이동시 등록 성공 여부를 알리는 문자를 전송
+		rttr.addFlashAttribute("result", "insert success"); //'게시판 목록'화면으로 이동시 등록 성공 여부를 알리는 문자를 전송
 		
 		return "redirect:/board/list";//넘겨 주었기 때문에 더 이상 머물러 있을 필요 X -> list로 이동
 	}

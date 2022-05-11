@@ -10,7 +10,7 @@
 <jsp:include page="/WEB-INF/views/board/include/header.jsp" />
 
 <!-- <link rel="stylesheet" href="/resources/css/board/list.css" > -->
-<link rel="stylesheet" href="/resources/css/board/enroll.css" >
+<link rel="stylesheet" href="/resources/css/board/insert.css" >
 
 <!-- adminLTE -->
 <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/admin-lte@3.1/dist/css/adminlte.min.css">
@@ -25,7 +25,7 @@
 
 <%-- view에서 controller로 데이터를 전송을 하고 그 데이터가 제대로 들어오는지 확인하기 위해 form 작성 --%>
 <!-- 
-<form id="enroll_form" action="/board/enroll" method="post">
+<form id="insert_form" action="/board/insert" method="post">
 	
 	<div class="input_wrap">
 		<label>Title</label>
@@ -69,7 +69,7 @@
 <div class="container mod_container">
 	<div class="bodytext_area box_inner">
 				<!-- 폼영역 -->
-				<form method="post" id="enrollForm" action="/board/enroll" class="appForm">
+				<form method="post" id="insertForm" action="/board/insert" class="appForm">
 					<fieldset>
 						<ul class="app_list">			
 							<li class="clear">
@@ -119,7 +119,7 @@
 				</form>
 				
 				<div class="btn_line">
-					<a type="button" class="btn_bbs" id="enroll_btn">등록</a>
+					<a type="button" class="btn_bbs" id="insert_btn">등록</a>
 					<!-- <a type="button" class="btn_bbs" id="cancel_btn">작성 취소</a> --> <!-- Resolved [org.springframework.web.HttpRequestMethodNotSupportedException: Request method 'POST' not supported] -->
 				</div>
 				
@@ -139,10 +139,10 @@ $(document).ready(function () {
  
 <!-- 버튼 동작되도록 js구현 / '#'은 태그들의 id값이다 -->
 <script>
-	let form = $("#enrollForm"); //게시물 등록
+	let form = $("#insertForm"); //게시물 등록
 	
 	/* 수정 버튼 */	 
-	$("#enroll_btn").on("click", function(e){
+	$("#insert_btn").on("click", function(e){
 		form.submit();
 	});
 	

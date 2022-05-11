@@ -8,7 +8,7 @@ import com.bookStore.model.Criteria;
 public interface BoardService {
 
 	/* 게시판 등록 */
-	public void enroll(BoardVO board);
+	public void insert(BoardVO board);
 	
 	/* 게시판 목록 */
 	public List<BoardVO> getList();

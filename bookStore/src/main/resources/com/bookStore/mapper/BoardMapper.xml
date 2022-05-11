@@ -6,7 +6,7 @@
 
 	<!-- 게시판 등록 -->
 	<!-- #{} : get/set을 의미 ====> boardVO 멤버변수인 title,content,writer에 값이 담긴 경우 그 값들이 각각 #{title}.. 대체하여 SQL문이 실행됨 -->
-	<insert id="enroll">
+	<insert id="insert">
 		insert into bookstore_board(title, content, writer, boardcnt) values (#{title}, #{content}, #{writer}, 0)
 	</insert>
 	 

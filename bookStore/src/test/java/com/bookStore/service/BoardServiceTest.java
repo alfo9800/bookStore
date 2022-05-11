@@ -25,14 +25,14 @@ public class BoardServiceTest {
 	
 	/* //게시판 등록
 	@Test
-	public void testEnroll() {
+	public void testInsert() {
 		BoardVO vo = new BoardVO();
 		
 		vo.setTitle("service test");
 		vo.setContent("service test");
 		vo.setWriter("service test");
 		
-		service.enroll(vo);
+		service.insert(vo);
 	}
 	*/
 	

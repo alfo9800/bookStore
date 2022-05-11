@@ -10,6 +10,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.test.context.ContextConfiguration;
 import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
 
+import com.bookStore.DAO.BoardMapper;
 import com.bookStore.model.BoardVO;
 import com.bookStore.model.Criteria;
 
@@ -35,7 +36,7 @@ public class BoardMapperTest {
 		vo.setContent("mapper test");
 		vo.setWriter("mapper test");
 		
-		mapper.enroll(vo);
+		mapper.insert(vo);
 	}
 	
 	//게시판 목록 테스트
