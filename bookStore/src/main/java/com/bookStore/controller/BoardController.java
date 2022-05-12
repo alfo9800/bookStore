@@ -19,7 +19,7 @@ import lombok.extern.log4j.Log4j;
 
 /** @author Han mirae
  * 
- * 1) 게시판 목록, 등록 페이지 생성
+ * 1) 게시판 목록, 등록, 수정, 삭제 페이지 생성
  * 2) url생성을 통해 해당 페이지를 이동할 수 있도록 url맵핑 메서드를 작성
  * 
  * @GetMapping("") <=동일한 역할의 어노테이션=> @RequestMapping(value="", method=RequestMethod.GET)  
@@ -55,9 +55,9 @@ public class BoardController {
 		
 		int total = bservice.getTotal(); //게시판 총 갯수
 		
-		PageMakerDTO pageMake = new PageMakerDTO(cri, total); //변수를 일일 선언 (total, pageMake)한 것은 이해를 위해서 -> 파라미터에 바로 메소드와 인스턴스 선언을 작성해도 됨
+		PageMakerDTO paging = new PageMakerDTO(cri, total); //변수를 일일 선언 (total, paging)한 것은 이해를 위해서 -> 파라미터에 바로 메소드와 인스턴스 선언을 작성해도 됨
 		
-		model.addAttribute("pageMaker", pageMake);
+		model.addAttribute("pageMaker", paging);
 	}
 	
 	/* 게시판 등록 페이지 진입 */
@@ -73,7 +73,7 @@ public class BoardController {
 		
 		bservice.insert(board); //insert에서 받은 파라미터값을 service로 넘겨줌
 		
-		rttr.addFlashAttribute("result", "insert success"); //'게시판 목록'화면으로 이동시 등록 성공 여부를 알리는 문자를 전송
+		rttr.addFlashAttribute("result", "insert success"); //'게시판 목록'화면으로 이동시 등록 성공 여부를 알리는 문자를 전송 //일회성으로만 데이터를 전송하기 위함. 혹, 전달받은 데이터가 계속 잔존할 경우 경고창이 계속 뜰 수 있기 때문
 		
 		return "redirect:/board/list";//넘겨 주었기 때문에 더 이상 머물러 있을 필요 X -> list로 이동
 	}

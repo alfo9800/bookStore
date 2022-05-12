@@ -90,30 +90,6 @@
 									<input value="${user.userId}" type="text" name="writer" class="w100p" id="writer_lbl" readonly="readonly" />
 								</div>
 							</li>
-							<%-- 
-							<li class="clear">
-			                    <label for="file_lbl" class="tit_lbl">첨부파일</label>
-					                 
-					                 <c:forEach begin="0" end="1" var="index">   
-					                    <div class="div_file">
-						                    <div class="custom-file" style="width:96%;margin:0 2%;">
-							                    <input type="file" name="file" class="custom-file-input" id="customFile_${index}">
-							                    <label class="custom-file-label" for="customFile" style="color:#999;">파일첨부${index}</label>
-							                </div>
-							                <c:if test="${boardVO.save_file_names[index] != null}">							
-												<br>
-												<div class="tit_lbl">
-												<a href="/download?save_file_name=${boardVO.save_file_names[index]}&real_file_name=${boardVO.real_file_names[index]}" >${boardVO.real_file_names[index]} 다운로드 링크[${index}]</a>			
-												&nbsp;
-												<input type="hidden"  name="save_file_name" value="${boardVO.save_file_names[index]}">
-												<button type="button" class="btn btn_file_delete" style="border:1px solid #ccc;">삭제</button>
-												</div>
-											</c:if>
-							                <p></p> <!-- 사이에 공백 주기 위해 -->
-						                </div>
-						           	 </c:forEach>							           	 				           	   
-			                </li>
-			                 --%>
 						</ul>	
 					</fieldset>
 				</form>
@@ -144,7 +120,9 @@ $(document).ready(function () {
 	$("#insert_btn").on("click", function(e){
 		form.submit();
 	});
-	
+</script>
+
+<script>
 	/* 작성 취소 버튼 */
 	/* 
 	$("#cancel_btn").on("click", function(e){
@@ -153,8 +131,8 @@ $(document).ready(function () {
 		form.submit();
 	});
 	 */
-	
-</script>
+</script>		
+
 
 <script>
 $(document).ready(function(){

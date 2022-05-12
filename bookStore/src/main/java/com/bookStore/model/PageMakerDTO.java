@@ -36,12 +36,12 @@ public class PageMakerDTO {
 		this.total = total;
 		
 		/* 마지막 페이지 */ 
-		this.endPage = (int) (Math.ceil(cri.getPageNum()/10.0))*10;
+		this.endPage = (int) (Math.ceil(cri.getPageNum()/10.0))*10; //만약, pageNum이 7이라면 (cri.getPageNum()/10.0)는 0.7 그런데 //Math.ceil함수는 소수점 자리가 나오면 무조건 올림. 즉, 1이됨. //결론 : 마지막 페이지는 10이 계산되어서 나옴 
 		/* 시작 페이지 */
-		this.startPage = this.endPage -9;
+		this.startPage = this.endPage -9; 
 		
 		/* 전체 마지막 페이지 */
-		int realEnd = (int) (Math.ceil(total * 1.0/cri.getAmount()));
+		int realEnd = (int) (Math.ceil(total * 1.0/cri.getAmount())); //만약, total이 23이라면 23.0 //보여질 갯수인 amount가 10이라면 //2.3의 결과가 나옴 //Math.ceil함수는 무조건 올림이므로, 전체 마지막 페이지는 3이 된다.
 		
 		/* 전체 마지막 페이지(realend)가 화면에 보이는 마지막 페이지(endPage)보다 작은 경우, 보이는 페이지(endPage) 값 조정 */
 		if(realEnd < this.endPage) {

@@ -30,7 +30,7 @@
 	     order by bno desc
 	     limit #{skip},#{amount}
 	</select>
-	
+	<!-- 예를 들어서 limit <skip:10> <count:10> -> 10개의 행을 skip하고 10개(count)행을 선택한다는 의미 / 만약 51행부터 60행을 원한다면, 'limit 50,10' 작성 -->
 	
 	<!-- 게시판 상세조회 -->
 	<select id="getPage" resultType="com.bookStore.model.BoardVO">

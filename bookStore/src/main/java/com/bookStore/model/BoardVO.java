@@ -13,9 +13,10 @@ import lombok.ToString;
 
 public class BoardVO {
 	
-	private int idx;
+	/* 화면단에 보여지는 게시판 번호 */
+	//private int idx;
 	
-	 /* 게시판 번호 */
+	/* 게시판 번호 */
     private int bno;
     
     /* 게시판 제목 */

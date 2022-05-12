@@ -136,6 +136,7 @@
 			
 			
 			<!-- 검색폼영역 -->
+			<%-- 
 			<form id="search_form" name="search_form" action="/board/list" class="minisrch_form">		
 				<fieldset>
 					<!-- 정렬 -->
@@ -143,18 +144,17 @@
 						<option value="<c:out value="${list}" />" selected>최신순</option>
 						<option value="2">오래된순</option>
 						<option value="3">조회순</option>
-					</select>
+					</select>					
 					<input name="search_type" value="all" type="hidden">
 					<input name="search_keyword" type="text" class="tbox" title="검색어를 입력해주세요" placeholder="검색어를 입력해주세요">
 					<button class="btn_srch">검색</button>
 				</fieldset>
 			</form>
-			
+			 --%>
 			<!-- //검색폼영역 -->
 			
 			<!-- 게시물리스트영역 -->
 			<table class="bbsListTbl" summary="번호,제목,조회수,작성일 등을 제공하는 표">
-				<%-- <caption class="hdd">후기</caption> --%>
 				<thead>
 					<tr>
 						<th class="bno_width" scope="col">No</th>
@@ -167,16 +167,7 @@
 				<tbody>			
 					<c:forEach items="${list}" var="list" varStatus="status">
 						<tr>
-							<%-- 
-							<td>
-							<!-- 전체게시물-(현재페이지x1페이지당보여줄개수)+1페이지당보여줄개수-현재인덱스값 -->
-		                      ${pageVO.totalCount-(pageVO.page*pageVO.queryPerPageNum)+pageVO.queryPerPageNum-status.index}
-							</td>
-							 --%>
-							<%-- <td>${fn:length(list.bno) - status.index}</td> --%>
-					
-							<td><c:out value="${pageMaker.total - (pageMaker.cri.pageNum -1) * pageMaker.cri.amount - status.index}" /></td>							
-							<%-- <td><c:out value="${list.bno}" /></td> --%>
+						<td><c:out value="${pageMaker.total - (pageMaker.cri.pageNum -1) * pageMaker.cri.amount - status.index}" /></td>							
 							<td class="tit_notice">
 								<a class="move" href='<c:out value="${list.bno}" />'>
 									<c:out value="${list.title}" />
@@ -190,6 +181,22 @@
 				</tbody>
 			</table>
 
+
+
+
+
+							<%-- 
+							<td>
+							<!-- 전체게시물-(현재페이지x1페이지당보여줄개수)+1페이지당보여줄개수-현재인덱스값 -->
+		                      ${pageVO.totalCount-(pageVO.page*pageVO.queryPerPageNum)+pageVO.queryPerPageNum-status.index}
+							</td>
+							 --%>
+							<%-- <td>${fn:length(list.bno) - status.index}</td> --%>
+					
+	
+
+
+
 			
 			<!-- 페이징처리영역 -->
 			<div class="pagination">
@@ -198,8 +205,8 @@
 					<a href="${pageMaker.startPage-1}" class="prevpage pbtn"><img src="../../../resources/img/btn_prevpage.png" alt="이전 페이지로 이동"></a>
 				</c:if>
 				
-				<c:forEach begin="${pageMaker.startPage}" end="${pageMaker.endPage}" var="num">
-					<li class="pagenum ${pageMaker.cri.pageNum == num ? 'active' : ''}"><a href="${num}">${num}</a></li>
+				<c:forEach begin="${pageMaker.startPage}" end="${pageMaker.endPage}" var="num"> <!-- for문으로 시작페이지와 마지막페이지를 num변수로 출력 -->
+					<li class="pagenum ${pageMaker.cri.pageNum == num ? 'active' : ''}"><a href="${num}">${num}</a></li> <!-- css 입히고 나서 active 활성화 안됨.. -->
 				</c:forEach>
 				
 				<c:if test="${pageMaker.next}">
@@ -248,7 +255,7 @@
 	/* 등록버튼 클릭 시 이동 */
 	$("#insert_btn").on("click",function(e){
 		e.preventDefault();
-		if(user == '') { //위 로그를 찍어보니 userId가 없을 때는 공백인 값이 나와서 비교를 ''으로 함
+		if(user == '') { //위 로그를 찍어보니 userId가 없을 때는 공백인 값이 나와서 비교를 null이 아닌 ''으로 함
 			var yes = confirm('로그인이 필요합니다. 로그인 페이지로 이동하시겠습니까?'); //확인을 선택하면, yes에 true 취소를 선책하면, yes에 false값이 들어감
 			if(yes == true) {
 				location.href="/user/login";
@@ -301,11 +308,7 @@
 			moveForm.attr("action", "/board/get"); //form태그 action속성 추가
 			moveForm.submit(); //form태그 내부 데이터 서버 전송
 		}
-		
-		
-		//moveForm.append("<input type='hidden' name='bno' value='"+ $(this).attr("href") +"'>"); //form태그 내부 bno값을 저장하는 input태그 생성
-		//moveForm.attr("action", "/board/get"); //form태그 action속성 추가
-		//moveForm.submit(); //form태그 내부 데이터 서버 전송
+
 	});
 	
 	<%-- 페이징 처리 --%>	
@@ -319,68 +322,15 @@
 </script>
 
 
-<%-- 
-<script type="text/javascript">
-
-게시판 등록 완료 시 띄우는 '알림창'
-	$(document).ready(function(){
-		let result = '<c:out value="${result}" />'; //서버로부터 전달 받은 값을 저장하기 위한 result변수를 선언한 뒤, 전달받은 값으로 초기화
-		
-		checkAlert(result);
-		
-		function checkAlert(result){
-			if(result === ''){
-				return; //result에 담긴 값이 아무것도 없을 경우 실행되지 않음
-			}
-			
-			if(result === "insert success"){
-				alert("등록이 완료되었습니다"); //result에 담긴 값이 있을 경우 어떠한 메시지가 있는지 체크한 뒤 게시판 등록 완료되었다는 경고창을 띄움
-			}
-			
-			if(result === "modify success"){
-				alert("수정이 완료되었습니다"); 
-			}
-			
-			if(result === "delete success"){
-				alert("삭제가 완료되었습니다");
-			}
-		}
-	
-	});
-	
-게시판 제목을 클릭 했을 때, 상세조회로 이동
-	let moveForm = $("#moveForm");
-	
-	$(".move").on("click", function(e){ 
-		e.preventDefault(); //클릭한 a태그 기능 정지 //이벤트 작동 X
-		
-		moveForm.append("<input type='hidden' name='bno' value='"+ $(this).attr("href") +"'>"); //form태그 내부 bno값을 저장하는 input태그 생성
-		moveForm.attr("action", "/board/get"); //form태그 action속성 추가
-		moveForm.submit(); //form태그 내부 데이터 서버 전송
-	});
-	
-페이징 처리	
-	$(".pageInfo a").on("click", function(e){ //페이지 번호 (a태그) 클릭하였을 때
-		e.preventDefault(); //a태그 동작 멈춤
-		moveForm.find("input[name='pageNum']").val($(this).attr("href")); //form 태그 내부 pageNum과 관련된 input태그의 value속성값을 클릭한 a태그의 페이지 번호를 삽입
-		moveForm.attr("action", "/board/list"); //form태그 action속성 추가 및 '/board/list' 속성값으로 추가
-		moveForm.submit();
-	});
-	
-	
-</script>
-
- --%>
-
-
 
 <script> //문제 : 1) 마우스 뒤로가기로 했을 때는 된다. 그런데 브라우저 왼쪽 상단의 뒤로가기를 눌렀을 때는 안된다. 2) 뒤로가기 3번하면 다시 데이터 있는 상태로 돌아오게 됨.
-	history.pushState(null, null, ''); 
+	history.pushState(null, null, '');  //data, title, url의 값이 들어감. 비워두면 이벤트 발생의 플래그 정도로 사용할 수 있음
+	   									//기존 페이지 이외에 입력한 url로 페이지가 하나 더 만들어지는 것을 알 수 있음
 	
-	window.onpopstate = function(event){ 
+	window.onpopstate = function(event){ //뒤로가기 이벤트 캐치
 		var prevUrl = document.referrer; //링크를 통해 현재페이지로 이동 시킨, 전 페이지의 url정보를 반환.
 		
-		if(prevUrl.indexOf('/board/insert') < 0){ // /board/list로 작성하면 prevUrl에 없기때문에 -1로 반환이 됨. 그래서 무조건 '값이 존재할 것'이 실행 된다. 
+		if(prevUrl.indexOf('/board/insert') < 0){ // 양수로 나오기 때문에 13 < 0 -> 조건값을 만족하지 않아서, else구문으로 이동 			 							// /board/list로 작성하면 prevUrl에 없기때문에 -1로 반환이 됨. 그래서 무조건 '값이 존재할 것'이 실행 된다. 
 			//console.log('이전 페이지는 게시판 등록이 아님 : ' + prevUrl);
 			//alert('제출한 양식을 가져옵니다'); //이벤트 감지 시 무조건 alert가 출력됨 -> 주석처리
 			history.back(); //등록 창으로 감, 데이터 값은 존재

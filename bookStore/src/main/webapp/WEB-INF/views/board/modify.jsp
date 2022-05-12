@@ -17,6 +17,7 @@
 <link href="https://cdn.jsdelivr.net/npm/summernote@0.8.18/dist/summernote.min.css" rel="stylesheet">
 <script src="https://cdn.jsdelivr.net/npm/summernote@0.8.18/dist/summernote.min.js"></script>
 
+
 <!-- 첨부파일 부트스트랩 디자인 JS -->
 <!-- 
 <script src="/resources/plugins/bs-custom-file-input/bs-custom-file-input.min.js"></script>
@@ -224,7 +225,7 @@ $(document).ready(function () {
 	
 	/* 목록 페이지 이동 버튼 */
 	$("#list_btn").on("click", function(e){
-		form.find("#bno").remove();
+		form.find("#bno").remove(); //현재 들어온 게시판 번호를 찾아 지운다
 		form.attr("action", "/board/list");
 		form.submit();
 	});

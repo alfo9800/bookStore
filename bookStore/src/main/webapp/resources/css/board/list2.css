@@ -128,7 +128,9 @@ input::placeholder {
 	vertical-align: bottom;
 	border: none;
 }
-
+ .active{
+     background-color: #cdd5ec;
+ }
 
 
 

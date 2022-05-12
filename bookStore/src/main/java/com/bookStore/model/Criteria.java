@@ -17,6 +17,9 @@ public class Criteria {
 	// 한 페이지 당 보여질 게시물 갯수
 	private int amount;
 	
+	/* (Mysql) 스킵 할 게시물 수 -> (pageNum-1)*amount */
+	private int skip;
+	
 	
 	/* 아래는 setter할 때, 영향을 주는 것으로 보아서 직접 아래 setter,getter */	
 	//참고 : setter의 경우 실무에서 무분별하게 사용할 경우 후에 의도치 않은 값의 변경으로 인한 어려움을 겪을 수 있기에 상황에 맞춰서 필요할 때만 사용할 것
@@ -40,10 +43,7 @@ public class Criteria {
 	*/
 		
 	
-	
-	/* (Mysql) 스킵 할 게시물 수 -> (pageNum-1)*amount */
-	private int skip;
-	
+
 	/* 기본 생성자 -> 기본 셋팅 : pageNum=1, amount=10 */ //파라미터 없이 Criteria클래스를 호출하였을 때
 	public Criteria() {
         this(1,10);
@@ -52,9 +52,9 @@ public class Criteria {
 	
 	/* 생성자 -> 원하는 pageNum, 원하는 amount */ //파라미터와 함께 Criteria를 호출하게 되면 파라미터의 값이 각각 저장되도록 생성자 작성
 	public Criteria(int pageNum, int amount) {
-		this.pageNum = pageNum;
-		this.amount = amount;
-		this.skip = (pageNum-1) * amount;
+		this.pageNum = pageNum; //1 기본셋팅
+		this.amount = amount; //10 기본셋팅
+		this.skip = (pageNum-1) * amount; //(1-1)*10 = 0 //(2-1)*10 = 10 //즉, skip은 10단위로 값이 계산됨
 	}
 
 	
