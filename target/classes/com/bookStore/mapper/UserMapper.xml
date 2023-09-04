@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<!-- mapper태그에 namespace 속성은 연동시키고자 하는 mapper 인터페이스명을 경로와 함께 명시해줌 -->
+<mapper namespace="com.bookStore.mapper.UserMapper">
+
+<!-- 회원가입 쿼리 -->
+<insert id="userJoin"> <!-- userJoin은 다음 순서인 UserMapper.java 인터페이스인 회원가입 쿼리문을 호출하는 메서드 이름 -->
+	insert into user values (
+			#{userId}, 
+			#{userPw}, 
+			#{userName}, 
+			#{userEmail}, 
+			#{userAddr1}, 
+			#{userAddr2},  
+			0, 				<!-- 회원가입 시 기본적으로 일반회원으로 등록하기 위해 0 삽입 -->
+			now(), 		
+			10000, 			
+			5000
+		);
+</insert>
+
+
+<!-- 아이디 중복검사 -->
+<select id="idCk" resultType="int">
+	select count(*) from user where userId = #{userId} <!-- userId로 받아온 값이 있으면 count가 1, 없으면 0 /// 결과 값을 int형으로 -->
+</select>
+
+
+
+<!-- 로그인 -->
+<select id="userLogin" resultType="com.bookStore.model.UserVO">
+	select userId, userPw, adminCK, money, point from user where userId = #{userId} and userPw = #{userPw} 
+</select>
+
+</mapper>

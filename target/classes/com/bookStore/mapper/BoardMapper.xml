@@ -1,0 +1,60 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<!-- namespace 속성 값을 앞에서 생성하고, 작성한 Mapper인터페이스의 경로를 포함하는 인터페이스의 이름을 작성해야 함 -->
+<mapper namespace="com.bookStore.mapper.BoardMapper">
+
+	<!-- 게시판 등록 -->
+	<!-- #{} : get/set을 의미 ====> boardVO 멤버변수인 title,content,writer에 값이 담긴 경우 그 값들이 각각 #{title}.. 대체하여 SQL문이 실행됨 -->
+	<insert id="insert">
+		insert into bookstore_board(title, content, writer, boardcnt) values (#{title}, #{content}, #{writer}, 0)
+	</insert>
+	 
+	<!-- 게시판 목록 -->
+	<!-- select태그의 id속성 값은 '게시판 목록'메서드명과 동일해야 함 -->
+	<select id="list" resultType="com.bookStore.model.BoardVO">
+		select * from bookStore_board
+	</select>	
+	<!-- 
+	<select id="getList" resultType="com.bookStore.model.BoardVO">
+		select (@rownum:=@rownum+1) as idx, b.*
+			from bookstore_board b, (select @rownum:=0) tmp;
+	</select>
+	 -->
+	
+	<!-- 게시판 목록 (페이징 처리 + Mysql) -->
+	<select id="getListPaging" resultType="com.bookStore.model.BoardVO">
+		 select * from (
+	             select bno, title, writer, regdate, boardcnt  
+	             from bookStore_board order by bno desc) as T1
+	     order by bno desc
+	     limit #{skip},#{amount}
+	</select>
+	<!-- 예를 들어서 limit <skip:10> <count:10> -> 10개의 행을 skip하고 10개(count)행을 선택한다는 의미 / 만약 51행부터 60행을 원한다면, 'limit 50,10' 작성 -->
+	
+	<!-- 게시판 상세조회 -->
+	<select id="getPage" resultType="com.bookStore.model.BoardVO">
+		select * from bookStore_board where bno = #{bno}
+	</select>
+	
+	<!-- 게시판 조회수 -->
+	<update id="boardcnt">
+		update bookStore_board set boardcnt = boardcnt+1 where bno = #{bno}
+	</update>
+	
+	<!-- 게시판 수정 -->
+	<update id="modify">
+		update bookstore_board set title = #{title}, content = #{content}, updatedate = now() where bno = #{bno}
+	</update>
+	
+	<!-- 게시판 삭제 -->
+	<delete id="delete">
+		delete from bookstore_board where bno = #{bno}
+	</delete>
+	
+	<!-- 게시판 총 갯수 -->
+	<select id="getTotal" resultType="int">
+		select count(*) from bookstore_board
+	</select>
+
+</mapper>
